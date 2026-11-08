@@ -1,0 +1,4018 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Local AI Workstation Management Suite — orchestrate LLMs, RAG, and knowledge bases">
+      
+      
+      
+        <link rel="canonical" href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/structure/WarpCore/">
+      
+      
+        <link rel="prev" href="../ScienceStation/">
+      
+      
+        <link rel="next" href="../spock_onboarding/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>WarpCore - Spock-Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#structure-warpcore" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spock-Onboarding" class="md-header__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spock-Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WarpCore
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Screenshots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/quick-start/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/navigation-station/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cli/bringup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CLI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configuration/profiles/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/project-layout/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Code Structure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spock-Onboarding" class="md-nav__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spock-Onboarding
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screenshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/readiness-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Readiness Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/detailed-specs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailed Specs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/navigation-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigation Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/engineering-deck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Deck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/long-range-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Range Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/science-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Science Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/rag-api-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG API Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/mcp-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spock%20MCP%20%28Model%20Context%20Protocol%29%20tools-spock-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/llm-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/wiki-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/model-selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/live-monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/project-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/copy-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Structure
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code Structure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entrypoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../root-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Deep Dives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warpcore__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/__init__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreask_timing_storepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/ask_timing_store.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreconfig_defaultspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/config_defaults.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoredbpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/db.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoredepspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/deps.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorehost_recipepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/host_recipe.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorepath_relocatepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/path_relocate.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorepreviewpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/preview.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreprofile_storepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/profile_store.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoresearchpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/search.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoresecretspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/secrets.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreservice_endpointspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/service_endpoints.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoresettings_storepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/settings_store.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreship_schemapy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/ship_schema.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreskillspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/skills.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorethemepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/theme.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_bringup_menu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup_menu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_wiki_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_wiki_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_live_monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_progress_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_progress_log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    model_selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bootstrap_wizard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    bootstrap_wizard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plan-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warpcore__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/__init__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreask_timing_storepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/ask_timing_store.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreconfig_defaultspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/config_defaults.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoredbpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/db.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoredepspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/deps.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorehost_recipepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/host_recipe.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorepath_relocatepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/path_relocate.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorepreviewpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/preview.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreprofile_storepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/profile_store.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoresearchpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/search.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoresecretspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/secrets.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreservice_endpointspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/service_endpoints.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoresettings_storepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/settings_store.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreship_schemapy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/ship_schema.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcoreskillspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/skills.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warpcorethemepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpCore/theme.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Code Structure
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="structure-warpcore">Structure: WarpCore<a class="headerlink" href="#structure-warpcore" title="Permanent link">&para;</a></h1>
+<p><strong>Files:</strong> 16 · <strong>Lines:</strong> 5,080 · <strong>Classes:</strong> 8 · <strong>Functions:</strong> 191 · <strong>Methods:</strong> 2</p>
+<p>Solid edges = module-level import/call relationships (determined statically from source; only relationships <em>within this package</em> are drawn).</p>
+<pre class="mermaid"><code>---
+title: "WarpCore module relationships"
+---
+flowchart LR
+    m0["WarpCore/__init__.py"]
+    m1["WarpCore/ask_timing_store.py"]
+    m2["WarpCore/config_defaults.py"]
+    m3["WarpCore/db.py"]
+    m4["WarpCore/deps.py"]
+    m5["WarpCore/host_recipe.py"]
+    m6["WarpCore/path_relocate.py"]
+    m7["WarpCore/preview.py"]
+    m8["WarpCore/profile_store.py"]
+    m9["WarpCore/search.py"]
+    m10["WarpCore/secrets.py"]
+    m11["WarpCore/service_endpoints.py"]
+    m12["WarpCore/settings_store.py"]
+    m13["WarpCore/ship_schema.py"]
+    m14["WarpCore/skills.py"]
+    m15["WarpCore/theme.py"]</code></pre>
+<h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
+<h3 id="warpcore__init__py"><code>WarpCore/__init__.py</code><a class="headerlink" href="#warpcore__init__py" title="Permanent link">&para;</a></h3>
+<p>*WarpCore — shared core subroutines for Spock V2 (no PyQt).</p>
+<p>Pure logic + sqlite. Importable from the GUI, CLI, wizard, and subprocesses.*</p>
+<h3 id="warpcoreask_timing_storepy"><code>WarpCore/ask_timing_store.py</code><a class="headerlink" href="#warpcoreask_timing_storepy" title="Permanent link">&para;</a></h3>
+<p>*Ask AI / Deep Dive timing history — append-only rows in ship_computer.db.</p>
+<p>Config knobs stay in Spock_Console (app.ctx.<em>). This table is wiped by
+content reset (see reset.CONTENT_TABLES), not preserved like Spock_Console.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import sqlite3</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from db import DEFAULT_SHIPS_DB</code>, <code>from db import connect</code>, <code>from db import ensure_schema</code>, <code>from db import resolve_db_path</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>ensure_timing_schema(db_path)</code></strong> — lines 62-79</li>
+<li><strong><code>insert_timing(mode, question, response_length, total_ms, retrieve_ms, pack_ms, llm_ms, n_ctx, budget, budget_used, budget_used_pct, docs_used, match_count, inventory_shown, forced_count, unresolved_count, max_out, pack_summary, provider, stage_timings, filter_info, meta, updated_by, db_path)</code></strong> — lines 98-185</li>
+<li><em>Insert one timing row. Best-effort — returns row id or None on failure.</em></li>
+<li><strong><code>list_timings(db_path, mode, limit)</code></strong> — lines 188-245</li>
+<li><em>Newest-first timing rows for the Maintenance grid.</em></li>
+<li><strong><code>count_timings(db_path)</code></strong> — lines 248-255</li>
+<li><strong><code>purge_older_than_days(days, db_path)</code></strong> — lines 258-279</li>
+<li><em>Delete rows older than <code>days</code>. Returns deleted count.</em></li>
+<li><strong><code>mode_label(mode)</code></strong> — lines 282-283</li>
+</ul>
+<h3 id="warpcoreconfig_defaultspy"><code>WarpCore/config_defaults.py</code><a class="headerlink" href="#warpcoreconfig_defaultspy" title="Permanent link">&para;</a></h3>
+<p>*WarpCore: single source of truth for Spock default config + merge functions.</p>
+<p>Absorbs DEFAULT_APP_CONFIG / DEFAULT_SCAN_CONFIG plus the merge helpers that
+previously lived in model_selector_core, mcp_panel, uieg_paths, and
+web_search_clients so every consumer (GUI, wizard, subprocess, CLI) shares one
+definition of what a valid config looks like.</p>
+<p>No PyQt imports.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from WarpCore.service_endpoints import DEFAULT_CHAT_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_CTX</code>, <code>from WarpCore.service_endpoints import DEFAULT_DOCS_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_EMBED_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_MCP_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_MCP_WEBUI_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_PORTS</code>, <code>from WarpCore.service_endpoints import DEFAULT_RAG_PORT</code>, <code>from WarpCore.service_endpoints import resolve_llama_server_path</code>, <code>from WarpCore.service_endpoints import resolve_spock_root</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>merge_embedding_profile(raw)</code></strong> — lines 53-57</li>
+<li><strong><code>clamp_n_cpu_moe(value)</code></strong> — lines 97-107</li>
+<li><em>llama-server -ncmoe: 0 omits the flag, 1–999 is the layer count.</em></li>
+<li><strong><code>chat_moe_reasoning_argv(role, n_cpu_moe, reasoning)</code></strong> — lines 110-129</li>
+<li><em>Chat-only <code>-ncmoe</code> and <code>--reasoning</code>. Embedding servers omit both.</em></li>
+<li><strong><code>merge_launch_settings(raw)</code></strong> — lines 132-169</li>
+<li><em>Pinned Launch flags (DB: app.launch.</em>), clamped to what llama-server takes.*</li>
+<li><strong><code>merge_mcp_settings(raw)</code></strong> — lines 185-212</li>
+<li><strong><code>merge_uieg_config(raw)</code></strong> — lines 221-238</li>
+<li><strong><code>merge_search_config(raw)</code></strong> — lines 242-254</li>
+<li><strong><code>merge_ctx_settings(raw)</code></strong> — lines 283-311</li>
+<li><em>Ask / Deep Dive packing knobs (DB: app.ctx.</em>).*</li>
+<li><strong><code>infer_type(name, value)</code></strong> — lines 442-457</li>
+<li><em>Best-effort Variable_Type for a namespaced key / value.</em></li>
+<li><strong><code>flatten_config(nested, prefix)</code></strong> — lines 460-474</li>
+<li><em>Flatten a nested config dict into namespaced dotted keys.</em></li>
+</ul>
+<h3 id="warpcoredbpy"><code>WarpCore/db.py</code><a class="headerlink" href="#warpcoredbpy" title="Permanent link">&para;</a></h3>
+<p>*WarpCore: shared pure-sqlite helpers for Spock V2.</p>
+<p>No PyQt imports — safe for the GUI, wiki_agent daemon, extractor,
+RAG API server, MCP server, and CLI maintenance scripts.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import sqlite3</code>, <code>from pathlib import Path</code>, <code>from typing import Optional</code>, <code>import sqlite_vec</code>, <code>from sqlite_vec import serialize_float32</code>, <code>import struct</code>, <code>from sqlite_vec import serialize_float32</code>, <code>import struct</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>resolve_db_path(path, name)</code></strong> — lines 30-34</li>
+<li><em>Return an absolute DB path, defaulting to <workspace>/<name>.</em></li>
+<li><strong><code>connect(db_path, timeout)</code></strong> — lines 37-47</li>
+<li><em>Open a connection with WAL + busy_timeout for multi-process safety.</em></li>
+<li><strong><code>ensure_schema(db_path, schema_sql)</code></strong> — lines 50-57</li>
+<li><em>Execute a batch of DDL (safe to call repeatedly).</em></li>
+<li><strong><code>vec_table_exists(conn)</code></strong> — lines 81-89</li>
+<li><strong><code>vec_table_names(conn)</code></strong> — lines 92-100</li>
+<li><em>Names of sqlite-vec virtual tables in the main schema.</em></li>
+<li><strong><code>vec_shadow_names(conn, name)</code></strong> — lines 103-112</li>
+<li><em>Shadow tables (<code>&lt;vec&gt;_chunks</code> etc.) belonging to a vec0 table.</em></li>
+<li><strong><code>drop_vec_table(conn, name)</code></strong> — lines 115-150</li>
+<li><em>Drop a vec0 table (and its shadow tables) on any connection.</em></li>
+<li><strong><code>delete_documents_vec(conn, doc_ids)</code></strong> — lines 153-173</li>
+<li><em>Remove specific documents from the vec index (no-op when absent).</em></li>
+<li><strong><code>ensure_documents_vec(conn, dim)</code></strong> — lines 176-191</li>
+<li><strong><code>rebuild_documents_vec(conn)</code></strong> — lines 209-244</li>
+<li><strong><code>upsert_documents_vec(conn, doc_ids)</code></strong> — lines 247-282</li>
+<li><em>Sync specific documents (by id) into documents_vec without a full rebuild.</em></li>
+<li><strong><code>table_exists(db_path, table)</code></strong> — lines 285-294</li>
+<li><strong><code>row_count(db_path, table)</code></strong> — lines 297-303</li>
+<li><strong><code>table_names(db_path)</code></strong> — lines 306-316</li>
+</ul>
+<h3 id="warpcoredepspy"><code>WarpCore/deps.py</code><a class="headerlink" href="#warpcoredepspy" title="Permanent link">&para;</a></h3>
+<p>*Dependency tier checks: pure logic (no PyQt) — shared by the GUI and tools.</p>
+<p>Phase A installs only <code>requirements-ui.txt</code>, so ingest and crawl features can be
+reached from the menu before their packages exist. These helpers turn that into
+a readable "run Phase B" message instead of an import traceback.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import importlib.util</code>, <code>from typing import Dict</code>, <code>from typing import Iterable</code>, <code>from typing import List</code>, <code>import os</code>, <code>import sys</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>missing_modules(modules)</code></strong> — lines 48-58</li>
+<li><em>Distribution names for any of <code>modules</code> that cannot be imported.</em></li>
+<li><strong><code>missing_ingest_deps()</code></strong> — lines 61-63</li>
+<li><em>Packages Wiki Scan needs that Phase A does not install.</em></li>
+<li><strong><code>missing_crawler_deps()</code></strong> — lines 66-68</li>
+<li><em>Packages the UIEG crawler needs that Phase A does not install.</em></li>
+<li><strong><code>missing_deps_message(missing, feature)</code></strong> — lines 71-74</li>
+<li><em>Human-readable 'install the full tier' message for a missing-deps list.</em></li>
+</ul>
+<h3 id="warpcorehost_recipepy"><code>WarpCore/host_recipe.py</code><a class="headerlink" href="#warpcorehost_recipepy" title="Permanent link">&para;</a></h3>
+<p>*WarpCore: host recipe profiles — machine capability for Launch defaults.</p>
+<p>Separate from session <code>spock_profile</code> snapshots. Create / Update only via
+explicit caller actions; never silent-mutate. Content DB reset <strong>clears</strong>
+<code>spock_host_recipe</code> (and its sqlite_sequence) so Bringup / Maintenance can
+re-probe and ask for a primary AI GPU on multi-GPU hosts.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import sqlite3</code>, <code>from datetime import datetime</code>, <code>from datetime import timezone</code>, <code>from functools import lru_cache</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from config_defaults import clamp_n_cpu_moe</code>, <code>from db import DEFAULT_SHIPS_DB</code>, <code>from db import connect</code>, <code>from db as _es</code>, <code>from db import resolve_db_path</code>, <code>from spock_scanner_core import get_gpu_info</code>, <code>from spock_scanner_core import get_ram_gb</code>, <code>from config_defaults import merge_launch_settings</code>, <code>from model_selector_core import annotate_gpus_with_cuda</code>, <code>from model_selector_core import get_cuda_devices</code>, <code>from WarpCore import settings_store</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>ensure_schema(db_path)</code></strong> — lines 61-64</li>
+<li><strong><code>probe_hardware()</code></strong> — lines 67-108</li>
+<li><em>Snapshot host RAM + GPUs for recipe inputs.</em></li>
+<li><strong><code>propose_recipe(hardware)</code></strong> — lines 111-213</li>
+<li><em>Heuristic Launch defaults from a hardware snapshot.</em></li>
+<li><strong><code>gpu_choice_rows(hardware)</code></strong> — lines 216-255</li>
+<li><em>GPU rows for a primary-AI picker (nvidia-smi order, CUDA flagged).</em></li>
+<li><strong><code>default_primary_ai_gpu_index(hardware)</code></strong> — lines 258-266</li>
+<li><em>Prefer the largest CUDA GPU; else largest listed GPU; else 0.</em></li>
+<li><strong><code>multi_gpu_host(hardware)</code></strong> — lines 269-272</li>
+<li><em>True when the live probe lists two or more GPUs.</em></li>
+<li><strong><code>primary_ai_gpu_confirmed(recipe)</code></strong> — lines 275-283</li>
+<li><em>True when a recipe records an explicit user primary-AI pick.</em></li>
+<li><strong><code>needs_primary_ai_gpu_prompt(hardware, recipe)</code></strong> — lines 286-291</li>
+<li><em>Multi-GPU hosts need an explicit primary AI GPU before we persist a recipe.</em></li>
+<li><strong><code>apply_primary_ai_gpu(recipe, primary_index, hardware)</code></strong> — lines 294-323</li>
+<li><em>Pin embed + chat to one primary AI GPU (multi-GPU / video+compute boxes).</em></li>
+<li><strong><code>create_recipe(db_path, hardware, recipe, reason, created_by)</code></strong> — lines 405-423</li>
+<li><em>Create version 1 (or next) only when no current recipe exists.</em></li>
+<li><strong><code>update_recipe(db_path, reason, hardware, recipe, created_by)</code></strong> — lines 426-445</li>
+<li><em>Append a new current version. <code>reason</code> is required.</em></li>
+<li><strong><code>ensure_recipe(db_path, hardware, reason, created_by)</code></strong> — lines 448-476</li>
+<li><em>Guarantee a current recipe exists when it is safe to auto-create.</em></li>
+<li><strong><code>probe_hardware_cached(refresh)</code></strong> — lines 484-492</li>
+<li><em>Session-cached probe — cards do not appear mid-run, nvidia-smi is slow.</em></li>
+<li><strong><code>effective_recipe(db_path, live, reason, created_by)</code></strong> — lines 495-559</li>
+<li><em>The recipe to <em>plan</em> with, always measured against live hardware.</em></li>
+<li><strong><code>apply_drift_update(db_path, live, drift, created_by)</code></strong> — lines 562-578</li>
+<li><em>Persist a new recipe version for hardware that moved, with an audit line.</em></li>
+<li><strong><code>get_recipe_by_id(db_path, recipe_id)</code></strong> — lines 581-598</li>
+<li><strong><code>get_current_recipe(db_path)</code></strong> — lines 601-616</li>
+<li><strong><code>list_recipe_history(db_path, limit)</code></strong> — lines 619-638</li>
+<li><strong><code>hardware_drift(current, live, ram_tol_gb, vram_tol_gb)</code></strong> — lines 641-710</li>
+<li><em>Human messages when probed hardware disagrees with the saved recipe inputs.</em></li>
+<li><strong><code>roles_share_physical_gpu(recipe)</code></strong> — lines 713-724</li>
+<li><em>True when Suggest Context should subtract sibling GGUF from the same card.</em></li>
+<li><strong><code>launch_overrides_for_role(recipe, role)</code></strong> — lines 727-769</li>
+<li><em>Args to merge into LlamaServerManager.launch / LaunchPanel.</em></li>
+<li><strong><code>pinned_launch_settings(db_path)</code></strong> — lines 772-784</li>
+<li><em>The user's <code>app.launch.*</code> pins, or defaults when the store is unreachable.</em></li>
+<li><strong><code>launch_plan_for_role(db_path, recipe, role)</code></strong> — lines 787-819</li>
+<li><em>Recipe overrides with the pinned Launch flags applied on top.</em></li>
+</ul>
+<h3 id="warpcorepath_relocatepy"><code>WarpCore/path_relocate.py</code><a class="headerlink" href="#warpcorepath_relocatepy" title="Permanent link">&para;</a></h3>
+<p>*Heal Spock_Console (and related) absolute paths after the DB moves OS/root.</p>
+<p>Dual-boot / folder-copy leaves Linux paths in <code>ship_computer.db</code> when the
+tree is opened on Windows (and the reverse). Host-recipe drift already covers
+GPUs; this module remaps Spock-rooted filesystem paths on first launch.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import os</code>, <code>import re</code>, <code>from pathlib import Path</code>, <code>from pathlib import PurePosixPath</code>, <code>from pathlib import PureWindowsPath</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from WarpCore as st</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>host_os_name()</code></strong> — lines 38-39</li>
+<li><strong><code>looks_like_windows_path(value)</code></strong> — lines 42-48</li>
+<li><strong><code>looks_like_posix_path(value)</code></strong> — lines 51-57</li>
+<li><strong><code>looks_like_url(value)</code></strong> — lines 60-62</li>
+<li><strong><code>relocate_path(value, new_root, old_root)</code></strong> — lines 99-169</li>
+<li><em>Return a host-native path under <code>new_root</code>, or None if unchanged/skip.</em></li>
+<li><strong><code>relocate_value(value, new_root, old_root)</code></strong> — lines 172-200</li>
+<li><em>Deep-walk str / list / dict; return (new_value, change_count).</em></li>
+<li><strong><code>heal_relocated_paths(db_path, root, by, force)</code></strong> — lines 225-323</li>
+<li><em>Rewrite foreign / moved Spock paths in Spock_Console.</em></li>
+</ul>
+<h3 id="warpcorepreviewpy"><code>WarpCore/preview.py</code><a class="headerlink" href="#warpcorepreviewpy" title="Permanent link">&para;</a></h3>
+<p><em>File preview: pure logic (no PyQt) — shared by the GUI and tools.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>from bs4 import BeautifulSoup</code>, <code>import pymupdf</code>, <code>from PIL import Image</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>is_image_file(path)</code></strong> — lines 11-12</li>
+<li><strong><code>is_rich_file(path)</code></strong> — lines 15-16</li>
+<li><strong><code>preview_file(path)</code></strong> — lines 73-85</li>
+</ul>
+<h3 id="warpcoreprofile_storepy"><code>WarpCore/profile_store.py</code><a class="headerlink" href="#warpcoreprofile_storepy" title="Permanent link">&para;</a></h3>
+<p>*WarpCore: spock_profile store — the sole owner of the profile table.</p>
+<p>Consolidated into ships_computer.db (previously shared between
+spock_profile_store.py and uieg_database.py in uieg_capture.db).</p>
+<p>Pure sqlite — safe for the GUI and any subprocess.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import os</code>, <code>import sqlite3</code>, <code>from datetime import datetime</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from db import connect</code>, <code>from db import table_exists</code>, <code>from db import DEFAULT_SHIPS_DB</code>, <code>from db import resolve_db_path</code>, <code>from db as _es</code>, <code>from db as _te</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>stardate()</code></strong> — lines 30-31</li>
+<li><strong><code>ensure_schema(db_path)</code></strong> — lines 34-40</li>
+<li><strong><code>list_profiles(db_path)</code></strong> — lines 43-53</li>
+<li><em>Return (id, name, stardate, created_at) newest first.</em></li>
+<li><strong><code>count_profiles(db_path)</code></strong> — lines 56-63</li>
+<li><strong><code>get_profile(db_path, profile_id)</code></strong> — lines 66-91</li>
+<li><em>Return {id, name, stardate, created_at, payload} or None.</em></li>
+<li><strong><code>find_profile_by_name(db_path, name)</code></strong> — lines 94-112</li>
+<li><em>Newest row whose name matches case-insensitively, or None.</em></li>
+<li><strong><code>upsert_profile(db_path, name, payload, profile_stardate)</code></strong> — lines 115-152</li>
+<li><em>Insert or replace by name. Returns (id, replaced).</em></li>
+<li><strong><code>list_profile_summaries(db_path)</code></strong> — lines 155-205</li>
+<li><em>Newest first, with embedding GGUF + Ask AI provider from payload.</em></li>
+<li><strong><code>insert_profile(db_path, name, payload, profile_stardate)</code></strong> — lines 208-216</li>
+<li><em>Insert a row. Prefer upsert_profile so duplicate names replace.</em></li>
+<li><strong><code>delete_profiles(db_path, profile_ids)</code></strong> — lines 219-236</li>
+<li><em>Delete by id; return number of rows removed.</em></li>
+<li><strong><code>migrate_from_legacy(legacy_db, target_db, archive_legacy_rows)</code></strong> — lines 239-283</li>
+<li><em>Copy all rows from a legacy uieg_capture.db spock_profile table.</em></li>
+</ul>
+<h3 id="warpcoresearchpy"><code>WarpCore/search.py</code><a class="headerlink" href="#warpcoresearchpy" title="Permanent link">&para;</a></h3>
+<p>*Search + embeddings: pure logic, no PyQt — usable from any process.</p>
+<p>Moved out of the monolith (Spock-to-bridge.py) so wiki_agent, RAG API, and the
+GUI all share one implementation. All functions are standalone; callers pass a
+db_path and get plain data back.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import math</code>, <code>import os</code>, <code>import re</code>, <code>import sqlite3</code>, <code>import struct</code>, <code>import urllib.error</code>, <code>import urllib.request</code>, <code>from dataclasses import dataclass</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from db import _SQLITE_VEC_AVAILABLE</code>, <code>from db import _VEC_TABLE_NAME</code>, <code>from db import connect</code>, <code>from db import ensure_documents_vec</code>, <code>from db import rebuild_documents_vec</code>, <code>from db import vec_table_exists</code>, <code>from spock_rag_adapter.embedding_utils import embedding_from_response</code>, <code>from sqlite_vec import serialize_float32</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>SearchResult</code></strong> — lines 38-45</li>
+<li><em>Search result from vector/FTS search</em></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>set_embeddings_url(url)</code></strong> — lines 48-51</li>
+<li><em>Update the module-level embeddings endpoint used by RAG search.</em></li>
+<li><strong><code>cosine_similarity(a, b)</code></strong> — lines 54-58</li>
+<li><strong><code>deserialize_embedding(blob)</code></strong> — lines 61-65</li>
+<li><strong><code>get_query_embedding(text, url)</code></strong> — lines 68-89</li>
+<li><em>Get embedding vector from llama-server</em></li>
+<li><strong><code>make_snippet(content, terms, max_chars, context_chars)</code></strong> — lines 92-155</li>
+<li><em>Build a snippet centered on the first matched term, clipped at line/</em></li>
+<li><strong><code>vector_search(db_path, query, top_k, threshold, embeddings_url, filter_clause)</code></strong> — lines 158-230</li>
+<li><em>Search documents by embedding similarity</em></li>
+<li><strong><code>extract_search_terms(query)</code></strong> — lines 248-261</li>
+<li><em>Pull meaningful tokens from a natural-language Ask AI question.</em></li>
+<li><strong><code>sanitize_fts_query(query)</code></strong> — lines 264-276</li>
+<li><em>Build an FTS5-safe MATCH string (hyphenated names must be quoted).</em></li>
+<li><strong><code>embeddings_endpoint_ok(url, timeout, light)</code></strong> — lines 279-331</li>
+<li><em>Return (ok, detail) for the RAG embeddings HTTP endpoint.</em></li>
+<li><strong><code>fts_search(db_path, query, top_k, filter_clause)</code></strong> — lines 334-363</li>
+<li><em>FTS5 keyword search (sanitized for natural-language questions).</em></li>
+<li><strong><code>like_search(db_path, query, top_k, filter_clause)</code></strong> — lines 366-405</li>
+<li><em>Fallback LIKE search when FTS/vector return nothing.</em></li>
+<li><strong><code>hybrid_search(db_path, query, top_k, embeddings_url, filter_clause)</code></strong> — lines 408-442</li>
+<li><em>Combine vector and FTS5 search results (LIKE fallback if both empty).</em></li>
+<li><strong><code>has_embeddings(db_path)</code></strong> — lines 445-455</li>
+<li><em>Check if the database has embedding data</em></li>
+<li><strong><code>build_documents_vec(db_path)</code></strong> — lines 458-464</li>
+<li><em>Build (or rebuild) the sqlite-vec virtual table from documents.embedding.</em></li>
+</ul>
+<h3 id="warpcoresecretspy"><code>WarpCore/secrets.py</code><a class="headerlink" href="#warpcoresecretspy" title="Permanent link">&para;</a></h3>
+<p>*OS credential store for Spock API tokens (Windows Credential Manager, etc.).</p>
+<p>Plaintext leftovers in Spock_Console are migrated on read, then replaced with
+PLACEHOLDER. JSON export never writes secret values.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>import keyring</code>, <code>import keyring</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>use_memory_backend(store)</code></strong> — lines 18-21</li>
+<li><em>Pin secrets to a dict (tests). Pass None to restore the OS keyring.</em></li>
+<li><strong><code>clear_memory_backend()</code></strong> — lines 24-26</li>
+<li><strong><code>put(name, value)</code></strong> — lines 66-71</li>
+<li><em>Store a secret. Empty value deletes. Returns False if the OS store failed.</em></li>
+<li><strong><code>get(name)</code></strong> — lines 74-76</li>
+<li><strong><code>is_placeholder(value)</code></strong> — lines 79-80</li>
+</ul>
+<h3 id="warpcoreservice_endpointspy"><code>WarpCore/service_endpoints.py</code><a class="headerlink" href="#warpcoreservice_endpointspy" title="Permanent link">&para;</a></h3>
+<p>*Canonical Spock service ports, URLs, and context/token budgets.</p>
+<p>All suite consumers should resolve endpoints through this module instead of
+scattering 8080/8081/8082/8090/8765/8000 literals. Precedence:</p>
+<ol>
+<li>SPOCK_* environment overrides (and EMBEDDINGS_URL for embed URL)</li>
+<li>Loaded app config (ship_computer.db / DEFAULT_APP_CONFIG keys)</li>
+<li>DEFAULT_PORTS / DEFAULT_CTX below</li>
+</ol>
+<p>llama.cpp's futur*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import shutil</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Mapping</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from urllib.parse import urlparse</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>resolve_spock_root()</code></strong> — lines 23-30</li>
+<li><em>Suite root: SPOCK_ROOT env (must contain WarpCore/) else package parent.</em></li>
+<li><strong><code>is_runnable_host_binary(path)</code></strong> — lines 41-80</li>
+<li><em>True if <code>path</code> is a file this OS can exec (skip Windows PE under WSL).</em></li>
+<li><strong><code>llama_server_install_dir(root)</code></strong> — lines 83-86</li>
+<li><em>Canonical llama.cpp install dir: <code>{root}/tools/llama-server</code>.</em></li>
+<li><strong><code>llmfit_install_dir(root)</code></strong> — lines 89-92</li>
+<li><em>Canonical llmfit install dir: <code>{root}/tools/llmfit</code>.</em></li>
+<li><strong><code>llama_server_binary_candidates(root, explicit)</code></strong> — lines 107-164</li>
+<li><em>Ordered search list for the llama-server binary (app-relative first).</em></li>
+<li><strong><code>llmfit_binary_candidates(root)</code></strong> — lines 167-185</li>
+<li><em>Ordered search list for the llmfit CLI (app-relative first).</em></li>
+<li><strong><code>clamp_port(value, default)</code></strong> — lines 213-220</li>
+<li><strong><code>clamp_ctx(value, default, lo, hi)</code></strong> — lines 223-228</li>
+<li><strong><code>clamp_max_tokens(value, default)</code></strong> — lines 231-232</li>
+<li><strong><code>resolve_ports(cfg)</code></strong> — lines 256-294</li>
+<li><em>Resolved port map for embed/chat/mcp_webui/rag/mcp_http/docs.</em></li>
+<li><strong><code>resolve_ctx(cfg)</code></strong> — lines 297-312</li>
+<li><em>embed_n_ctx / chat_n_ctx / chat_max_tokens from config + defaults.</em></li>
+<li><strong><code>embeddings_url(cfg, host)</code></strong> — lines 315-333</li>
+<li><strong><code>chat_base_url(cfg)</code></strong> — lines 336-339</li>
+<li><strong><code>rag_base_url(cfg)</code></strong> — lines 342-347</li>
+<li><strong><code>docs_base_url(cfg)</code></strong> — lines 350-352</li>
+<li><strong><code>sync_embedding_url_port(cfg, embed_port)</code></strong> — lines 355-382</li>
+<li><em>Keep embedding_profile.embeddings_url host/path; update port if needed.</em></li>
+<li><strong><code>resolve_llama_server_path(explicit)</code></strong> — lines 385-403</li>
+<li><em>Return (path, note). Prefer env / PATH, then <code>{SPOCK_ROOT}/tools/llama-server</code>.</em></li>
+</ul>
+<h3 id="warpcoresettings_storepy"><code>WarpCore/settings_store.py</code><a class="headerlink" href="#warpcoresettings_storepy" title="Permanent link">&para;</a></h3>
+<p>*WarpCore: Spock_Console settings store in ships_computer.db.</p>
+<p>Replaces the root-level app_config.json / scan_config.json / config.json /
+wiki_agent_session.json files with a normalized key/value table. Pure sqlite —
+safe for the GUI, wizard, CLI, and subprocesses (wiki_agent, extractor, RAG
+API, MCP server).</p>
+<p>Schema:
+    Spock_Console(
+        key_id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    *</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import os</code>, <code>import shutil</code>, <code>from datetime import datetime</code>, <code>from datetime import timezone</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Iterable</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from db import connect</code>, <code>from db import table_exists</code>, <code>from config_defaults import DEFAULT_APP_CONFIG</code>, <code>from config_defaults import DEFAULT_CTX_SETTINGS</code>, <code>from config_defaults import DEFAULT_SCAN_CONFIG</code>, <code>from config_defaults import flatten_config</code>, <code>from config_defaults import infer_type</code>, <code>from config_defaults import merge_ctx_settings</code>, <code>from config_defaults import merge_embedding_profile</code>, <code>from config_defaults import merge_launch_settings</code>, <code>from config_defaults import merge_mcp_settings</code>, <code>from config_defaults import merge_search_config</code>, <code>from config_defaults import merge_uieg_config</code>, <code>from db import ensure_schema</code>, <code>from ship_schema import ensure_ship_computer_schema</code>, <code>from WarpCore.path_relocate import heal_relocated_paths</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>set(db_path, name, value, by)</code></strong> — lines 135-157</li>
+<li><em>Store one setting. Converts via infer_type unless a known type wins.</em></li>
+<li><strong><code>set_many(db_path, mapping, by)</code></strong> — lines 160-183</li>
+<li><strong><code>get(db_path, name, default)</code></strong> — lines 186-201</li>
+<li><strong><code>has(db_path, name)</code></strong> — lines 204-213</li>
+<li><strong><code>delete(db_path, name)</code></strong> — lines 216-236</li>
+<li><strong><code>get_all(db_path, prefix)</code></strong> — lines 239-261</li>
+<li><em>Return {Variable_Name: value} rows; optional namespace filter.</em></li>
+<li><strong><code>get_meta(db_path)</code></strong> — lines 264-277</li>
+<li><em>Return all rows as (Variable_Name, Variable_Type, value_repr, updated_at, updated_by).</em></li>
+<li><strong><code>migrate_from_json(db_path, root, archive)</code></strong> — lines 321-376</li>
+<li><em>One-time, idempotent import of root JSON config files into Spock_Console.</em></li>
+<li><strong><code>export_to_json(db_path, out_dir)</code></strong> — lines 379-432</li>
+<li><em>Write current store contents back to app_config.json / scan_config.json /</em></li>
+<li><strong><code>ensure_paths_healed(db_path, root)</code></strong> — lines 435-446</li>
+<li><em>Remap Spock_Console paths when the DB was copied across Linux/Windows roots.</em></li>
+<li><strong><code>load_app_config(db_path)</code></strong> — lines 449-510</li>
+<li><em>Return the full app config dict (defaults merged), mirroring old load_config().</em></li>
+<li><strong><code>save_app_config(db_path, config, by)</code></strong> — lines 513-516</li>
+<li><em>Persist a full app config dict back into the store.</em></li>
+<li><strong><code>load_scan_config(db_path)</code></strong> — lines 519-529</li>
+<li><strong><code>ensure_ctx_defaults_in_store(db_path, by)</code></strong> — lines 532-544</li>
+<li><em>Fill missing app.ctx.</em> keys so Maintenance Ctx filter has rows to edit.*</li>
+<li><strong><code>ensure_scan_in_store(db_path, root, by)</code></strong> — lines 547-586</li>
+<li><em>Import scan.</em> into Spock_Console when missing (JSON left behind after app-only migrate).*</li>
+<li><strong><code>ensure_live_overlays_in_store(db_path, root, by)</code></strong> — lines 633-759</li>
+<li><em>Bring leftover onboarding files into Spock_Console (fill-if-empty / missing only).</em></li>
+<li><strong><code>save_scan_config(db_path, cfg, by)</code></strong> — lines 762-764</li>
+<li><strong><code>get_hf_token(db_path)</code></strong> — lines 767-772</li>
+</ul>
+<h3 id="warpcoreship_schemapy"><code>WarpCore/ship_schema.py</code><a class="headerlink" href="#warpcoreship_schemapy" title="Permanent link">&para;</a></h3>
+<p>*Ensure ship_computer.db has wiki/corpus tables (documents, FTS, etc.).</p>
+<p>First launch only creates Spock_Console via settings_store; wiki scan and
+embedding_corpus need the full schema from ship_computer_schema.sql.
+Safe to call repeatedly — applies only DDL for objects that are still missing.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import re</code>, <code>import sqlite3</code>, <code>from pathlib import Path</code>, <code>from db import DEFAULT_SHIPS_DB</code>, <code>from db import connect</code>, <code>from db import resolve_db_path</code>, <code>from db import table_exists</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>ensure_ship_computer_schema(db_path)</code></strong> — lines 166-182</li>
+<li><em>Create or repair wiki tables; return absolute db path.</em></li>
+</ul>
+<h3 id="warpcoreskillspy"><code>WarpCore/skills.py</code><a class="headerlink" href="#warpcoreskillspy" title="Permanent link">&para;</a></h3>
+<p>*Typed skill contracts for the wiki agent (methods-as-skills).</p>
+<p>Each Skills method returns a SkillResult with structured evidence
+(counts, affected paths, error summaries) instead of raw tracebacks.
+Payloads arriving from agent_queue are validated against per-skill
+shapes before dispatch.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>from dataclasses import dataclass</code>, <code>from dataclasses import field</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Literal</code>, <code>from typing import TypedDict</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>OnboardingPayload(TypedDict)</code></strong> — lines 26-29</li>
+<li><strong><code>MaintenancePayload(TypedDict)</code></strong> — lines 32-33</li>
+<li><strong><code>BackupPayload(TypedDict)</code></strong> — lines 36-37</li>
+<li><strong><code>UpdateIndexPayload(TypedDict)</code></strong> — lines 40-41</li>
+<li><strong><code>ReferenceReviewPayload(TypedDict)</code></strong> — lines 44-46</li>
+<li><strong><code>AcquireCodebaseKnowledgePayload(TypedDict)</code></strong> — lines 49-53</li>
+<li><strong><code>SkillResult</code></strong> — lines 90-112</li>
+<li><em>Structured outcome of a skill run, persisted to logs / agent_queue.</em></li>
+<li><code>to_dict(self)</code></li>
+<li><code>from_json(cls, raw)</code></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>validate_payload(skill, payload)</code></strong> — lines 115-141</li>
+<li><em>Validate and normalize a payload for a named skill.</em></li>
+<li><strong><code>parse_payload_json(payload_json)</code></strong> — lines 144-150</li>
+<li><em>Safely decode agent_queue.payload_json; JSON errors become empty dict.</em></li>
+</ul>
+<h3 id="warpcorethemepy"><code>WarpCore/theme.py</code><a class="headerlink" href="#warpcorethemepy" title="Permanent link">&para;</a></h3>
+<p>*Color themes: single source of truth + shared stylesheet builders.</p>
+<p>Previously the THEMES dict and apply_theme methods were duplicated across
+~15 widget classes (model_selector_panels, chat_ai_helper, mcp_panel,
+external_search_panel, uieg_capture_panel). This module owns the palette data
+and the common QSS fragments so every panel stays in sync.</p>
+<p>Palettes carry a three-step background ramp (<code>`bg</code>*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Any</code>, <code>from typing import Dict</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>relative_luminance(hex_color)</code></strong> — lines 106-112</li>
+<li><em>WCAG relative luminance in 0..1.</em></li>
+<li><strong><code>contrast_ratio(a, b)</code></strong> — lines 115-119</li>
+<li><em>WCAG contrast ratio between two colors (1.0 = identical, 21 = max).</em></li>
+<li><strong><code>readable_on(background)</code></strong> — lines 122-126</li>
+<li><em>Pick near-black or white for text drawn on <code>background</code>.</em></li>
+<li><strong><code>theme_by_name(name)</code></strong> — lines 148-150</li>
+<li><em>Palette lookup that never raises; unknown names fall back to dark.</em></li>
+<li><strong><code>main_stylesheet(theme)</code></strong> — lines 153-235</li>
+<li><em>QSS for the main window frame (docks, toolbar, inputs).</em></li>
+<li><strong><code>widget_stylesheet(theme)</code></strong> — lines 238-245</li>
+<li><em>QSS for a plain widget container (background + text color).</em></li>
+<li><strong><code>base_controls_stylesheet(theme)</code></strong> — lines 248-279</li>
+<li><em>QSS for editors, buttons, and labels (dialogs/panels).</em></li>
+<li><strong><code>dialog_stylesheet(theme)</code></strong> — lines 282-310</li>
+<li><em>QSS for dialogs with lists/grids + buttons.</em></li>
+<li><strong><code>tabs_stylesheet(theme)</code></strong> — lines 313-335</li>
+<li><em>QSS for tabbed panels; selected tabs stay legible on the accent fill.</em></li>
+<li><strong><code>apply_theme_to(widget, theme, scope)</code></strong> — lines 338-358</li>
+<li><em>Set a widget's stylesheet from the shared builders.</em></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../js/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

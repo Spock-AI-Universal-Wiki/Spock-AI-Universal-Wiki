@@ -1,0 +1,3579 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Local AI Workstation Management Suite — orchestrate LLMs, RAG, and knowledge bases">
+      
+      
+      
+        <link rel="canonical" href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/codebase/CONVENTIONS/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Conventions - Spock-Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#conventions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spock-Onboarding" class="md-header__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spock-Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Conventions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Screenshots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/quick-start/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/navigation-station/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cli/bringup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CLI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configuration/profiles/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/project-layout/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../structure/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Code Structure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spock-Onboarding" class="md-nav__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spock-Onboarding
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screenshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/readiness-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Readiness Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/detailed-specs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailed Specs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/navigation-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigation Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/engineering-deck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Deck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/long-range-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Range Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/science-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Science Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/rag-api-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG API Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/mcp-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spock%20MCP%20%28Model%20Context%20Protocol%29%20tools-spock-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/llm-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/wiki-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/model-selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/live-monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/project-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/copy-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../structure/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Structure
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code Structure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/module-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/entrypoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/root-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Deep Dives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_bringup_menu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup_menu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_wiki_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_wiki_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_live_monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/spock_progress_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_progress_log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/model_selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    model_selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../structure/bootstrap_wizard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    bootstrap_wizard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plan-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#observed-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observed conventions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Observed conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conventions-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conventions explained
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error handling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error handling explained
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-scan-excerpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raw scan excerpt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evidence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evidence-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence explained
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqlite-3-database-ship_computerdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQLite 3 Database: ship_computer.db
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQLite 3 Database: ship_computer.db">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-overview-and-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Overview and Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaction-with-ask-ai-inquiries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interaction with Ask AI Inquiries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaction-with-deep-dive-inquiries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interaction with Deep Dive Inquiries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask-ai-and-deep-dive-data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask AI and Deep Dive Data Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-llm-and-vector-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding LLM and Vector Database
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding LLM and Vector Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingestion-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ingestion Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-ask-ai-uses-the-embedding-llm-and-vector-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Ask AI Uses the Embedding LLM and Vector Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-deep-dive-uses-the-embedding-llm-and-vector-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Deep Dive Uses the Embedding LLM and Vector Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-to-ship_computerdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to ship_computer.db
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-and-fallback-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure and Fallback Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-llm-and-vector-database-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding LLM and Vector Database Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding LLM and Vector Database Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedding-model-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding Model Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-database-retrieval-and-rag-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Database Retrieval and RAG Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separation-of-concerns-embedding-vs-generative-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Separation of Concerns: Embedding vs. Generative LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlite-3-ship_computerdb-and-spock-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQLite 3 ship_computer.db and Spock Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask-ai-and-deep-dive-interaction-with-ship_computerdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask AI and Deep Dive Interaction with ship_computer.db
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-spock-uses-the-embedding-llm-and-vector-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Spock Uses the Embedding LLM and Vector Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="conventions">Conventions<a class="headerlink" href="#conventions" title="Permanent link">&para;</a></h1>
+<h2 id="observed-conventions">Observed conventions<a class="headerlink" href="#observed-conventions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Python packages use PascalCase or snake_case directory names and include an <code>__init__.py</code> file.</li>
+<li>Wiki agent skills are implemented as methods on the <code>Skills</code> class and validated through <code>WarpCore.skills</code>.</li>
+<li>Prefer <code>spock_shell.paths</code> for resolving ROOT and database paths rather than hard-coding path values.</li>
+<li>[TODO] The scan did not detect a root-level <code>ruff</code>, <code>black</code>, or <code>flake8</code> configuration file.</li>
+</ul>
+<h3 id="conventions-explained">Conventions explained<a class="headerlink" href="#conventions-explained" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A Python package directory is an explicit directory that contains <code>__init__.py</code>; the observed convention allows either PascalCase or snake_case naming for such directories.</li>
+<li>The <code>Skills</code> / <code>WarpCore.skills</code> convention describes how agent capabilities are exposed as callable methods and validated through the <code>WarpCore.skills</code> registry.</li>
+<li>Using <code>spock_shell.paths</code> centralizes path resolution, which helps keep ROOT and database path handling consistent across environments and prevents path-related runtime errors.</li>
+<li>The TODO item records a scan finding about missing linting/formatting configuration; it is not itself a confirmed project rule.</li>
+</ul>
+<h2 id="error-handling">Error handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Skills return <code>SkillResult(ok, evidence, log_lines)</code> instead of raising exceptions into the queue loop.</li>
+<li>GUI long-running work uses a wait cursor and a busy <code>QProgressBar</code> via <code>spock_shell.busy_ui</code>.</li>
+</ul>
+<h3 id="error-handling-explained">Error handling explained<a class="headerlink" href="#error-handling-explained" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>SkillResult</code> is a structured result object that reports whether a skill succeeded (<code>ok</code>), provides supporting evidence, and includes relevant log lines. By returning this value instead of raising exceptions, the queue loop can record failures, continue processing subsequent items, and avoid unhandled exception crashes.</li>
+<li>The GUI pattern communicates that long operations are in progress by showing a wait cursor or busy progress indicator. <code>spock_shell.busy_ui</code> centralizes this behavior so user-facing code does not need to manage Qt cursor and progress-bar state manually.</li>
+</ul>
+<h3 id="raw-scan-excerpt">Raw scan excerpt<a class="headerlink" href="#raw-scan-excerpt" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>No linting or formatting config files found in project root.
+</span></code></pre></div>
+<h2 id="evidence">Evidence<a class="headerlink" href="#evidence" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>D:\Spock-Universal-AI-Wiki\docs\codebase\.codebase-scan.txt</code></li>
+<li>Filters: <code>.gitignore</code> + <code>scan.skip_dirs</code> + built-in extras</li>
+</ul>
+<h3 id="evidence-explained">Evidence explained<a class="headerlink" href="#evidence-explained" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The evidence file is the scan output that supports the observations above.</li>
+<li>The filters describe exclusion rules used during scanning: entries from <code>.gitignore</code>, configured <code>scan.skip_dirs</code>, and additional built-in exclusions.</li>
+</ul>
+<h2 id="sqlite-3-database-ship_computerdb">SQLite 3 Database: <code>ship_computer.db</code><a class="headerlink" href="#sqlite-3-database-ship_computerdb" title="Permanent link">&para;</a></h2>
+<h3 id="database-overview-and-schema">Database Overview and Schema<a class="headerlink" href="#database-overview-and-schema" title="Permanent link">&para;</a></h3>
+<p><code>ship_computer.db</code> is the SQLite 3 database that provides persistent state for the Spock application. It is the system of record for application metadata, query history, session context, skill state, and references to external knowledge assets such as document chunks and vector-store identifiers.</p>
+<p>The database is optimized for read-heavy workloads and uses SQLite's ACID behavior to keep state consistent while multiple skills or background jobs may read and write data. It does not replace the vector database; instead, it stores the metadata needed to locate, validate, cache, and audit the data used by Ask AI and Deep Dive.</p>
+<p>Core tables include:</p>
+<ul>
+<li><code>documents</code>: Stores metadata about ingested files, including file path, content hash, source type, ingestion timestamp, and processing status.</li>
+<li><code>embeddings_index</code>: Maps document chunks to vector-store identifiers, chunk text or chunk references, embedding model version, and retrieval metadata.</li>
+<li><code>query_log</code>: Records user prompts, skill invocations, routing decisions, response summaries, latency, token usage, and retrieval metrics for auditing and analytics.</li>
+<li><code>sessions</code>: Tracks active conversation contexts, user preferences, temporary state, and multi-turn interaction history.</li>
+<li><code>skills_registry</code>: Maintains skill configuration, availability status, dependency information, and version metadata for agent skills.</li>
+</ul>
+<h3 id="interaction-with-ask-ai-inquiries">Interaction with Ask AI Inquiries<a class="headerlink" href="#interaction-with-ask-ai-inquiries" title="Permanent link">&para;</a></h3>
+<p>When a user submits an "Ask AI" inquiry, the Spock application treats the request as a lightweight retrieval-augmented generation task. The skill first resolves the database path through <code>spock_shell.paths</code>, then checks <code>ship_computer.db</code> for cached responses, recent session context, or previously resolved intents.</p>
+<p>If a sufficiently similar cached response exists, the application may return the cached result to reduce latency and avoid unnecessary LLM calls. If no cache exists, the application embeds the user prompt using the embedding LLM, searches the vector database for relevant chunks, and retrieves the associated document metadata from <code>ship_computer.db</code>.</p>
+<p>The raw prompt, timestamp, routing decision, retrieved chunk identifiers, and final response summary are written to <code>query_log</code>. If the request is part of a multi-turn conversation, the relevant context is also stored in <code>sessions</code>. The final answer and supporting citations are returned to the user through a <code>SkillResult</code>, with evidence and log lines available for inspection.</p>
+<h3 id="interaction-with-deep-dive-inquiries">Interaction with Deep Dive Inquiries<a class="headerlink" href="#interaction-with-deep-dive-inquiries" title="Permanent link">&para;</a></h3>
+<p>"Deep Dive" requests trigger a more intensive retrieval-augmented generation workflow. The application uses <code>ship_computer.db</code> to identify high-relevance document clusters and to apply metadata filters such as date ranges, source credibility, topic tags, document type, and ingestion status.</p>
+<p>The database returns structured pointers to the vector store, including chunk identifiers, vector-store IDs, and metadata needed to fetch dense vector representations or precomputed chunk text. The Spock application then performs one or more vector searches, reranks candidates, and may issue follow-up embeddings to explore related concepts.</p>
+<p>Throughout the Deep Dive process, intermediate reasoning steps, retrieved context chunks, confidence scores, filter selections, and final evidence chains are persisted in <code>ship_computer.db</code>. This allows the application to produce transparent, traceable outputs and lets users review the evidence that supported the final answer. Because Deep Dive can be long-running, the GUI uses <code>spock_shell.busy_ui</code> to show a wait cursor or busy progress indicator while the skill executes.</p>
+<h3 id="ask-ai-and-deep-dive-data-flow">Ask AI and Deep Dive Data Flow<a class="headerlink" href="#ask-ai-and-deep-dive-data-flow" title="Permanent link">&para;</a></h3>
+<ol>
+<li>The user submits an Ask AI or Deep Dive request through the Spock GUI or shell.</li>
+<li>The request is routed to the appropriate skill method on the <code>Skills</code> class.</li>
+<li>The skill validates its configuration through <code>WarpCore.skills</code> and resolves the database and vector-store paths using <code>spock_shell.paths</code>.</li>
+<li>The skill reads <code>sessions</code> and <code>query_log</code> to determine whether cached context or prior results are available.</li>
+<li>The user prompt is converted into an embedding by the embedding LLM.</li>
+<li>The vector database is searched for the most relevant chunks.</li>
+<li><code>ship_computer.db</code> is used to resolve chunk metadata, document provenance, and citation information.</li>
+<li>The generative LLM produces an answer using the retrieved context.</li>
+<li>The response, evidence, metrics, and log lines are written back to <code>ship_computer.db</code>.</li>
+<li>The skill returns a <code>SkillResult</code> containing success status, evidence, and diagnostic log lines.</li>
+</ol>
+<h2 id="embedding-llm-and-vector-database">Embedding LLM and Vector Database<a class="headerlink" href="#embedding-llm-and-vector-database" title="Permanent link">&para;</a></h2>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<p>The embedding LLM and vector database provide semantic search for the Spock application. The embedding LLM converts text into numerical vectors that represent meaning. The vector database stores those vectors and supports similarity search, allowing the application to find relevant document chunks even when the user's wording differs from the source text.</p>
+<p>This layer is separate from the generative LLM that writes the final answer. The embedding LLM is used for retrieval; the generative LLM is used for synthesis.</p>
+<h3 id="ingestion-pipeline">Ingestion Pipeline<a class="headerlink" href="#ingestion-pipeline" title="Permanent link">&para;</a></h3>
+<p>When documents are added to the Spock knowledge base, the application processes them through an ingestion pipeline:</p>
+<ol>
+<li>The source file is read and validated.</li>
+<li>The document is split into manageable chunks, such as paragraphs, sections, or token-limited blocks.</li>
+<li>Each chunk is embedded using the embedding LLM.</li>
+<li>The resulting vector is stored in the vector database.</li>
+<li>Metadata about the document, chunk, embedding model, and vector-store identifier is written to <code>ship_computer.db</code>.</li>
+<li>The <code>documents</code> table records the source file, hash, ingestion timestamp, and processing status.</li>
+<li>The <code>embeddings_index</code> table records the mapping between the chunk and its vector-store identifier.</li>
+</ol>
+<p>This design keeps the vector database focused on high-dimensional similarity search while <code>ship_computer.db</code> remains the authoritative source for application state, provenance, and audit information.</p>
+<h3 id="query-pipeline">Query Pipeline<a class="headerlink" href="#query-pipeline" title="Permanent link">&para;</a></h3>
+<p>When the application needs to answer a question, it uses the following query pipeline:</p>
+<ol>
+<li>The user prompt is normalized and embedded using the same embedding LLM used during ingestion.</li>
+<li>The query vector is sent to the vector database.</li>
+<li>The vector database returns the nearest neighbor chunks, usually a configurable top-k set.</li>
+<li>The application retrieves metadata for those chunks from <code>ship_computer.db</code>.</li>
+<li>Optional reranking, filtering, or scoring is applied to improve relevance.</li>
+<li>The selected chunks are passed to the generative LLM as context.</li>
+<li>The generative LLM produces an answer grounded in the retrieved evidence.</li>
+<li>The final answer, citations, retrieval metrics, and log lines are returned to the user and recorded in <code>ship_computer.db</code>.</li>
+</ol>
+<h3 id="how-ask-ai-uses-the-embedding-llm-and-vector-database">How Ask AI Uses the Embedding LLM and Vector Database<a class="headerlink" href="#how-ask-ai-uses-the-embedding-llm-and-vector-database" title="Permanent link">&para;</a></h3>
+<p>Ask AI uses the embedding LLM and vector database for fast, single-pass retrieval. The user prompt is embedded once, the vector database is searched once, and the most relevant chunks are used to generate a concise answer.</p>
+<p>Ask AI is optimized for low latency. It may use cached embeddings, cached responses, or session context from <code>ship_computer.db</code> when available. If the vector database returns weak matches, the skill may return a lower-confidence answer, request clarification, or fall back to a generic response depending on the configured policy.</p>
+<h3 id="how-deep-dive-uses-the-embedding-llm-and-vector-database">How Deep Dive Uses the Embedding LLM and Vector Database<a class="headerlink" href="#how-deep-dive-uses-the-embedding-llm-and-vector-database" title="Permanent link">&para;</a></h3>
+<p>Deep Dive uses the embedding LLM and vector database more aggressively. It may perform multiple retrieval passes, expand the search with related terms, retrieve document clusters, and apply metadata filters from <code>ship_computer.db</code>.</p>
+<p>Deep Dive is optimized for completeness and traceability. It may retrieve more chunks than Ask AI, compare confidence scores, and preserve intermediate retrieval results in <code>ship_computer.db</code>. This allows the final answer to include an evidence chain showing which documents, chunks, and metadata filters contributed to the response.</p>
+<h3 id="relationship-to-ship_computerdb">Relationship to <code>ship_computer.db</code><a class="headerlink" href="#relationship-to-ship_computerdb" title="Permanent link">&para;</a></h3>
+<p>The vector database stores the high-dimensional vectors used for similarity search. <code>ship_computer.db</code> stores the application-level state needed to use those vectors safely and transparently.</p>
+<p>In practice, the two systems work together as follows:</p>
+<ul>
+<li>The vector database answers: "Which chunks are semantically similar to this prompt?"</li>
+<li><code>ship_computer.db</code> answers: "What document did this chunk come from, when was it ingested, which embedding model created it, what metadata applies, and what was the user's prior context?"</li>
+<li>The Spock application combines both results to produce grounded, auditable answers for Ask AI and Deep Dive.</li>
+</ul>
+<h3 id="failure-and-fallback-behavior">Failure and Fallback Behavior<a class="headerlink" href="#failure-and-fallback-behavior" title="Permanent link">&para;</a></h3>
+<p>If the embedding LLM is unavailable, the skill should return a <code>SkillResult</code> with <code>ok=False</code>, evidence explaining the failure, and log lines describing the missing dependency or error.</p>
+<p>If the vector database is unavailable or returns no results, the application may fall back to cached responses, session context, or a clearly labeled non-grounded answer, depending on the configured policy. In all cases, the failure or fallback is recorded in <code>query_log</code> so the behavior can be audited.</p>
+<h2 id="embedding-llm-and-vector-database-integration">Embedding LLM and Vector Database Integration<a class="headerlink" href="#embedding-llm-and-vector-database-integration" title="Permanent link">&para;</a></h2>
+<h3 id="embedding-model-workflow">Embedding Model Workflow<a class="headerlink" href="#embedding-model-workflow" title="Permanent link">&para;</a></h3>
+<p>Spock uses a dedicated embedding model, separate from the generative LLM, to convert unstructured text into high-dimensional numerical vectors. When new documents or user queries are processed, the text is first chunked, cleaned, and normalized. The embedding model then generates fixed-length vectors that capture semantic meaning rather than simple lexical overlap. These vectors are optimized for cosine similarity or inner-product distance metrics, enabling efficient semantic search across large knowledge bases.</p>
+<h3 id="vector-database-retrieval-and-rag-pipeline">Vector Database Retrieval and RAG Pipeline<a class="headerlink" href="#vector-database-retrieval-and-rag-pipeline" title="Permanent link">&para;</a></h3>
+<p>The generated vectors are stored in a vector database optimized for approximate nearest neighbor (ANN) search. When an Ask AI or Deep Dive request is initiated, Spock embeds the user's prompt using the same embedding model and queries the vector database for the most contextually relevant document chunks. The retrieved chunks are ranked, filtered by metadata constraints, and supplied to the generative LLM as context. This retrieval-augmented generation pipeline grounds responses in verified, up-to-date information rather than relying solely on the model's pre-training data.</p>
+<h3 id="separation-of-concerns-embedding-vs-generative-llm">Separation of Concerns: Embedding vs. Generative LLM<a class="headerlink" href="#separation-of-concerns-embedding-vs-generative-llm" title="Permanent link">&para;</a></h3>
+<p>The architecture strictly separates the embedding model from the generative LLM to optimize performance, cost, and accuracy. The embedding model is lightweight, fast, and designed exclusively for vectorization and similarity matching; it does not generate natural language. The generative LLM is responsible for synthesizing coherent, context-aware responses using the retrieved chunks and associated metadata. This division allows Spock to scale retrieval operations independently, update embedding models without disrupting response generation, and maintain clear audit trails for both semantic search and language synthesis stages.</p>
+<h3 id="sqlite-3-ship_computerdb-and-spock-integration">SQLite 3 <code>ship_computer.db</code> and Spock Integration<a class="headerlink" href="#sqlite-3-ship_computerdb-and-spock-integration" title="Permanent link">&para;</a></h3>
+<p>SQLite 3 <code>ship_computer.db</code> serves as Spock's local relational store for operational state, document metadata, retrieval context, and audit information. It is the system of record for what Spock is allowed to use, what has been retrieved, and how each Ask AI or Deep Dive response was produced. The vector database stores high-dimensional vectors for fast semantic search, while <code>ship_computer.db</code> stores the durable, queryable facts that make those search results meaningful and traceable.</p>
+<p>Typical responsibilities of <code>ship_computer.db</code> include:
+- Storing document and chunk records, including source, title, owner, permissions, status, and content hash.
+- Mapping each chunk to its vector database identifier, embedding model version, and vector status.
+- Recording user sessions, prompts, retrieved chunk IDs, generated responses, citations, and confidence signals.
+- Maintaining Deep Dive state, such as active constraints, explored chunks, follow-up questions, and intermediate findings.
+- Providing transactional consistency, so a chunk is not considered available for retrieval until its metadata and vector reference are committed.
+- Supporting audit and compliance by preserving the exact context used for each generated answer.</p>
+<p>In practice, Spock uses SQLite 3 for deterministic filtering and state management, while it uses the vector database for probabilistic semantic ranking. This combination allows Spock to answer questions with both relevance and accountability.</p>
+<h3 id="ask-ai-and-deep-dive-interaction-with-ship_computerdb">Ask AI and Deep Dive Interaction with <code>ship_computer.db</code><a class="headerlink" href="#ask-ai-and-deep-dive-interaction-with-ship_computerdb" title="Permanent link">&para;</a></h3>
+<p>For Ask AI inquiries, Spock treats the request as a bounded question that should be answered from the most relevant available context. The application first loads the user's session, permissions, and allowed source scope from <code>ship_computer.db</code>. It then embeds the prompt, searches the vector database, and retrieves candidate chunks. Before passing those chunks to the generative LLM, Spock validates them against SQLite-stored metadata, such as document status, access rights, freshness, and source reliability. The final answer, retrieved chunk IDs, citations, and response metadata are written back to <code>ship_computer.db</code> so the interaction can be reviewed, replayed, or audited.</p>
+<p>For Deep Dive inquiries, Spock treats the request as a multi-step investigation rather than a single lookup. <code>ship_computer.db</code> stores the Deep Dive session state, including the original objective, refined sub-questions, applied filters, previously retrieved chunks, and intermediate conclusions. As the investigation progresses, Spock may issue multiple embedding searches, compare results, eliminate duplicates, and request additional context. SQLite 3 ensures that the application does not lose track of what has already been examined, prevents redundant retrieval, and preserves a clear chain of evidence from the initial question to the final synthesized answer.</p>
+<h3 id="how-spock-uses-the-embedding-llm-and-vector-database">How Spock Uses the Embedding LLM and Vector Database<a class="headerlink" href="#how-spock-uses-the-embedding-llm-and-vector-database" title="Permanent link">&para;</a></h3>
+<p>Spock uses the embedding model and vector database as a semantic retrieval layer that connects user intent to the most relevant stored knowledge. The embedding model converts both stored content and incoming questions into the same numerical vector space. Because both sides of the search use the same model, a user question such as "what are the risks in this deployment plan?" can match a document chunk that does not contain the exact phrase "risks" but still discusses failure modes, rollback constraints, or operational exposure.</p>
+<p>During ingestion, Spock processes source material into manageable chunks, normalizes the text, and generates a vector for each chunk. The vector is stored in the vector database alongside a stable identifier and metadata. The corresponding chunk record, permissions, and vector identifier are stored in <code>ship_computer.db</code>. This dual storage model gives Spock fast semantic search while preserving durable, inspectable context.</p>
+<p>During retrieval, Spock embeds the user's prompt and asks the vector database for the nearest vectors. The vector database returns candidate chunks based on semantic proximity. Spock then applies business rules from <code>ship_computer.db</code>, such as access control, document status, source priority, and freshness. The surviving chunks are ranked, deduplicated, and assembled into a context window for the generative LLM. The generative LLM uses that context to produce an answer, while the embedding model and vector database remain responsible only for finding the right material.</p>
+<p>This design gives Spock three important properties:
+- <strong>Relevance:</strong> semantic search finds conceptually related content, not just keyword matches.
+- <strong>Grounding:</strong> generated answers are constrained by retrieved, citable evidence.
+- <strong>Traceability:</strong> SQLite 3 preserves the exact chunks, metadata, and session state used to produce each response.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../js/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

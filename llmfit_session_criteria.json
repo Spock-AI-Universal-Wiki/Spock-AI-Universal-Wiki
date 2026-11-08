@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "source": "spock-default",
+  "created_at": "2026-10-27T00:00:00+00:00",
+  "filters": {
+    "providers": [],
+    "provider": "",
+    "search": "gemma",
+    "min_fit": "marginal",
+    "runtime": "llamacpp",
+    "use_case": "chat",
+    "sort": "score",
+    "limit": 20,
+    "include_too_tight": false,
+    "max_context": null
+  },
+  "chat": {
+    "preferred_families": [
+      "gemma",
+      "gemma4",
+      "gemma3"
+    ],
+    "fallback_families": [],
+    "fallback_model_id": "bartowski/gemma-3-12b-it-GGUF"
+  },
+  "embed": {
+    "preferred_families": [
+      "embeddinggemma"
+    ],
+    "fallback_families": [],
+    "fallback_model_id": "ggml-org/embeddinggemma-2-GGUF",
+    "allow_dim_change": true
+  }
+}

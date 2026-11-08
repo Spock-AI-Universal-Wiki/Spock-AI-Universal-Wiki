@@ -1,0 +1,4477 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Local AI Workstation Management Suite — orchestrate LLMs, RAG, and knowledge bases">
+      
+      
+      
+        <link rel="canonical" href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/structure/spock_shell/">
+      
+      
+        <link rel="prev" href="../spock_bringup_menu/">
+      
+      
+        <link rel="next" href="../spock_rag_adapter/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>spock_shell - Spock-Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#structure-spock_shell" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spock-Onboarding" class="md-header__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spock-Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              spock_shell
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Screenshots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/quick-start/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/navigation-station/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cli/bringup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CLI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configuration/profiles/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/project-layout/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Code Structure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spock-Onboarding" class="md-nav__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spock-Onboarding
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screenshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/readiness-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Readiness Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/detailed-specs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailed Specs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/navigation-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigation Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/engineering-deck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Deck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/long-range-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Range Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/science-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Science Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/rag-api-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG API Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/mcp-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spock%20MCP%20%28Model%20Context%20Protocol%29%20tools-spock-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/llm-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/wiki-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/model-selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/live-monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/project-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/copy-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Structure
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code Structure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entrypoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../root-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Deep Dives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_bringup_menu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup_menu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spock_shell__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/__init__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shell__main__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/__main__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellaboutpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/about.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellai_helperpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/ai_helper.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellask_path_handoffpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/ask_path_handoff.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellbrave_searchpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/brave_search.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellbridge_hostpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/bridge_host.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellbusy_uipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/busy_ui.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellconfigpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/config.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellconfigure_aipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/configure_ai.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellembedding_corpuspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/embedding_corpus.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellgood_results_coachpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/good_results_coach.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellhost_recipe_uipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/host_recipe_ui.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellllama_gui_commandpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/llama_gui_command.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellllmfit_bridgepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/llmfit_bridge.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellmarkdown_homepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/markdown_home.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellmcp_hostpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/mcp_host.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellmcp_tunnelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/mcp_tunnel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellopen_urlpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/open_url.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellpathspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/paths.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellproc_guardpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/proc_guard.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellprocess_treepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/process_tree.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellprofilespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/profiles.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellqt_apppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/qt_app.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellrag_hostpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/rag_host.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellstatus_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/status_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellthemepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/theme.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellwidgetspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/widgets.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellwin_jobpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/win_job.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellwindowpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/window.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_wiki_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_wiki_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_live_monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_progress_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_progress_log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    model_selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bootstrap_wizard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    bootstrap_wizard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plan-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spock_shell__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/__init__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shell__main__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/__main__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellaboutpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/about.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellai_helperpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/ai_helper.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellask_path_handoffpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/ask_path_handoff.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellbrave_searchpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/brave_search.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellbridge_hostpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/bridge_host.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellbusy_uipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/busy_ui.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellconfigpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/config.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellconfigure_aipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/configure_ai.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellembedding_corpuspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/embedding_corpus.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellgood_results_coachpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/good_results_coach.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellhost_recipe_uipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/host_recipe_ui.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellllama_gui_commandpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/llama_gui_command.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellllmfit_bridgepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/llmfit_bridge.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellmarkdown_homepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/markdown_home.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellmcp_hostpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/mcp_host.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellmcp_tunnelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/mcp_tunnel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellopen_urlpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/open_url.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellpathspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/paths.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellproc_guardpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/proc_guard.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellprocess_treepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/process_tree.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellprofilespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/profiles.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellqt_apppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/qt_app.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellrag_hostpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/rag_host.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellstatus_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/status_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellthemepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/theme.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellwidgetspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/widgets.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellwin_jobpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/win_job.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spock_shellwindowpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spock_shell/window.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Code Structure
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="structure-spock_shell">Structure: spock_shell<a class="headerlink" href="#structure-spock_shell" title="Permanent link">&para;</a></h1>
+<p><strong>Files:</strong> 30 · <strong>Lines:</strong> 7,630 · <strong>Classes:</strong> 19 · <strong>Functions:</strong> 157 · <strong>Methods:</strong> 135</p>
+<p>Solid edges = module-level import/call relationships (determined statically from source; only relationships <em>within this package</em> are drawn).</p>
+<pre class="mermaid"><code>---
+title: "spock_shell module relationships"
+---
+flowchart LR
+    m0["spock_shell/__init__.py"]
+    m1["spock_shell/__main__.py"]
+    m2["spock_shell/about.py"]
+    m3["spock_shell/ai_helper.py"]
+    m4["spock_shell/ask_path_handoff.py"]
+    m5["spock_shell/brave_search.py"]
+    m6["spock_shell/bridge_host.py"]
+    m7["spock_shell/busy_ui.py"]
+    m8["spock_shell/config.py"]
+    m9["spock_shell/configure_ai.py"]
+    m10["spock_shell/embedding_corpus.py"]
+    m11["spock_shell/good_results_coach.py"]
+    m12["spock_shell/host_recipe_ui.py"]
+    m13["spock_shell/llama_gui_command.py"]
+    m14["spock_shell/llmfit_bridge.py"]
+    m15["spock_shell/markdown_home.py"]
+    m16["spock_shell/mcp_host.py"]
+    m17["spock_shell/mcp_tunnel.py"]
+    m18["spock_shell/open_url.py"]
+    m19["spock_shell/paths.py"]
+    m20["spock_shell/proc_guard.py"]
+    m21["spock_shell/process_tree.py"]
+    m22["spock_shell/profiles.py"]
+    m23["spock_shell/qt_app.py"]
+    m24["spock_shell/rag_host.py"]
+    m25["spock_shell/status_panel.py"]
+    m26["spock_shell/theme.py"]
+    m27["spock_shell/widgets.py"]
+    m28["spock_shell/win_job.py"]
+    m29["spock_shell/window.py"]</code></pre>
+<h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
+<h3 id="spock_shell__init__py"><code>spock_shell/__init__.py</code><a class="headerlink" href="#spock_shell__init__py" title="Permanent link">&para;</a></h3>
+<p><em>Shared PyQt6 shell for Spock suite mini-apps (skeleton-v2 layout).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from spock_shell.window import SuiteShellWindow</code></p>
+<h3 id="spock_shell__main__py"><code>spock_shell/__main__.py</code><a class="headerlink" href="#spock_shell__main__py" title="Permanent link">&para;</a></h3>
+<p><em>Demo entry: empty suite shell (Module 0 smoke).</em></p>
+<blockquote>
+<p>Contains a <code>__main__</code> guard (run directly).</p>
+</blockquote>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import sys</code>, <code>from spock_shell.paths import ensure_root_on_path</code>, <code>from spock_shell.qt_app import create_app</code>, <code>from spock_shell.window import SuiteShellWindow</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>main()</code></strong> — lines 10-19</li>
+</ul>
+<h3 id="spock_shellaboutpy"><code>spock_shell/about.py</code><a class="headerlink" href="#spock_shellaboutpy" title="Permanent link">&para;</a></h3>
+<p>*About dialog for suite mini-apps.</p>
+<p>Also carries the MCP tool / port reference that used to sit behind a Help
+sub-tab inside the MCP panel, so it is reachable from every window.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Dict</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QDialog</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QTabWidget</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from spock_shell.paths import ROOT</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>AboutDialog(QDialog)</code></strong> — lines 65-134</li>
+</ul>
+<h3 id="spock_shellai_helperpy"><code>spock_shell/ai_helper.py</code><a class="headerlink" href="#spock_shellai_helperpy" title="Permanent link">&para;</a></h3>
+<p><em>Open Chat AI Helper with a minimal host adapter.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from spock_shell.bridge_host import make_llm_client</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from spock_shell.paths import ensure_root_on_path</code>, <code>from spock_shell.bridge_host import apply_provider_config</code>, <code>from chat_ai_helper import ChatAIHelperWindow</code>, <code>from WarpCore.search as _emb_ok</code>, <code>from WarpCore.search import hybrid_search</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>_HelperHost</code></strong> — lines 13-23</li>
+<li><em>Duck-typed stand-in for MainWindow bits ChatAIHelperWindow expects.</em></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>open_ai_helper(parent, theme, config)</code></strong> — lines 26-62</li>
+</ul>
+<h3 id="spock_shellask_path_handoffpy"><code>spock_shell/ask_path_handoff.py</code><a class="headerlink" href="#spock_shellask_path_handoffpy" title="Permanent link">&para;</a></h3>
+<p><em>Offer to copy Ship's Logs Path filter into Ask AI Path.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import sqlite3</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import MutableSet</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from deep_dive import build_documents_filter_clause</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>ships_logs_path_filter(logs)</code></strong> — lines 12-25</li>
+<li><em>Current Documents-tab Path: text from Ship's Logs, or empty.</em></li>
+<li><strong><code>path_filter_match_count(db_path, path_filter)</code></strong> — lines 28-54</li>
+<li><em>How many documents match this path filter (extension unrestricted).</em></li>
+<li><strong><code>offer_copy_ships_path_to_ask(parent, logs, ask, db_path, offered)</code></strong> — lines 57-105</li>
+<li><em>Ask once per filter value whether to copy Ship's Logs Path → Ask AI Path.</em></li>
+</ul>
+<h3 id="spock_shellbrave_searchpy"><code>spock_shell/brave_search.py</code><a class="headerlink" href="#spock_shellbrave_searchpy" title="Permanent link">&para;</a></h3>
+<p><em>Google Search / Gemini center panel (replaces Brave Search + Ask Leo).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from PyQt6.QtWebEngineWidgets import QWebEngineView</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>build_brave_search_panel(theme)</code></strong> — lines 107-135</li>
+<li><em>Center panel with Google Search + Gemini (QWebEngineView when available).</em></li>
+</ul>
+<h3 id="spock_shellbridge_hostpy"><code>spock_shell/bridge_host.py</code><a class="headerlink" href="#spock_shellbridge_hostpy" title="Permanent link">&para;</a></h3>
+<p>*Shared LLM provider wiring for the Spock suite.</p>
+<p><code>make_llm_client(cfg)</code> is the one entry point every mini-app uses to get a chat
+client configured from the app config. Provider settings are class-level on
+<code>LLMClient</code>, so <code>apply_provider_config()</code> must run before constructing one.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>from typing import Any</code>, <code>from spock_shell.paths import ensure_root_on_path</code>, <code>from llm_client import LLMClient</code>, <code>from llm_client import normalize_openai_compat_base</code>, <code>from llm_client import repair_openai_compat_settings</code>, <code>from WarpCore.service_endpoints import DEFAULT_CHAT_PORT</code>, <code>from WarpCore.service_endpoints import resolve_ctx</code>, <code>from WarpCore.service_endpoints import resolve_ports</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>apply_provider_config(cfg)</code></strong> — lines 43-73</li>
+<li><em>Push config into the LLMClient class-level provider settings.</em></li>
+<li><strong><code>make_llm_client(cfg)</code></strong> — lines 76-98</li>
+<li><em>Build a chat client for the provider named in cfg['ask_ai_provider'].</em></li>
+</ul>
+<h3 id="spock_shellbusy_uipy"><code>spock_shell/busy_ui.py</code><a class="headerlink" href="#spock_shellbusy_uipy" title="Permanent link">&para;</a></h3>
+<p>*Immediate wait-cursor + progress feedback for long Qt actions.</p>
+<p>Qt timers do not fire while the GUI thread is blocked. Call <code>heartbeat()</code>
+from long synchronous work so the elapsed label updates and the event loop
+can paint. Always clear the full override-cursor stack on exit — a single
+<code>restoreOverrideCursor()</code> leaves the spinner stuck on Windows when dialogs
+stacked extra overrides.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import time</code>, <code>from contextlib import contextmanager</code>, <code>from typing import Iterator</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import QEventLoop</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QProgressBar</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>BusySession</code></strong> — lines 51-121</li>
+<li><em>One in-progress busy scope (progress UI + wait cursor).</em></li>
+<li><code>start(self)</code></li>
+<li><code>pulse(self, status)</code> <em>Update elapsed text and let Qt paint (call during long work).</em></li>
+<li><code>stop(self)</code></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>clear_override_cursors()</code></strong> — lines 22-28</li>
+<li><em>Pop every application override cursor (safe if already clear).</em></li>
+<li><strong><code>make_progress_bar()</code></strong> — lines 31-37</li>
+<li><em>Inline panel bar (idle). Use <code>set_busy</code> while background work runs.</em></li>
+<li><strong><code>set_busy(bar, busy)</code></strong> — lines 40-48</li>
+<li><em>Toggle indeterminate pulse (busy) vs idle 0%.</em></li>
+<li><strong><code>heartbeat(status)</code></strong> — lines 124-127</li>
+<li><em>Keep busy UI alive while the GUI thread runs synchronous work.</em></li>
+<li><strong><code>pause_busy_for_dialog()</code></strong> — lines 131-140</li>
+<li><em>Drop wait cursor while a QMessageBox is shown; restore afterward.</em></li>
+<li><strong><code>busy_scope(parent, message, show_dialog)</code></strong> — lines 144-165</li>
+<li><em>Wait cursor + optional progress window with elapsed seconds.</em></li>
+</ul>
+<h3 id="spock_shellconfigpy"><code>spock_shell/config.py</code><a class="headerlink" href="#spock_shellconfigpy" title="Permanent link">&para;</a></h3>
+<p><em>Load / save app config via WarpCore settings_store.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from spock_shell.paths import ROOT</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from spock_shell.paths import ensure_root_on_path</code>, <code>import _warpcore_path</code>, <code>from WarpCore.path_relocate import heal_relocated_paths</code>, <code>import _warpcore_path</code>, <code>from WarpCore import settings_store</code>, <code>import _warpcore_path</code>, <code>from WarpCore import settings_store</code>, <code>from WarpCore.path_relocate import host_os_name</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>heal_paths_if_needed(force)</code></strong> — lines 14-28</li>
+<li><em>Remap Spock_Console absolute paths after Linux↔Windows (or root) moves.</em></li>
+<li><strong><code>load_config()</code></strong> — lines 31-39</li>
+<li><strong><code>save_config(config, by)</code></strong> — lines 42-57</li>
+</ul>
+<h3 id="spock_shellconfigure_aipy"><code>spock_shell/configure_ai.py</code><a class="headerlink" href="#spock_shellconfigure_aipy" title="Permanent link">&para;</a></h3>
+<p>*Configure Spock AI — one tabbed form for every chat / RAG / MCP backend.</p>
+<p>Replaces the scattered connection modals and one-off "test" buttons that used to
+live in the monolith and in Chat AI Helper. Each connector tab owns its
+settings, a Test connection probe, and a single Save action that also pins
+<code>ask_ai_provider</code> so there is exactly one answer to "what will Ask AI use?".*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Any</code>, <code>from typing import Callable</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>import requests</code>, <code>from PyQt6.QtCore import QThread</code>, <code>from PyQt6.QtCore import QTimer</code>, <code>from PyQt6.QtCore import pyqtSignal</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWidgets import QFormLayout</code>, <code>from PyQt6.QtWidgets import QGroupBox</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QLineEdit</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QPlainTextEdit</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QSpinBox</code>, <code>from PyQt6.QtWidgets import QTabWidget</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from spock_shell.paths import ensure_root_on_path</code>, <code>from llm_client import embeddings_chat_collision</code>, <code>from llm_client import google_adc_bearer_token</code>, <code>from llm_client import normalize_openai_compat_base</code>, <code>from llm_client import vertex_global_base</code>, <code>from llm_client as is_adc_api_key</code>, <code>from llm_client as looks_like_google_openai_url</code>, <code>from spock_shell.bridge_host import apply_provider_config</code>, <code>from spock_shell.bridge_host import make_llm_client</code>, <code>from _start_rag_api import load_cfg</code>, <code>from spock_rag_adapter.bridge_host import make_llm_client</code>, <code>from WarpCore.service_endpoints import DEFAULT_CHAT_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_DOCS_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_EMBED_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_CTX</code>, <code>from WarpCore.service_endpoints import resolve_ctx</code>, <code>from WarpCore.service_endpoints import resolve_ports</code>, <code>from WarpCore.service_endpoints import sync_embedding_url_port</code>, <code>from spock_shell.profiles import open_manage_profiles_dialog</code>, <code>from mcp_panel import merge_mcp_settings</code>, <code>from model_selector_core import merge_embedding_profile</code>, <code>from model_selector_panels import EmbeddingProfilePanel</code>, <code>from mcp_panel import merge_mcp_settings</code>, <code>from mcp_panel import McpControlPanel</code>, <code>from mcp_panel import LlamaWebUiPanel</code>, <code>from WarpCore.service_endpoints import DEFAULT_CHAT_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_EMBED_PORT</code>, <code>from WarpCore.service_endpoints import resolve_ports</code>, <code>from spock_shell.llama_gui_command import save_saved_text</code>, <code>from spock_shell.llama_gui_command import command_warnings</code>, <code>from spock_shell.llama_gui_command import flag_value</code>, <code>from spock_shell.llama_gui_command import parse_llama_gui_command</code>, <code>from spock_shell.llama_gui_command import parse_port</code>, <code>from PyQt6.QtCore import Qt</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>_ProbeJob(QThread)</code></strong> — lines 209-234</li>
+<li><em>Run a probe off the UI thread and always emit <code>(ok, message)</code>.</em></li>
+<li><code>run(self)</code></li>
+<li><strong><code>_ConnectorTab(QWidget)</code></strong> — lines 250-365</li>
+<li><em>Shared skeleton: hint, form rows, Test connection, Save &amp; Use.</em></li>
+<li><code>build_fields(self)</code></li>
+<li><code>collect(self)</code></li>
+<li><code>test_connection(self)</code></li>
+<li><code>add_extra_actions(self, outer)</code></li>
+<li><code>set_status(self, text, color)</code></li>
+<li><code>ok(self, text)</code></li>
+<li><code>bad(self, text)</code></li>
+<li><strong><code>LmStudioTab(_ConnectorTab)</code></strong> — lines 368-417</li>
+<li><code>build_fields(self)</code></li>
+<li><code>collect(self)</code></li>
+<li><code>test_connection(self)</code></li>
+<li><strong><code>OllamaTab(_ConnectorTab)</code></strong> — lines 420-459</li>
+<li><code>build_fields(self)</code></li>
+<li><code>collect(self)</code></li>
+<li><code>test_connection(self)</code></li>
+<li><strong><code>LlamaCppTab(_ConnectorTab)</code></strong> — lines 462-589</li>
+<li><code>build_fields(self)</code></li>
+<li><code>collect(self)</code></li>
+<li><code>test_connection(self)</code></li>
+<li><strong><code>OpenAiCompatTab(_ConnectorTab)</code></strong> — lines 592-757</li>
+<li><code>add_extra_actions(self, outer)</code></li>
+<li><code>build_fields(self)</code></li>
+<li><code>collect(self)</code></li>
+<li><code>test_connection(self)</code></li>
+<li><strong><code>ConfigureAiPanel(QWidget)</code></strong> — lines 760-1073</li>
+<li><em>Tabbed configuration for every AI backend the suite can talk to.</em></li>
+<li><code>refresh_active_provider(self)</code></li>
+<li><code>collect_all(self)</code> <em>Snapshot every tab — used when saving or naming a Spock profile.</em></li>
+<li><code>probe_active_provider(self)</code></li>
+<li><strong><code>LlamaGuiCommandTab(QWidget)</code></strong> — lines 1076-1181</li>
+<li><em>Paste a Llama GUI Quick Launch View Command and save it for one role.</em></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>rag_api_base(config)</code></strong> — lines 63-74</li>
+<li><em>RAG API origin. Defaults match <code>Invoke-RestMethod http://127.0.0.1:8090</code>.</em></li>
+<li><strong><code>probe_rag_health(base_url, timeout)</code></strong> — lines 122-138</li>
+<li><em>Check OpenAI-compatible RAG <code>GET /health</code>.</em></li>
+<li><strong><code>probe_rag_props(base_url, timeout)</code></strong> — lines 141-160</li>
+<li><em>Check OpenAI-compatible RAG <code>GET /props</code>.</em></li>
+<li><strong><code>probe_called_llm(timeout)</code></strong> — lines 163-206</li>
+<li><em>Ask the saved LLM client to reply PING. Failures are returned, not raised.</em></li>
+</ul>
+<h3 id="spock_shellembedding_corpuspy"><code>spock_shell/embedding_corpus.py</code><a class="headerlink" href="#spock_shellembedding_corpuspy" title="Permanent link">&para;</a></h3>
+<p>*Which embedding GGUF produced documents.embedding in ship_computer.db.</p>
+<p>Wiki scan records a singleton row (kb_embedding_corpus) and stamps each
+document. Ask AI, RAG, Maintenance tests, and profile load compare the live
+llama-server on :8080 to that row.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import sqlite3</code>, <code>from datetime import datetime</code>, <code>from datetime import timezone</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore.ship_schema import ensure_ship_computer_schema</code>, <code>from spock_health_report import embeddings_host_port</code>, <code>from spock_health_report import probe_llama_server</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>fold_path(text)</code></strong> — lines 31-32</li>
+<li><strong><code>model_basename(path)</code></strong> — lines 35-36</li>
+<li><strong><code>is_gguf_path(path)</code></strong> — lines 39-41</li>
+<li><strong><code>resolve_gguf_identity(path, model_id)</code></strong> — lines 44-64</li>
+<li><em>Best GGUF identity from a path and/or model id.</em></li>
+<li><strong><code>models_match(a, b)</code></strong> — lines 67-74</li>
+<li><em>True if two GGUF identities are the same path or the same basename.</em></li>
+<li><strong><code>ensure_schema(db_path)</code></strong> — lines 77-97</li>
+<li><strong><code>read_corpus(db_path)</code></strong> — lines 100-128</li>
+<li><strong><code>write_corpus(model_path, embeddings_url, embeddings_dim, model_id, source, db_path)</code></strong> — lines 131-174</li>
+<li><strong><code>probe_live_model(embeddings_url, timeout)</code></strong> — lines 177-196</li>
+<li><em>Ask the llama-server behind embeddings_url which GGUF is loaded.</em></li>
+<li><strong><code>record_from_live_server(embeddings_url, embeddings_dim, model_id, db_path)</code></strong> — lines 199-226</li>
+<li><em>Probe :8080 and persist kb_embedding_corpus. False if server/model unknown.</em></li>
+<li><strong><code>live_vs_corpus(embeddings_url, profile_model_path, profile_model_id, db_path)</code></strong> — lines 229-292</li>
+<li><em>Compare live :8080, optional profile GGUF, and kb_embedding_corpus.</em></li>
+<li><strong><code>format_mismatch(corpus_path, live_path, profile_path, live_reachable)</code></strong> — lines 295-325</li>
+<li><strong><code>assert_live_matches_corpus(embeddings_url, db_path)</code></strong> — lines 328-336</li>
+<li><em>Raise RuntimeError when a corpus exists and live :8080 is a different GGUF.</em></li>
+<li><strong><code>guarded_hybrid_search(hybrid_search_fn)</code></strong> — lines 339-347</li>
+<li><em>Wrap WarpCore.hybrid_search so a wrong :8080 GGUF fails instead of mixing spaces.</em></li>
+<li><strong><code>model_counts(db_path)</code></strong> — lines 350-370</li>
+<li><strong><code>profile_embedding_path(payload)</code></strong> — lines 373-384</li>
+</ul>
+<h3 id="spock_shellgood_results_coachpy"><code>spock_shell/good_results_coach.py</code><a class="headerlink" href="#spock_shellgood_results_coachpy" title="Permanent link">&para;</a></h3>
+<p>*Good Results coach — short tips that cut Ask / Deep Dive trial-and-error.</p>
+<p>Signals use live timing, Launch sizing heuristics, and Path filter vs question.
+Tips are advisory only; they never change -c or filters automatically.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import re</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from spock_scanner_core import recommend_n_ctx</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>path_filter_excludes_spock(path_filter)</code></strong> — lines 35-50</li>
+<li><em>True when a non-empty Path filter likely hides Spock app sources.</em></li>
+<li><strong><code>tip_path_vs_question(question, path_filter)</code></strong> — lines 53-63</li>
+<li><strong><code>tip_pack_saturation(timing)</code></strong> — lines 66-94</li>
+<li><em>Deep Dive packed to the token window — suggest -c or narrower Path.</em></li>
+<li><strong><code>tip_timeout()</code></strong> — lines 97-103</li>
+<li><strong><code>tip_launch_fit(model_path, n_ctx, vram_gb, role, sibling_size_gb)</code></strong> — lines 106-161</li>
+<li><em>Warn before Launch when weights+KV look too large for the selected GPU.</em></li>
+<li><strong><code>collect_ask_tips(question, path_filter, timing, answer, timed_out)</code></strong> — lines 164-182</li>
+<li><em>Ordered tips for the Ask AI panel (status + optional transcript line).</em></li>
+</ul>
+<h3 id="spock_shellhost_recipe_uipy"><code>spock_shell/host_recipe_ui.py</code><a class="headerlink" href="#spock_shellhost_recipe_uipy" title="Permanent link">&para;</a></h3>
+<p><em>Qt helpers for host-recipe create / primary AI GPU selection.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtWidgets import QButtonGroup</code>, <code>from PyQt6.QtWidgets import QDialog</code>, <code>from PyQt6.QtWidgets import QDialogButtonBox</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QRadioButton</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from WarpCore as hr</code>, <code>from WarpCore as hr</code>, <code>import json</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from WarpCore as hr</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>prompt_primary_ai_gpu(parent, hardware)</code></strong> — lines 19-79</li>
+<li><em>Ask which GPU runs embed + chat when the host has more than one.</em></li>
+<li><strong><code>propose_recipe_with_primary_prompt(parent, hardware, force_primary_prompt)</code></strong> — lines 82-108</li>
+<li><em>Live probe → optional primary-GPU prompt → recipe.</em></li>
+<li><strong><code>create_or_confirm_host_recipe(parent, db_path, reason, created_by, confirm_title, confirm_body)</code></strong> — lines 111-188</li>
+<li><em>Probe → primary GPU prompt (multi-GPU) → Yes/No → create or update.</em></li>
+</ul>
+<h3 id="spock_shellllama_gui_commandpy"><code>spock_shell/llama_gui_command.py</code><a class="headerlink" href="#spock_shellllama_gui_commandpy" title="Permanent link">&para;</a></h3>
+<p>*Parse a Llama GUI Quick Launch "View Command" line.</p>
+<p>Llama GUI joins tokens with double quotes only when a token contains a space
+or a quote, and escapes inner quotes as backslash-quote. Backslashes in
+Windows paths stay literal, so POSIX shlex is the wrong splitter.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from WarpCore import settings_store</code>, <code>from WarpCore import settings_store</code>, <code>import psutil</code>, <code>import subprocess</code>, <code>import time</code>, <code>import urllib.request</code>, <code>import psutil</code>, <code>import psutil</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>role_key(role)</code></strong> — lines 19-22</li>
+<li><strong><code>normalize_role(role)</code></strong> — lines 25-28</li>
+<li><strong><code>split_llama_gui_command(text)</code></strong> — lines 31-68</li>
+<li><em>Split a View Command line the way Llama GUI quoteArg would rejoin it.</em></li>
+<li><strong><code>flag_value(argv, names)</code></strong> — lines 75-91</li>
+<li><em>Value of the first matching flag. <code>--flag=value</code> and <code>--flag value</code>.</em></li>
+<li><strong><code>has_flag(argv, names)</code></strong> — lines 94-100</li>
+<li><strong><code>parse_port(argv, default)</code></strong> — lines 103-113</li>
+<li><strong><code>parse_llama_gui_command(text)</code></strong> — lines 116-126</li>
+<li><em>Return argv. Raises ValueError when the line is not a llama-server command.</em></li>
+<li><strong><code>with_resolved_binary(argv, binary)</code></strong> — lines 129-136</li>
+<li><em>Replace the preview's bare llama-server.exe with Spock's binary.</em></li>
+<li><strong><code>command_warnings(argv, role, expected_port)</code></strong> — lines 139-173</li>
+<li><strong><code>load_saved_text(db_path, role)</code></strong> — lines 176-179</li>
+<li><strong><code>save_saved_text(db_path, role, text, by)</code></strong> — lines 182-185</li>
+<li><strong><code>saved_argv(db_path, role, binary)</code></strong> — lines 188-196</li>
+<li><em>Parsed argv for a saved command, or None when the box is empty.</em></li>
+<li><strong><code>action_for_listener(listener)</code></strong> — lines 199-205</li>
+<li><em><code>free</code>, <code>kill</code>, or <code>refuse</code> for a port listener.</em></li>
+<li><strong><code>find_port_listener(port)</code></strong> — lines 213-277</li>
+<li><em>The process listening on <code>port</code>, if one can be seen.</em></li>
+<li><strong><code>assess_port(port)</code></strong> — lines 280-295</li>
+<li><strong><code>restart_llama_server(port, wait_s)</code></strong> — lines 323-391</li>
+<li><em>Stop llama-server on this port and start the same command again.</em></li>
+</ul>
+<h3 id="spock_shellllmfit_bridgepy"><code>spock_shell/llmfit_bridge.py</code><a class="headerlink" href="#spock_shellllmfit_bridgepy" title="Permanent link">&para;</a></h3>
+<p>*Thin subprocess bridge to local llmfit CLI JSON (fit / plan / system).</p>
+<p>Prefers <code>{SPOCK_ROOT}/tools/llmfit</code>, then PATH. All helpers degrade
+gracefully when the binary is missing or returns non-JSON.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import os</code>, <code>import re</code>, <code>import shutil</code>, <code>import subprocess</code>, <code>from functools import lru_cache</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from WarpCore.service_endpoints import llmfit_binary_candidates</code>, <code>from WarpCore.service_endpoints import is_runnable_host_binary</code>, <code>import urllib.error</code>, <code>import urllib.request</code>, <code>import urllib.error</code>, <code>import urllib.parse</code>, <code>import urllib.request</code>, <code>from llmfit_session_criteria import filters_as_query</code>, <code>from llmfit_session_criteria import filters_as_query</code>, <code>from llmfit_session_criteria import filters_as_query</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>find_llmfit_exe()</code></strong> — lines 27-49</li>
+<li><strong><code>available()</code></strong> — lines 52-57</li>
+<li><strong><code>system_info(timeout_s)</code></strong> — lines 95-99</li>
+<li><strong><code>system_info_cached(refresh)</code></strong> — lines 108-124</li>
+<li><em>Session-cached <code>llmfit --json system</code>.</em></li>
+<li><strong><code>recommend(limit, force_runtime, timeout_s)</code></strong> — lines 127-137</li>
+<li><strong><code>fit(limit, timeout_s)</code></strong> — lines 140-144</li>
+<li><strong><code>plan(model, context, quant, timeout_s)</code></strong> — lines 147-163</li>
+<li><strong><code>parse_ngl_from_verify_command(cmd)</code></strong> — lines 166-170</li>
+<li><strong><code>model_hint_from_path(model_path)</code></strong> — lines 173-183</li>
+<li><em>Best-effort selector string for <code>llmfit plan</code> from a GGUF path.</em></li>
+<li><strong><code>suggest_ngl_from_payloads(plan_data, model_row)</code></strong> — lines 186-235</li>
+<li><em>Derive a llama-server <code>-ngl</code> value from llmfit JSON.</em></li>
+<li><strong><code>resolve_ngl(model_path, n_ctx, quant, current_ngl, use_llmfit)</code></strong> — lines 247-272</li>
+<li><em>Resolve launch <code>-ngl</code>.</em></li>
+<li><strong><code>load_fixture(name)</code></strong> — lines 275-280</li>
+<li><em>Load checked-in JSON under tests/fixtures/llmfit/ (utf-8-sig safe).</em></li>
+<li><strong><code>system_to_gpu_list(system_payload)</code></strong> — lines 283-344</li>
+<li><em>Convert <code>llmfit --json system</code> into scanner-style GPU dicts.</em></li>
+<li><strong><code>hardware_fingerprint(system_payload)</code></strong> — lines 347-365</li>
+<li><em>Stable key for caching fit estimates against this machine.</em></li>
+<li><strong><code>fit_estimate_index(limit, system_payload)</code></strong> — lines 426-435</li>
+<li><strong><code>lookup_fit_estimate(model_id, index)</code></strong> — lines 438-460</li>
+<li><em>Match an HF / catalog id to a cached llmfit fit row.</em></li>
+<li><strong><code>enrich_hub_row_with_fit(row, index)</code></strong> — lines 463-482</li>
+<li><em>Attach estimated_tps / fit_level / llmfit_run_mode when a match exists.</em></li>
+<li><strong><code>dashboard_base()</code></strong> — lines 490-493</li>
+<li><em>Base URL for <code>llmfit serve</code> (external; not a Spock in-repo port).</em></li>
+<li><strong><code>dashboard_available(timeout_s)</code></strong> — lines 496-514</li>
+<li><em>True when <code>GET /health</code> succeeds on the dashboard base URL.</em></li>
+<li><strong><code>query_models(role, filters, timeout_s)</code></strong> — lines 517-551</li>
+<li><em><code>GET /api/v1/models</code> with session criteria (or explicit <code>filters</code>).</em></li>
+<li><strong><code>best_fit_ids(role, limit, timeout_s)</code></strong> — lines 554-597</li>
+<li><em>Top model names / GGUF repos from the dashboard, else empty (caller falls back).</em></li>
+<li><strong><code>dashboard_rows_as_hub(role, limit, timeout_s)</code></strong> — lines 600-647</li>
+<li><em>Map dashboard model rows into Hub-ish dicts for <code>top_role_fits</code>.</em></li>
+</ul>
+<h3 id="spock_shellmarkdown_homepy"><code>spock_shell/markdown_home.py</code><a class="headerlink" href="#spock_shellmarkdown_homepy" title="Permanent link">&para;</a></h3>
+<p><em>Center Home pane that renders a module HELPER markdown file.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from pathlib import Path</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from typing import Union</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QTextBrowser</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from spock_shell.paths import ROOT</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>helper_md_path(filename)</code></strong> — lines 15-22</li>
+<li><em>Resolve a HELPER doc under AIHelperDocuments/ (or absolute / repo-relative path).</em></li>
+<li><strong><code>about_me_path(filename)</code></strong> — lines 25-27</li>
+<li><em>Backward-compatible alias for <code>helper_md_path</code>.</em></li>
+<li><strong><code>build_markdown_home(theme, md_path, fallback_title, fallback_subtitle)</code></strong> — lines 30-82</li>
+<li><em>QWidget with a scrollable markdown view of <code>md_path</code> (HELPER or abs).</em></li>
+<li><strong><code>reload_markdown_home(widget, theme)</code></strong> — lines 85-106</li>
+</ul>
+<h3 id="spock_shellmcp_hostpy"><code>spock_shell/mcp_host.py</code><a class="headerlink" href="#spock_shellmcp_hostpy" title="Permanent link">&para;</a></h3>
+<p>*Host-side MCP adapter control shared by suite mini-apps.</p>
+<p>Ports the adapter lifecycle from Spock-to-bridge.py so any SuiteShellWindow can
+drive mcp_panel.McpControlPanel without copying process-management code.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import subprocess</code>, <code>import sys</code>, <code>import threading</code>, <code>import time</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Callable</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import QTimer</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWidgets import QDialog</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from mcp_panel import DEFAULT_MCP_SETTINGS</code>, <code>from mcp_panel import merge_mcp_settings</code>, <code>from spock_shell.paths import ROOT</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore.service_endpoints import DEFAULT_MCP_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_MCP_WEBUI_PORT</code>, <code>from WarpCore.service_endpoints import DEFAULT_RAG_PORT</code>, <code>import psutil</code>, <code>from spock_shell.proc_guard import tcp_open</code>, <code>from spock_shell.proc_guard import tcp_open</code>, <code>from contextlib import nullcontext</code>, <code>from spock_shell.proc_guard import exclusive_start</code>, <code>from spock_shell.proc_guard import tcp_open</code>, <code>from spock_shell.proc_guard import tcp_open</code>, <code>from spock_shell.proc_guard import tcp_open</code>, <code>from spock_health_report import discover_mcp_adapter_pids</code>, <code>import psutil</code>, <code>import psutil</code>, <code>from spock_health_report import probe_mcp_adapter</code>, <code>import psutil</code>, <code>import psutil</code>, <code>from spock_shell.proc_guard as _tcp</code>, <code>import signal</code>, <code>import psutil</code>, <code>import signal as _signal</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>McpAdapterHost</code></strong> — lines 100-1028</li>
+<li><em>Start/stop/find the MCP adapter and feed McpControlPanel callbacks.</em></li>
+<li><code>script_path(self)</code></li>
+<li><code>python_exe(self)</code></li>
+<li><code>find_text(self, needle)</code></li>
+<li><code>running_pids(self)</code> <em>PIDs for THIS repo's scripts/mcp_spock_server.py only.</em></li>
+<li><code>adapter_status_text(self)</code></li>
+<li><code>health_context(self)</code></li>
+<li><code>on_settings_changed(self, settings)</code> <em>Merge a panel's partial update so sibling panels never clobber it.</em></li>
+<li><code>refresh_panel(self)</code></li>
+<li><code>ensure_http_adapter(self, quiet)</code> <em>Start streamable-http when autostart expects it and :port is down.</em></li>
+<li><code>ensure_http_adapter_async(self, quiet)</code> <em>Start HTTP adapter on a worker thread so the Qt UI stays responsive.</em></li>
+<li><code>start_adapter(self, quiet, transport, http_host, http_port)</code> <em>Start MCP adapter using saved MCP settings unless overrides are passed.</em></li>
+<li><code>kill_processes(self)</code> <em>Stop every this-install mcp_spock_server.py (HTTP and stdio).</em></li>
+<li><code>stop_adapter(self)</code></li>
+<li><code>find_adapter(self)</code></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>show_output_dialog(parent, title, text)</code></strong> — lines 65-97</li>
+<li><em>Scrollable output viewer with Select All / Copy (MCP / diagnostics).</em></li>
+</ul>
+<h3 id="spock_shellmcp_tunnelpy"><code>spock_shell/mcp_tunnel.py</code><a class="headerlink" href="#spock_shellmcp_tunnelpy" title="Permanent link">&para;</a></h3>
+<p>*Cloudflare quick tunnel for the Spock MCP HTTP adapter.</p>
+<p>Uses <code>cloudflared tunnel --url http://127.0.0.1:&lt;port&gt;</code> (no account required).
+Named/account tunnels can be added later; this module focuses on the quick tunnel
+flow that yields a <code>*.trycloudflare.com</code> URL for llama.cpp / browser MCP clients.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import re</code>, <code>import shutil</code>, <code>import subprocess</code>, <code>import time</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from spock_shell.paths import ROOT</code>, <code>from spock_shell.proc_guard import tcp_open</code>, <code>import psutil</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>find_cloudflared(explicit)</code></strong> — lines 24-35</li>
+<li><em>Resolve cloudflared.exe — explicit path, PATH, then common install dir.</em></li>
+<li><strong><code>discover_tunnel_pids()</code></strong> — lines 44-63</li>
+<li><em>PIDs running cloudflared that mention our MCP port or log file.</em></li>
+<li><strong><code>read_public_url(log_file)</code></strong> — lines 66-76</li>
+<li><em>Parse the most recent trycloudflare.com URL from cloudflared log output.</em></li>
+<li><strong><code>start_quick_tunnel(local_port, local_host, cloudflared, timeout)</code></strong> — lines 79-173</li>
+<li><em>Start cloudflared quick tunnel → local MCP HTTP adapter.</em></li>
+<li><strong><code>stop_tunnel(proc)</code></strong> — lines 176-209</li>
+<li><em>Stop our cloudflared spawn and any discovered tunnel PIDs.</em></li>
+<li><strong><code>tunnel_status(local_port)</code></strong> — lines 212-223</li>
+<li><em>Snapshot for health / UI panels.</em></li>
+</ul>
+<h3 id="spock_shellopen_urlpy"><code>spock_shell/open_url.py</code><a class="headerlink" href="#spock_shellopen_urlpy" title="Permanent link">&para;</a></h3>
+<p>*Open http(s)/file URLs in a real browser — WSL/WSLg safe.</p>
+<p>Under WSLg, <code>gio open</code> / <code>xdg-open</code> often fail with
+<code>Operation not supported</code> (no xdg-desktop-portal). Prefer Firefox / Chrome
+directly when present; fall back to <code>webbrowser</code> then Qt.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import shutil</code>, <code>import subprocess</code>, <code>import sys</code>, <code>from pathlib import Path</code>, <code>from typing import List</code>, <code>import webbrowser</code>, <code>from PyQt6.QtCore import QUrl</code>, <code>from PyQt6.QtGui import QDesktopServices</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>running_under_wsl()</code></strong> — lines 18-26</li>
+<li><strong><code>open_url(url)</code></strong> — lines 50-86</li>
+<li><em>Best-effort open <code>url</code>; returns True if a launch was attempted successfully.</em></li>
+</ul>
+<h3 id="spock_shellpathspy"><code>spock_shell/paths.py</code><a class="headerlink" href="#spock_shellpathspy" title="Permanent link">&para;</a></h3>
+<p><em>Repo paths shared by suite apps.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>from pathlib import Path</code>, <code>from WarpCore.service_endpoints import resolve_spock_root</code>, <code>import sys</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>ensure_root_on_path()</code></strong> — lines 24-30</li>
+</ul>
+<h3 id="spock_shellproc_guardpy"><code>spock_shell/proc_guard.py</code><a class="headerlink" href="#spock_shellproc_guardpy" title="Permanent link">&para;</a></h3>
+<p>*Avoid duplicate sidecar processes (RAG API, MCP HTTP) across suite windows.</p>
+<p>Hub, Navigation, and Engineering each restore a profile and may try to start
+the same listener. Two windows racing a <code>Popen</code> before <code>/health</code> answers
+is what produced multiple <code>_start_rag_api.py</code> / <code>mcp_spock_server.py</code> PIDs.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import socket</code>, <code>import subprocess</code>, <code>import time</code>, <code>from contextlib import contextmanager</code>, <code>from pathlib import Path</code>, <code>from typing import Iterator</code>, <code>from typing import List</code>, <code>from typing import Union</code>, <code>from spock_shell.paths import ROOT</code>, <code>import psutil</code>, <code>import msvcrt</code>, <code>import fcntl</code>, <code>import msvcrt</code>, <code>import fcntl</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>fold_path(text)</code></strong> — lines 23-24</li>
+<li><strong><code>pids_running_script(script)</code></strong> — lines 27-50</li>
+<li><em>PIDs whose command line contains this install's script path.</em></li>
+<li><strong><code>tcp_open(host, port, timeout)</code></strong> — lines 53-59</li>
+<li><strong><code>kill_script_pids(script)</code></strong> — lines 62-81</li>
+<li><em>Terminate every PID running this install's script (Windows /taskkill).</em></li>
+<li><strong><code>exclusive_start(name, timeout)</code></strong> — lines 85-146</li>
+<li><em>Named inter-process lock. Yields True if this caller holds it.</em></li>
+</ul>
+<h3 id="spock_shellprocess_treepy"><code>spock_shell/process_tree.py</code><a class="headerlink" href="#spock_shellprocess_treepy" title="Permanent link">&para;</a></h3>
+<p><em>Process-tree terminate helpers (Windows-safe Stop Scan / Bringup stop).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import sqlite3</code>, <code>import time</code>, <code>from pathlib import Path</code>, <code>from typing import Iterable</code>, <code>from typing import Optional</code>, <code>import psutil</code>, <code>import _warpcore_path</code>, <code>from WarpCore import settings_store</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>terminate_process_tree(pid, timeout)</code></strong> — lines 17-57</li>
+<li><em>Terminate <code>pid</code> and all descendants; escalate to kill if needed.</em></li>
+<li><strong><code>iter_wiki_scan_pids(root)</code></strong> — lines 64-83</li>
+<li><em>PIDs whose cmdline looks like wiki_agent / universal extractor for <code>root</code>.</em></li>
+<li><strong><code>cancel_wiki_queue(db_path, reason)</code></strong> — lines 86-110</li>
+<li><em>Mark pending/running agent_queue rows failed so bootstrap can re-queue.</em></li>
+<li><strong><code>clear_wiki_agent_lockfiles(root)</code></strong> — lines 113-134</li>
+<li><strong><code>stop_wiki_scan(root, proc_pid, db_path)</code></strong> — lines 137-167</li>
+<li><em>Kill wiki_agent + extractor tree, cancel queue, clear lock/progress files.</em></li>
+</ul>
+<h3 id="spock_shellprofilespy"><code>spock_shell/profiles.py</code><a class="headerlink" href="#spock_shellprofilespy" title="Permanent link">&para;</a></h3>
+<p>*Named Spock configuration profiles, shared by every suite mini-app.</p>
+<p>Profiles live in the <code>spock_profile</code> table of <code>ship_computer.db</code>. The
+payload shape is deliberately the same one the old monolith wrote, so a profile
+saved in one app loads in any other:</p>
+<div class="language-text highlight"><pre><span></span><code>{"config": {...}, "servers": [...], "launch_ui": {...},
+ "rag_was_running": bool, "mcp_was_running": bool,
+ "webui_was_running"*
+</code></pre></div>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import json</code>, <code>import os</code>, <code>from pathlib import Path</code>, <code>from typing import Any</code>, <code>from typing import Callable</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWidgets import QDialog</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QLineEdit</code>, <code>from PyQt6.QtWidgets import QListWidget</code>, <code>from PyQt6.QtWidgets import QListWidgetItem</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QProgressBar</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from spock_shell.paths import ensure_root_on_path</code>, <code>from model_selector_core import merge_embedding_profile</code>, <code>from model_selector_core import write_embedding_env</code>, <code>from spock_profile_store import count_profiles</code>, <code>from spock_profile_store import delete_profiles</code>, <code>from spock_profile_store import find_profile_by_name</code>, <code>from spock_profile_store import get_profile</code>, <code>from spock_profile_store import insert_profile</code>, <code>from spock_profile_store import list_profile_summaries</code>, <code>from spock_profile_store import list_profiles</code>, <code>from spock_profile_store as profile_stardate</code>, <code>from spock_profile_store import upsert_profile</code>, <code>from WarpCore.config_defaults import merge_mcp_settings</code>, <code>from WarpCore.config_defaults import merge_uieg_config</code>, <code>from WarpCore.search import set_embeddings_url</code>, <code>from spock_shell.busy_ui import heartbeat</code>, <code>from spock_shell.busy_ui import pause_busy_for_dialog</code>, <code>from spock_shell.busy_ui import busy_scope</code>, <code>from WarpCore import settings_store</code>, <code>from WarpCore import settings_store</code>, <code>from spock_shell.busy_ui import busy_scope</code>, <code>from spock_shell.paths as SPOCK_ROOT</code>, <code>from spock_shell.config import load_config</code>, <code>from spock_shell.bridge_host import apply_provider_config</code>, <code>from spock_shell.embedding_corpus import live_vs_corpus</code>, <code>from spock_shell.embedding_corpus import profile_embedding_path</code>, <code>from spock_shell.busy_ui import busy_scope</code>, <code>from spock_shell.embedding_corpus import live_vs_corpus</code>, <code>from spock_shell.embedding_corpus import profile_embedding_path</code>, <code>from lm_studio_api as lm_snapshot</code>, <code>from spock_shell.rag_host import is_rag_up</code>, <code>from spock_shell.rag_host import rag_bind</code>, <code>from spock_shell.config import save_config</code>, <code>from model_selector_core import is_embedding_gguf_path</code>, <code>from spock_shell.embedding_corpus import model_basename</code>, <code>from spock_shell.embedding_corpus import profile_embedding_path</code>, <code>from spock_shell.config import load_config</code>, <code>from spock_shell.config import save_config</code>, <code>from spock_shell.mcp_host import McpAdapterHost</code>, <code>from WarpCore.host_recipe import effective_recipe</code>, <code>from WarpCore.host_recipe import launch_plan_for_role</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore.host_recipe import effective_recipe</code>, <code>from WarpCore.host_recipe import launch_plan_for_role</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from spock_shell.rag_host import spawn_rag_api</code>, <code>from mcp_panel import spawn_ui_mcp_proxy</code>, <code>from llama_server_manager import LlamaServerManager</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>SaveProfileDialog(QDialog)</code></strong> — lines 146-235</li>
+<li><em>Exit prompt: save a named profile, skip, or cancel the close.</em></li>
+<li><code>choice(self)</code></li>
+<li><code>profile_name(self)</code></li>
+<li><strong><code>LoadProfileDialog(QDialog)</code></strong> — lines 238-336</li>
+<li><em>Picker of saved profiles (newest first).</em></li>
+<li><code>selected_id(self)</code></li>
+<li><strong><code>ProfileReviewPanel(QWidget)</code></strong> — lines 339-553</li>
+<li><em>List, preview, and delete named profiles in ship_computer.db.</em></li>
+<li><code>refresh(self)</code></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>prompts_enabled()</code></strong> — lines 62-66</li>
+<li><em>False in headless / smoke runs, where a modal prompt would hang.</em></li>
+<li><strong><code>profile_load_answered()</code></strong> — lines 72-79</li>
+<li><em>True once something upstream has already asked about loading a profile.</em></li>
+<li><strong><code>mark_profile_load_answered()</code></strong> — lines 82-83</li>
+<li><strong><code>last_saved_profile_name()</code></strong> — lines 86-93</li>
+<li><strong><code>remember_profile_name(name)</code></strong> — lines 96-107</li>
+<li><strong><code>confirm_replace_profile(parent, name)</code></strong> — lines 110-123</li>
+<li><strong><code>open_manage_profiles_dialog(parent)</code></strong> — lines 556-569</li>
+<li><strong><code>build_profile_payload(config, llama_manager, launch_panel, rag_running, mcp_running, webui_running)</code></strong> — lines 752-784</li>
+<li><em>Snapshot config plus whatever live state the calling app can see.</em></li>
+<li><strong><code>harvest_live_config(config, configure_panel, persist)</code></strong> — lines 787-819</li>
+<li><em>Refresh <code>config</code> from ship_computer.db, then overlay live Configure widgets.</em></li>
+<li><strong><code>apply_profile_payload(payload, config, save_config, parent, llama_manager, launch_panel, mcp_panel, webui_panel, gpu_list, start_rag, start_mcp, on_theme)</code></strong> — lines 982-1164</li>
+<li><em>Restore settings from a profile, then start what the app can start.</em></li>
+<li><strong><code>save_profile_interactive(parent, payload, prompt)</code></strong> — lines 1168-1202</li>
+<li><em>Ask for a name and store the payload. Returns the new profile id.</em></li>
+<li><strong><code>prompt_save_profile(parent, payload)</code></strong> — lines 1205-1239</li>
+<li><em>Exit-time prompt. Returns False when the user cancels the close.</em></li>
+<li><strong><code>pick_profile_payload(parent)</code></strong> — lines 1242-1267</li>
+<li><em>Manual Load: pick a profile and return its payload (no restore).</em></li>
+<li><strong><code>warn_embedding_vs_wiki_scan(parent, payload)</code></strong> — lines 1270-1299</li>
+<li><em>Warn if saved/live embed GGUF differs from last wiki_agent scan corpus.</em></li>
+<li><strong><code>maybe_load_profile(parent)</code></strong> — lines 1302-1333</li>
+<li><em>Ask whether to restore a saved profile. Returns the chosen payload.</em></li>
+</ul>
+<h3 id="spock_shellqt_apppy"><code>spock_shell/qt_app.py</code><a class="headerlink" href="#spock_shellqt_apppy" title="Permanent link">&para;</a></h3>
+<p><em>Shared QApplication bootstrap for suite mini-apps (WebEngine-safe).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import sys</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWebEngineWidgets import QWebEngineView</code>, <code>from spock_shell.win_job import ensure_kill_on_close_job</code>, <code>from llama_server_manager import stop_all_owned_in_process</code>, <code>from spock_shell.rag_host import stop_spawned_rag</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>create_app(argv)</code></strong> — lines 11-28</li>
+</ul>
+<h3 id="spock_shellrag_hostpy"><code>spock_shell/rag_host.py</code><a class="headerlink" href="#spock_shellrag_hostpy" title="Permanent link">&para;</a></h3>
+<p>*Start / detect the Spock RAG API so a profile load can bring :8090 up.</p>
+<p>Navigation Station can host RagApiServer in-process. The hub and other windows
+do not, so they spawn <code>_start_rag_api.py</code> in a new console (same pattern as
+the llama.cpp WebUI launcher).*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import subprocess</code>, <code>import sys</code>, <code>import time</code>, <code>import urllib.request</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from typing import Tuple</code>, <code>from spock_shell.paths import ROOT</code>, <code>from spock_shell.proc_guard import exclusive_start</code>, <code>from spock_shell.proc_guard import pids_running_script</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>rag_bind(config)</code></strong> — lines 23-31</li>
+<li><strong><code>rag_url(host, port)</code></strong> — lines 34-35</li>
+<li><strong><code>is_rag_up(host, port, timeout)</code></strong> — lines 38-49</li>
+<li><strong><code>spawn_rag_api(config, wait_s)</code></strong> — lines 52-97</li>
+<li><em>Launch <code>_start_rag_api.py</code> if this install is not already serving :8090.</em></li>
+<li><strong><code>stop_spawned_rag()</code></strong> — lines 100-116</li>
+<li><em>Terminate RAG API processes this process started via spawn_rag_api().</em></li>
+</ul>
+<h3 id="spock_shellstatus_panelpy"><code>spock_shell/status_panel.py</code><a class="headerlink" href="#spock_shellstatus_panelpy" title="Permanent link">&para;</a></h3>
+<p><em>Non-modal Status console (spock_health_report).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from spock_shell.paths import ensure_root_on_path</code>, <code>from spock_health_report import format_spock_health_report</code>, <code>from spock_health_report import probe_spock_health</code>, <code>from PyQt6.QtCore import Qt</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>StatusConsole(QWidget)</code></strong> — lines 20-107</li>
+<li><em>Standalone Status window used by every suite mini-app.</em></li>
+<li><code>apply_theme(self)</code></li>
+<li><code>refresh(self)</code></li>
+</ul>
+<h3 id="spock_shellthemepy"><code>spock_shell/theme.py</code><a class="headerlink" href="#spock_shellthemepy" title="Permanent link">&para;</a></h3>
+<p><em>Re-export WarpCore themes for suite mini-apps.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import _warpcore_path</code>, <code>from WarpCore.theme import THEMES</code>, <code>from WarpCore.theme import main_stylesheet</code></p>
+<h3 id="spock_shellwidgetspy"><code>spock_shell/widgets.py</code><a class="headerlink" href="#spock_shellwidgetspy" title="Permanent link">&para;</a></h3>
+<p><em>Reusable shell widgets (from pyqt6-skeleton-v2).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Callable</code>, <code>from typing import Dict</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>ModernButton(QPushButton)</code></strong> — lines 11-39</li>
+<li><code>apply_theme(self)</code></li>
+<li><strong><code>SidePanel(QWidget)</code></strong> — lines 42-71</li>
+<li><code>add_button(self, text, callback)</code></li>
+<li><code>apply_theme(self)</code></li>
+</ul>
+<h3 id="spock_shellwin_jobpy"><code>spock_shell/win_job.py</code><a class="headerlink" href="#spock_shellwin_jobpy" title="Permanent link">&para;</a></h3>
+<p>*Windows job object: kill this process's children when Spock exits.</p>
+<p>CREATE_NEW_CONSOLE RAG / --ui-mcp-proxy / llama-server stay alive after the
+Qt window dies unless they are in a job with KILL_ON_JOB_CLOSE. Child suite
+windows inherit the hub job, so closing the hub reaps Navigation's servers too.*</p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import sys</code>, <code>from typing import Optional</code>, <code>import ctypes</code>, <code>from ctypes import wintypes</code></p>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>ensure_kill_on_close_job()</code></strong> — lines 16-94</li>
+<li><em>Put this process in a kill-on-close job. No-op if already in a job.</em></li>
+</ul>
+<h3 id="spock_shellwindowpy"><code>spock_shell/window.py</code><a class="headerlink" href="#spock_shellwindowpy" title="Permanent link">&para;</a></h3>
+<p><em>Suite shell: left nav + center stack + AI Helper / Status / About (skeleton-v2).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Callable</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from typing import Sequence</code>, <code>from typing import Tuple</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtWidgets import QComboBox</code>, <code>from PyQt6.QtWidgets import QFrame</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QMainWindow</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QScrollArea</code>, <code>from PyQt6.QtWidgets import QSplitter</code>, <code>from PyQt6.QtWidgets import QStatusBar</code>, <code>from PyQt6.QtWidgets import QStackedWidget</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from spock_shell.about import AboutDialog</code>, <code>from spock_shell.ai_helper import open_ai_helper</code>, <code>from spock_shell.config import load_config</code>, <code>from spock_shell.config import save_config</code>, <code>from spock_shell.status_panel import StatusConsole</code>, <code>from spock_shell.theme import THEMES</code>, <code>from spock_shell.theme import main_stylesheet</code>, <code>from spock_shell.widgets import ModernButton</code>, <code>from spock_shell.widgets import SidePanel</code>, <code>from PyQt6.QtCore import QTimer</code>, <code>from llama_server_manager import LlamaServerManager</code>, <code>from model_selector_panels import LlmStatusWindow</code>, <code>from PyQt6.QtCore import QTimer</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>SuiteShellWindow(QMainWindow)</code></strong> — lines 32-305</li>
+<li><em>Base window for every Spock suite mini-app.</em></li>
+<li><code>nav_steps(self)</code> <em>Return (label, callback_or_None). None = separator.</em></li>
+<li><code>build_home_widget(self)</code></li>
+<li><code>build_right_dock(self, layout)</code></li>
+<li><code>on_ready(self)</code></li>
+<li><code>show_home(self)</code></li>
+<li><code>show_center(self, widget)</code></li>
+<li><code>open_ai_helper(self)</code></li>
+<li><code>open_status(self)</code> <em>Open Ship Status (Live Monitor). Subclasses with a llama manager use it.</em></li>
+<li><code>open_about(self)</code></li>
+<li><code>closeEvent(self, event)</code></li>
+<li><code>change_theme(self, theme_name)</code></li>
+<li><code>apply_theme(self)</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../js/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4003 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Local AI Workstation Management Suite — orchestrate LLMs, RAG, and knowledge bases">
+      
+      
+      
+        <link rel="canonical" href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/structure/logic/WarpCore_db/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>WarpCore db - Spock-Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#purpose" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Spock-Onboarding" class="md-header__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spock-Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WarpCore db
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Screenshots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/quick-start/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../features/navigation-station/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cli/bringup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CLI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../configuration/profiles/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/project-layout/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Code Structure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Spock-Onboarding" class="md-nav__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spock-Onboarding
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screenshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/readiness-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Readiness Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/detailed-specs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailed Specs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/navigation-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigation Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/engineering-deck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Deck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/long-range-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Range Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/science-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Science Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/rag-api-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG API Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/mcp-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Spock%20MCP%20%28Model%20Context%20Protocol%29%20tools-spock-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/llm-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/wiki-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/model-selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../features/themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/live-monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/project-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/copy-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Structure
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code Structure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entrypoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../root-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Deep Dives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_bringup_menu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup_menu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_wiki_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_wiki_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_live_monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../spock_progress_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_progress_log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model_selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    model_selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootstrap_wizard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    bootstrap_wizard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/plan-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purpose_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-and-schema-helpers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection and schema helpers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-table-introspection-helpers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector-table introspection helpers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-table-lifecycle-helpers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector-table lifecycle helpers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-table-helpers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generic table helpers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-helpers-visible-in-the-excerpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private helpers visible in the excerpt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-deletion-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector deletion flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-table-creation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector table creation flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-rebuild-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full rebuild flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targeted-upsert-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Targeted upsert flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-table-helper-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generic table helper flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-index-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector index data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database interactions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key logic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedding-dimension-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding dimension inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#float32-blob-assumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Float32 BLOB assumption
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stale-vector-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stale vector cleanup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incremental-sync-versus-full-rebuild" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incremental sync versus full rebuild
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunked-deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunked deletion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graceful-degradation-without-sqlite_vec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graceful degradation without sqlite_vec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow-table-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shadow-table awareness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gotchas-maintenance-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gotchas / maintenance notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gotchas / maintenance notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete_documents_vec-may-overcount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete_documents_vec may overcount
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broad-exception-swallowing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Broad exception swallowing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#row_count-is-not-parameterized-for-the-table-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        row_count is not parameterized for the table name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuild_documents_vec-loads-all-embeddings-into-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rebuild_documents_vec loads all embeddings into memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upsert-path-may-depend-on-caller-transaction-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upsert path may depend on caller transaction handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixed-embedding-dimensions-can-break-the-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed embedding dimensions can break the index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimension-inference-can-silently-disable-vector-indexing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dimension inference can silently disable vector indexing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlite_vec-extension-loading-is-central" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sqlite_vec extension loading is central
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow-table-cleanup-is-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shadow-table cleanup is critical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coupling-to-a-specific-embedding-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coupling to a specific embedding encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-helpers-open-a-new-connection-each-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generic helpers open a new connection each time
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>WarpCore db</h1>
+
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
+<p><code>WarpCore/db.py</code> is a shared SQLite helper layer for Spock V2. It exists to give the GUI, <code>wiki_agent</code> daemon, extractor, RAG API server, MCP server, and CLI maintenance scripts one dependency-light way to open databases, apply schema DDL, inspect tables, and manage <code>sqlite-vec</code> vector indexes without importing PyQt or app-specific services.</p>
+<p>It standardizes low-level connection behavior — WAL mode, busy timeout, foreign keys, and opportunistic query-planner refresh — and isolates the optional <code>sqlite_vec</code> extension behind a safe loader. This lets callers use vector search when the extension is available and degrade gracefully when it is not.</p>
+<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
+<p>The module is flat and function-oriented; it defines no classes. It begins with a module docstring and imports, then defines module-level constants:</p>
+<ul>
+<li><code>DEFAULT_SHIPS_DB = "ship_computer.db"</code></li>
+<li><code>DEFAULT_UIEG_DB = "uieg_capture.db"</code></li>
+<li><code>_SQLITE_VEC_AVAILABLE</code>, set by the guarded <code>sqlite_vec</code> import</li>
+<li><code>_VEC_TABLE_NAME = "documents_vec"</code></li>
+</ul>
+<p>The functions are organized into three practical groups:</p>
+<ol>
+<li><strong>Path, connection, and schema bootstrap</strong></li>
+<li><code>resolve_db_path(path, name)</code> — <code>WarpCore/db.py:30-34</code></li>
+<li><code>connect(db_path, timeout)</code> — <code>WarpCore/db.py:37-47</code></li>
+<li><code>ensure_schema(db_path, schema_sql)</code> — <code>WarpCore/db.py:50-57</code></li>
+<li>
+<p><code>_load_sqlite_vec(conn)</code> — private helper shown in the excerpt, used by <code>connect()</code> and vector-table maintenance</p>
+</li>
+<li>
+<p><strong><code>sqlite-vec</code> introspection and maintenance</strong></p>
+</li>
+<li><code>vec_table_exists(conn)</code> — <code>WarpCore/db.py:81-89</code></li>
+<li><code>vec_table_names(conn)</code> — <code>WarpCore/db.py:92-100</code></li>
+<li><code>vec_shadow_names(conn, name)</code> — <code>WarpCore/db.py:103-112</code></li>
+<li><code>drop_vec_table(conn, name)</code> — <code>WarpCore/db.py:115-150</code></li>
+<li><code>delete_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:153-173</code></li>
+<li><code>ensure_documents_vec(conn, dim)</code> — <code>WarpCore/db.py:176-191</code></li>
+<li><code>rebuild_documents_vec(conn)</code> — <code>WarpCore/db.py:209-244</code></li>
+<li>
+<p><code>upsert_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:247-282</code></p>
+</li>
+<li>
+<p><strong>Generic SQLite table utilities</strong></p>
+</li>
+<li><code>table_exists(db_path, table)</code> — <code>WarpCore/db.py:285-294</code></li>
+<li><code>row_count(db_path, table)</code> — <code>WarpCore/db.py:297-303</code></li>
+<li><code>table_names(db_path)</code> — <code>WarpCore/db.py:306-316</code></li>
+</ol>
+<p>The public API is mostly small functions that take either a <code>db_path</code> string or an open <code>sqlite3.Connection</code>. Path-based helpers open and close their own connections, while connection-based helpers assume the caller owns the connection lifecycle. Some helpers, such as <code>ensure_schema()</code> and <code>drop_vec_table()</code>, commit internally; others leave transaction control to the caller. The optional <code>sqlite_vec</code> dependency is guarded by <code>_SQLITE_VEC_AVAILABLE</code> and <code>_load_sqlite_vec()</code>, allowing the module to import and operate in non-vector environments.</p>
+<h2 id="purpose_1">Purpose<a class="headerlink" href="#purpose_1" title="Permanent link">&para;</a></h2>
+<p><code>WarpCore/db.py</code> is a shared SQLite helper module for Spock V2. Its main job is to provide a small, reusable database layer for local Spock data, with special focus on maintaining a <code>sqlite_vec</code> vector index for document embeddings.</p>
+<p>The module exists so that other parts of the application do not need to repeat low-level SQLite logic such as:</p>
+<ul>
+<li>opening connections consistently,</li>
+<li>checking whether tables exist,</li>
+<li>creating or dropping the vector index,</li>
+<li>syncing embedded documents into the vector table,</li>
+<li>deleting stale vector rows,</li>
+<li>rebuilding the vector index from the source <code>documents</code> table.</li>
+</ul>
+<p>It is a utility module, not an application entry point. It is intended to be imported and called by higher-level Spock services.</p>
+<h2 id="structure_1">Structure<a class="headerlink" href="#structure_1" title="Permanent link">&para;</a></h2>
+<p>The module is organized as a flat collection of functions. There are no classes in the visible structure.</p>
+<h3 id="connection-and-schema-helpers">Connection and schema helpers<a class="headerlink" href="#connection-and-schema-helpers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>resolve_db_path(path, name)</code> — <code>WarpCore/db.py:30-34</code><br />
+  Resolves a database path, likely using <code>os</code> and <code>pathlib</code>.</p>
+</li>
+<li>
+<p><code>connect(db_path, timeout)</code> — <code>WarpCore/db.py:37-47</code><br />
+  Creates and returns a SQLite connection.</p>
+</li>
+<li>
+<p><code>ensure_schema(db_path, schema_sql)</code> — <code>WarpCore/db.py:50-57</code><br />
+  Schema bootstrap helper. It is positioned as the step that makes sure the expected SQLite schema exists.</p>
+</li>
+</ul>
+<h3 id="vector-table-introspection-helpers">Vector-table introspection helpers<a class="headerlink" href="#vector-table-introspection-helpers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>vec_table_exists(conn)</code> — <code>WarpCore/db.py:81-89</code><br />
+  Checks whether the vector table is present.</p>
+</li>
+<li>
+<p><code>vec_table_names(conn)</code> — <code>WarpCore/db.py:92-100</code><br />
+  Lists vector-related tables.</p>
+</li>
+<li>
+<p><code>vec_shadow_names(conn, name)</code> — <code>WarpCore/db.py:103-112</code><br />
+  Resolves auxiliary or shadow tables associated with a <code>sqlite_vec</code> table.</p>
+</li>
+</ul>
+<h3 id="vector-table-lifecycle-helpers">Vector-table lifecycle helpers<a class="headerlink" href="#vector-table-lifecycle-helpers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>drop_vec_table(conn, name)</code> — <code>WarpCore/db.py:115-150</code><br />
+  Drops the vector table and is the natural place where <code>sqlite_vec</code> shadow tables are cleaned up.</p>
+</li>
+<li>
+<p><code>delete_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:153-173</code><br />
+  Removes specific document IDs from the vector index.</p>
+</li>
+<li>
+<p><code>ensure_documents_vec(conn, dim)</code> — <code>WarpCore/db.py:176-191</code><br />
+  Creates the vector table if it is missing and a valid embedding dimension can be determined.</p>
+</li>
+<li>
+<p><code>rebuild_documents_vec(conn)</code> — <code>WarpCore/db.py:209-244</code><br />
+  Rebuilds the vector index from the <code>documents</code> table.</p>
+</li>
+<li>
+<p><code>upsert_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:247-282</code><br />
+  Syncs a specific set of documents into the vector index without rebuilding the whole table.</p>
+</li>
+</ul>
+<h3 id="generic-table-helpers">Generic table helpers<a class="headerlink" href="#generic-table-helpers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>table_exists(db_path, table)</code> — <code>WarpCore/db.py:285-294</code><br />
+  Checks whether a named table exists.</p>
+</li>
+<li>
+<p><code>row_count(db_path, table)</code> — <code>WarpCore/db.py:297-303</code><br />
+  Returns the number of rows in a table.</p>
+</li>
+<li>
+<p><code>table_names(db_path)</code> — <code>WarpCore/db.py:306-316</code><br />
+  Returns the list of table names in the database.</p>
+</li>
+</ul>
+<h3 id="private-helpers-visible-in-the-excerpt">Private helpers visible in the excerpt<a class="headerlink" href="#private-helpers-visible-in-the-excerpt" title="Permanent link">&para;</a></h3>
+<p>The excerpt also shows private helpers that support the vector logic:</p>
+<ul>
+<li>
+<p><code>_load_sqlite_vec(conn)</code><br />
+  Loads the <code>sqlite_vec</code> extension into the connection.</p>
+</li>
+<li>
+<p><code>_infer_embedding_dim(conn)</code><br />
+  Infers the embedding dimension from existing <code>documents.embedding</code> values.</p>
+</li>
+<li>
+<p><code>_SQLITE_VEC_AVAILABLE</code><br />
+  Module-level flag indicating whether the <code>sqlite_vec</code> extension is usable.</p>
+</li>
+<li>
+<p><code>_VEC_TABLE_NAME</code><br />
+  The name of the vector table, used throughout the vector helpers.</p>
+</li>
+</ul>
+<h2 id="control-flow">Control flow<a class="headerlink" href="#control-flow" title="Permanent link">&para;</a></h2>
+<p>The module has no top-level execution. Control flow begins when another part of Spock calls one of its functions.</p>
+<h3 id="vector-deletion-flow">Vector deletion flow<a class="headerlink" href="#vector-deletion-flow" title="Permanent link">&para;</a></h3>
+<p><code>delete_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:153-173</code></p>
+<ol>
+<li>If <code>sqlite_vec</code> is unavailable, return <code>0</code>.</li>
+<li>Load the <code>sqlite_vec</code> extension.</li>
+<li>If the vector table does not exist, return <code>0</code>.</li>
+<li>Split <code>doc_ids</code> into chunks of 500.</li>
+<li>For each chunk:</li>
+<li>Build an <code>IN (?, ?, ...)</code> clause.</li>
+<li>Execute <code>DELETE FROM &lt;vec_table&gt; WHERE doc_id IN (...)</code>.</li>
+<li>Add the chunk size to the returned count.</li>
+<li>Ignore <code>sqlite3.Error</code> for that chunk and continue.</li>
+<li>Return the accumulated count.</li>
+</ol>
+<p>This flow is intentionally defensive: a failure in one chunk does not stop processing of the remaining chunks.</p>
+<h3 id="vector-table-creation-flow">Vector table creation flow<a class="headerlink" href="#vector-table-creation-flow" title="Permanent link">&para;</a></h3>
+<p><code>ensure_documents_vec(conn, dim)</code> — <code>WarpCore/db.py:176-191</code></p>
+<ol>
+<li>If <code>sqlite_vec</code> is unavailable, return.</li>
+<li>If the vector table already exists, do nothing.</li>
+<li>If <code>dim</code> is not supplied, infer it from the <code>documents</code> table.</li>
+<li>If the inferred dimension is missing or non-positive, return.</li>
+<li>Create the virtual table:</li>
+<li><code>CREATE VIRTUAL TABLE IF NOT EXISTS &lt;vec_table&gt; USING vec0(doc_id INTEGER PRIMARY KEY, embedding float[&lt;dim&gt;])</code></li>
+<li>Commit.</li>
+<li>Swallow exceptions and return.</li>
+</ol>
+<p>This function is a lazy initializer. It does not populate the table; it only makes sure the table exists with a valid dimension.</p>
+<h3 id="full-rebuild-flow">Full rebuild flow<a class="headerlink" href="#full-rebuild-flow" title="Permanent link">&para;</a></h3>
+<p><code>rebuild_documents_vec(conn)</code> — <code>WarpCore/db.py:209-244</code></p>
+<ol>
+<li>If <code>sqlite_vec</code> is unavailable, return <code>0</code>.</li>
+<li>Infer the embedding dimension from <code>documents</code>.</li>
+<li>If no valid dimension is found:</li>
+<li>Drop the vector table.</li>
+<li>Return <code>0</code>.</li>
+<li>Drop the existing vector table.</li>
+<li>Create a fresh vector table with the inferred dimension.</li>
+<li>Read all rows from <code>documents</code> where:</li>
+<li><code>embedding IS NOT NULL</code></li>
+<li><code>length(embedding) &gt; 0</code></li>
+<li>For each row:</li>
+<li>Unpack the embedding BLOB as little-endian <code>float32</code> values.</li>
+<li>Serialize the floats using <code>sqlite_vec.serialize_float32</code>.</li>
+<li>Insert into the vector table.</li>
+<li>Count successful inserts.</li>
+<li>Commit.</li>
+<li>Return the number of inserted vectors.</li>
+<li>If an outer exception occurs, return <code>0</code>.</li>
+</ol>
+<p>This is the most destructive vector operation in the module. It replaces the vector index entirely.</p>
+<h3 id="targeted-upsert-flow">Targeted upsert flow<a class="headerlink" href="#targeted-upsert-flow" title="Permanent link">&para;</a></h3>
+<p><code>upsert_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:247-282</code></p>
+<ol>
+<li>If <code>sqlite_vec</code> is unavailable or <code>doc_ids</code> is empty, return <code>0</code>.</li>
+<li>Load the <code>sqlite_vec</code> extension.</li>
+<li>Ensure the vector table exists.</li>
+<li>If the vector table still does not exist, return <code>0</code>.</li>
+<li>Select the requested documents from <code>documents</code> where:</li>
+<li><code>id IN (...)</code></li>
+<li><code>embedding IS NOT NULL</code></li>
+<li><code>length(embedding) &gt; 0</code></li>
+<li>For each selected document:</li>
+<li>Unpack the embedding BLOB as <code>float32</code> values.</li>
+<li>Delete any existing vector row for that <code>doc_id</code>.</li>
+<li>Insert the new vector row.</li>
+<li>Count successful updates.</li>
+<li>Return the number of updated documents.</li>
+<li>If an outer exception occurs, return <code>0</code>.</li>
+</ol>
+<p>This is the incremental path. It is cheaper than a full rebuild when only a few documents changed.</p>
+<h3 id="generic-table-helper-flow">Generic table helper flow<a class="headerlink" href="#generic-table-helper-flow" title="Permanent link">&para;</a></h3>
+<p>The generic helpers follow a simple open-use-close pattern:</p>
+<ul>
+<li><code>table_exists(db_path, table)</code> — <code>WarpCore/db.py:285-294</code></li>
+<li>Open a connection.</li>
+<li>Query <code>sqlite_master</code>.</li>
+<li>Return whether the table name was found.</li>
+<li>
+<p>Close the connection.</p>
+</li>
+<li>
+<p><code>row_count(db_path, table)</code> — <code>WarpCore/db.py:297-303</code></p>
+</li>
+<li>Open a connection.</li>
+<li>Run <code>SELECT COUNT(*) FROM "&lt;table&gt;"</code>.</li>
+<li>Return the integer count.</li>
+<li>
+<p>Close the connection.</p>
+</li>
+<li>
+<p><code>table_names(db_path)</code> — <code>WarpCore/db.py:306-316</code></p>
+</li>
+<li>Open a connection.</li>
+<li>Query table names.</li>
+<li>Return them as a list.</li>
+<li>Close the connection.</li>
+</ul>
+<h2 id="data-flow">Data flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h2>
+<h3 id="inputs">Inputs<a class="headerlink" href="#inputs" title="Permanent link">&para;</a></h3>
+<p>The module accepts:</p>
+<ul>
+<li><code>db_path</code>: path to the SQLite database.</li>
+<li><code>table</code>: table name for generic helpers.</li>
+<li><code>doc_ids</code>: iterable of document IDs for vector deletion or upsert.</li>
+<li><code>dim</code>: optional embedding dimension for <code>ensure_documents_vec</code>.</li>
+<li><code>schema_sql</code>: SQL schema text for <code>ensure_schema</code>.</li>
+</ul>
+<h3 id="source-data">Source data<a class="headerlink" href="#source-data" title="Permanent link">&para;</a></h3>
+<p>The vector logic reads from the <code>documents</code> table:</p>
+<ul>
+<li><code>id</code></li>
+<li><code>embedding</code></li>
+</ul>
+<p>The <code>embedding</code> column is treated as a BLOB containing little-endian <code>float32</code> values. The code assumes:</p>
+<ul>
+<li><code>len(embedding)</code> is a multiple of 4,</li>
+<li>each 4-byte group is one float,</li>
+<li>the byte order is little-endian.</li>
+</ul>
+<h3 id="vector-index-data">Vector index data<a class="headerlink" href="#vector-index-data" title="Permanent link">&para;</a></h3>
+<p>The module writes to the vector table, whose name is stored in <code>_VEC_TABLE_NAME</code>.</p>
+<p>The vector table schema is:</p>
+<ul>
+<li><code>doc_id INTEGER PRIMARY KEY</code></li>
+<li><code>embedding float[&lt;dim&gt;]</code></li>
+</ul>
+<p>The values inserted are serialized using <code>sqlite_vec.serialize_float32</code>.</p>
+<h3 id="database-interactions">Database interactions<a class="headerlink" href="#database-interactions" title="Permanent link">&para;</a></h3>
+<p>All persistence is local SQLite. There is no IPC in this module.</p>
+<p>The module interacts with:</p>
+<ul>
+<li>the main Spock SQLite database,</li>
+<li>the <code>documents</code> table,</li>
+<li>the <code>sqlite_vec</code> virtual table,</li>
+<li><code>sqlite_master</code> for table introspection.</li>
+</ul>
+<h3 id="return-values">Return values<a class="headerlink" href="#return-values" title="Permanent link">&para;</a></h3>
+<p>Vector helpers return integer counts:</p>
+<ul>
+<li><code>delete_documents_vec</code> returns the number of chunks processed, not necessarily the exact number of deleted rows.</li>
+<li><code>rebuild_documents_vec</code> returns the number of successfully inserted vectors.</li>
+<li><code>upsert_documents_vec</code> returns the number of successfully updated documents.</li>
+</ul>
+<p>Generic helpers return:</p>
+<ul>
+<li><code>bool</code> for <code>table_exists</code>,</li>
+<li><code>int</code> for <code>row_count</code>,</li>
+<li><code>list[str]</code> for <code>table_names</code>.</li>
+</ul>
+<h2 id="key-logic">Key logic<a class="headerlink" href="#key-logic" title="Permanent link">&para;</a></h2>
+<h3 id="embedding-dimension-inference">Embedding dimension inference<a class="headerlink" href="#embedding-dimension-inference" title="Permanent link">&para;</a></h3>
+<p><code>_infer_embedding_dim(conn)</code> is the key helper that lets the module create the vector table without hard-coding the embedding size.</p>
+<p>It:</p>
+<ol>
+<li>Selects one non-empty <code>documents.embedding</code> value.</li>
+<li>Reads <code>length(embedding)</code>.</li>
+<li>Returns <code>length(embedding) // 4</code>.</li>
+<li>Returns <code>None</code> if the length is not a multiple of 4.</li>
+</ol>
+<p>This matters because <code>sqlite_vec</code> requires the vector dimension at table creation time. The module therefore derives the dimension from existing application data.</p>
+<h3 id="float32-blob-assumption">Float32 BLOB assumption<a class="headerlink" href="#float32-blob-assumption" title="Permanent link">&para;</a></h3>
+<p>The module assumes embeddings are stored as raw little-endian <code>float32</code> BLOBs.</p>
+<p>This is visible in:</p>
+<ul>
+<li><code>struct.unpack("&lt;" + "f" * (len(emb) // 4), emb)</code></li>
+<li><code>sqlite_vec.serialize_float32(floats)</code></li>
+</ul>
+<p>This is a strong format assumption. If embeddings are stored as JSON, base64, big-endian floats, or a different dtype, the vector helpers will fail or produce incorrect vectors.</p>
+<h3 id="stale-vector-cleanup">Stale vector cleanup<a class="headerlink" href="#stale-vector-cleanup" title="Permanent link">&para;</a></h3>
+<p><code>rebuild_documents_vec(conn)</code> has an important edge case:</p>
+<ul>
+<li>If no valid embedding dimension can be inferred, it drops the vector table.</li>
+</ul>
+<p>This prevents the vector index from continuing to serve stale vectors after all embeddings have been cleared. That is important for correctness: a vector index that still contains old embeddings would produce search results for documents that no longer have embeddings.</p>
+<h3 id="incremental-sync-versus-full-rebuild">Incremental sync versus full rebuild<a class="headerlink" href="#incremental-sync-versus-full-rebuild" title="Permanent link">&para;</a></h3>
+<p>The module supports two update strategies:</p>
+<ul>
+<li><code>rebuild_documents_vec(conn)</code> for full resync.</li>
+<li><code>upsert_documents_vec(conn, doc_ids)</code> for targeted resync.</li>
+</ul>
+<p>This matters because rebuilding the entire vector table is expensive. If only a few documents changed, the upsert path avoids touching unrelated rows.</p>
+<h3 id="chunked-deletion">Chunked deletion<a class="headerlink" href="#chunked-deletion" title="Permanent link">&para;</a></h3>
+<p><code>delete_documents_vec(conn, doc_ids)</code> processes IDs in chunks of 500.</p>
+<p>This matters because:</p>
+<ul>
+<li>very large <code>IN (...)</code> clauses can be inefficient,</li>
+<li>SQLite has practical limits around variable counts,</li>
+<li>chunking makes the operation more robust for large ID lists.</li>
+</ul>
+<h3 id="graceful-degradation-without-sqlite_vec">Graceful degradation without <code>sqlite_vec</code><a class="headerlink" href="#graceful-degradation-without-sqlite_vec" title="Permanent link">&para;</a></h3>
+<p>The module checks <code>_SQLITE_VEC_AVAILABLE</code> before doing vector work.</p>
+<p>This allows the rest of the SQLite database to continue working even if the <code>sqlite_vec</code> extension is missing or failed to load. The vector features simply become no-ops.</p>
+<h3 id="shadow-table-awareness">Shadow-table awareness<a class="headerlink" href="#shadow-table-awareness" title="Permanent link">&para;</a></h3>
+<p>The presence of:</p>
+<ul>
+<li><code>vec_table_names(conn)</code></li>
+<li><code>vec_shadow_names(conn, name)</code></li>
+<li><code>drop_vec_table(conn, name)</code></li>
+</ul>
+<p>indicates that the module is aware that <code>sqlite_vec</code> tables may have auxiliary shadow tables. This is important because dropping only the main virtual table may leave internal SQLite objects behind.</p>
+<h2 id="gotchas-maintenance-notes">Gotchas / maintenance notes<a class="headerlink" href="#gotchas-maintenance-notes" title="Permanent link">&para;</a></h2>
+<h3 id="delete_documents_vec-may-overcount"><code>delete_documents_vec</code> may overcount<a class="headerlink" href="#delete_documents_vec-may-overcount" title="Permanent link">&para;</a></h3>
+<p><code>delete_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:153-173</code></p>
+<p>The function adds <code>len(chunk)</code> to <code>removed</code> after executing the delete. It does not use <code>cursor.rowcount</code>.</p>
+<p>That means the returned value is closer to "number of IDs attempted in successful delete statements" than "number of rows actually deleted". If some <code>doc_id</code> values do not exist in the vector table, the count can be higher than the real number of deleted rows.</p>
+<p>Callers should not treat this return value as an exact row count.</p>
+<h3 id="broad-exception-swallowing">Broad exception swallowing<a class="headerlink" href="#broad-exception-swallowing" title="Permanent link">&para;</a></h3>
+<p>Several vector helpers catch broad exceptions and return <code>0</code> or <code>None</code>:</p>
+<ul>
+<li><code>ensure_documents_vec</code></li>
+<li><code>rebuild_documents_vec</code></li>
+<li><code>upsert_documents_vec</code></li>
+</ul>
+<p>This makes the module resilient, but it can hide real problems such as:</p>
+<ul>
+<li>missing <code>sqlite_vec</code> extension,</li>
+<li>schema mismatch,</li>
+<li>invalid embedding BLOBs,</li>
+<li>permission errors,</li>
+<li>disk errors,</li>
+<li>serialization failures.</li>
+</ul>
+<p>For debugging, callers may need to inspect the database directly because the module may not surface the underlying error.</p>
+<h3 id="row_count-is-not-parameterized-for-the-table-name"><code>row_count</code> is not parameterized for the table name<a class="headerlink" href="#row_count-is-not-parameterized-for-the-table-name" title="Permanent link">&para;</a></h3>
+<p><code>row_count(db_path, table)</code> — <code>WarpCore/db.py:297-303</code></p>
+<p>The table name is interpolated directly into SQL:</p>
+<ul>
+<li><code>SELECT COUNT(*) FROM "%s"</code></li>
+</ul>
+<p>This is acceptable only if <code>table</code> comes from trusted internal code. If <code>table</code> can be influenced by user input, this is a SQL injection risk.</p>
+<h3 id="rebuild_documents_vec-loads-all-embeddings-into-memory"><code>rebuild_documents_vec</code> loads all embeddings into memory<a class="headerlink" href="#rebuild_documents_vec-loads-all-embeddings-into-memory" title="Permanent link">&para;</a></h3>
+<p><code>rebuild_documents_vec(conn)</code> — <code>WarpCore/db.py:209-244</code></p>
+<p>The rebuild path uses:</p>
+<ul>
+<li><code>fetchall()</code></li>
+</ul>
+<p>on all embedded documents. For large corpora, this can consume significant memory because every embedding BLOB is loaded before insertion.</p>
+<p>A streaming cursor would be safer for very large databases.</p>
+<h3 id="upsert-path-may-depend-on-caller-transaction-handling">Upsert path may depend on caller transaction handling<a class="headerlink" href="#upsert-path-may-depend-on-caller-transaction-handling" title="Permanent link">&para;</a></h3>
+<p><code>upsert_documents_vec(conn, doc_ids)</code> — <code>WarpCore/db.py:247-282</code></p>
+<p>The visible excerpt does not show an explicit <code>conn.commit()</code> after the upsert loop. The caller may need to manage the transaction boundary.</p>
+<p>By contrast, <code>rebuild_documents_vec</code> explicitly commits.</p>
+<p>This inconsistency can lead to surprising behavior if the caller assumes all vector helpers commit their own work.</p>
+<h3 id="mixed-embedding-dimensions-can-break-the-index">Mixed embedding dimensions can break the index<a class="headerlink" href="#mixed-embedding-dimensions-can-break-the-index" title="Permanent link">&para;</a></h3>
+<p>The vector table is created with a single dimension inferred from one existing row.</p>
+<p>If later documents have embeddings of a different dimension, inserts into the vector table may fail. The module does not appear to validate that all embeddings have the same dimension before rebuilding or upserting.</p>
+<p>This is a data-integrity concern if the application can store heterogeneous embedding models in the same <code>documents</code> table.</p>
+<h3 id="dimension-inference-can-silently-disable-vector-indexing">Dimension inference can silently disable vector indexing<a class="headerlink" href="#dimension-inference-can-silently-disable-vector-indexing" title="Permanent link">&para;</a></h3>
+<p>If <code>_infer_embedding_dim(conn)</code> returns <code>None</code>, vector creation or rebuild is skipped.</p>
+<p>This can happen when:</p>
+<ul>
+<li>no embeddings exist,</li>
+<li>the first non-empty embedding has an invalid length,</li>
+<li>the length is not a multiple of 4.</li>
+</ul>
+<p>The result is a quiet no-op rather than an explicit error.</p>
+<h3 id="sqlite_vec-extension-loading-is-central"><code>sqlite_vec</code> extension loading is central<a class="headerlink" href="#sqlite_vec-extension-loading-is-central" title="Permanent link">&para;</a></h3>
+<p>The vector helpers depend on <code>_load_sqlite_vec(conn)</code> succeeding.</p>
+<p>If the extension is unavailable, the module degrades gracefully, but the vector index will not be maintained. Callers should be aware that a successful return of <code>0</code> does not necessarily mean "nothing to do"; it may mean "vector support unavailable".</p>
+<h3 id="shadow-table-cleanup-is-critical">Shadow-table cleanup is critical<a class="headerlink" href="#shadow-table-cleanup-is-critical" title="Permanent link">&para;</a></h3>
+<p><code>drop_vec_table(conn, name)</code> — <code>WarpCore/db.py:115-150</code></p>
+<p>Because <code>sqlite_vec</code> can create auxiliary tables, dropping the main table incorrectly can leave orphaned objects in the database. The module's <code>vec_shadow_names</code> helper suggests this is handled, but any future change to the drop logic should preserve shadow-table cleanup.</p>
+<h3 id="coupling-to-a-specific-embedding-encoding">Coupling to a specific embedding encoding<a class="headerlink" href="#coupling-to-a-specific-embedding-encoding" title="Permanent link">&para;</a></h3>
+<p>The module is tightly coupled to:</p>
+<ul>
+<li>BLOB storage,</li>
+<li>little-endian byte order,</li>
+<li><code>float32</code> values,</li>
+<li>4 bytes per dimension.</li>
+</ul>
+<p>If Spock changes its embedding storage format, this module must be updated in lockstep.</p>
+<h3 id="generic-helpers-open-a-new-connection-each-time">Generic helpers open a new connection each time<a class="headerlink" href="#generic-helpers-open-a-new-connection-each-time" title="Permanent link">&para;</a></h3>
+<p><code>table_exists</code>, <code>row_count</code>, and <code>table_names</code> each open and close their own connection.</p>
+<p>This is simple and safe, but it can be inefficient if called repeatedly in a loop. Higher-level code should batch these checks when possible.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../../js/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3576 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Local AI Workstation Management Suite — orchestrate LLMs, RAG, and knowledge bases">
+      
+      
+      
+        <link rel="canonical" href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/structure/model_selector/">
+      
+      
+        <link rel="prev" href="../spock_progress_log/">
+      
+      
+        <link rel="next" href="../bootstrap_wizard/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>model_selector - Spock-Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#structure-model_selector" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spock-Onboarding" class="md-header__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spock-Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              model_selector
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Screenshots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/quick-start/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/navigation-station/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cli/bringup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  CLI Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configuration/profiles/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/project-layout/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Code Structure
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spock-Onboarding" class="md-nav__button md-logo" aria-label="Spock-Onboarding" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Spock-Onboarding
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screenshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/readiness-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Readiness Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/detailed-specs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detailed Specs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/navigation-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigation Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/engineering-deck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Deck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/long-range-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long Range Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/science-station/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Science Station
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/rag-api-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG API Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/mcp-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Spock%20MCP%20%28Model%20Context%20Protocol%29%20tools-spock-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Tools Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/llm-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/wiki-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiki Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/model-selector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/live-monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/project-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/copy-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copy Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Structure
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Code Structure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entrypoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../root-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Root Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logic Deep Dives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_bringup_menu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup_menu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_wiki_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_wiki_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_live_monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_live_monitor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_probe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spock_progress_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_progress_log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    model_selector
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    model_selector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_selector__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/__init__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorembedding_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/embedding_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorhardware_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/hardware_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorlaunch_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/launch_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectormodel_cardpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/model_card.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectormodels_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/models_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorstatepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/state.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorstatus_windowpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/status_window.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorwidgetspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/widgets.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorworkerspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/workers.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bootstrap_wizard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    bootstrap_wizard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/Orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/NavigationStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NavigationStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/EngineeringDeck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EngineeringDeck
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/LongRangeSensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LongRangeSensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ScienceStation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceStation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/WarpCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WarpCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_bringup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_bringup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_rag_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_rag_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/spock_mcp_adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    spock_mcp_adapter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plan-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_selector__init__py" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/__init__.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorembedding_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/embedding_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorhardware_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/hardware_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorlaunch_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/launch_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectormodel_cardpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/model_card.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectormodels_panelpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/models_panel.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorstatepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/state.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorstatus_windowpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/status_window.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorwidgetspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/widgets.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_selectorworkerspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model_selector/workers.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Code Structure
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="structure-model_selector">Structure: model_selector<a class="headerlink" href="#structure-model_selector" title="Permanent link">&para;</a></h1>
+<p><strong>Files:</strong> 10 · <strong>Lines:</strong> 4,499 · <strong>Classes:</strong> 13 · <strong>Functions:</strong> 8 · <strong>Methods:</strong> 161</p>
+<p>Solid edges = module-level import/call relationships (determined statically from source; only relationships <em>within this package</em> are drawn).</p>
+<pre class="mermaid"><code>---
+title: "model_selector module relationships"
+---
+flowchart LR
+    m0["model_selector/__init__.py"]
+    m1["model_selector/embedding_panel.py"]
+    m2["model_selector/hardware_panel.py"]
+    m3["model_selector/launch_panel.py"]
+    m4["model_selector/model_card.py"]
+    m5["model_selector/models_panel.py"]
+    m6["model_selector/state.py"]
+    m7["model_selector/status_window.py"]
+    m8["model_selector/widgets.py"]
+    m9["model_selector/workers.py"]</code></pre>
+<h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
+<h3 id="model_selector__init__py"><code>model_selector/__init__.py</code><a class="headerlink" href="#model_selector__init__py" title="Permanent link">&para;</a></h3>
+<p><em>Model selector UI package (split from model_selector_panels.py).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from embedding_panel import EmbeddingProfilePanel</code>, <code>from hardware_panel import HardwareScanPanel</code>, <code>from launch_panel import LaunchPanel</code>, <code>from model_card import ModelInfoPanel</code>, <code>from model_card import model_card_to_html</code>, <code>from models_panel import ModelsPanel</code>, <code>from state import ModelSelectorState</code>, <code>from status_window import LlmStatusWindow</code>, <code>from widgets import _SortableTableItem</code>, <code>from widgets import _action_btn</code>, <code>from widgets import _panel_stylesheet</code>, <code>from workers import DownloadWorker</code>, <code>from workers import HardwareScanWorker</code>, <code>from workers import HfQueryWorker</code>, <code>from workers import LlamaConfigWorker</code>, <code>from workers import ModelCardWorker</code></p>
+<h3 id="model_selectorembedding_panelpy"><code>model_selector/embedding_panel.py</code><a class="headerlink" href="#model_selectorembedding_panelpy" title="Permanent link">&para;</a></h3>
+<p><em>Embedding profile + RAG API panel.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import time</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import QUrl</code>, <code>from PyQt6.QtCore import pyqtSignal</code>, <code>from PyQt6.QtGui import QDesktopServices</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWidgets import QCheckBox</code>, <code>from PyQt6.QtWidgets import QGridLayout</code>, <code>from PyQt6.QtWidgets import QGroupBox</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QLineEdit</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QSpinBox</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from model_selector_core import acquire_embedding_result</code>, <code>from model_selector_core import embedding_profile_identity</code>, <code>from model_selector_core import merge_embedding_profile</code>, <code>from model_selector_core import probe_embeddings_dim</code>, <code>from model_selector_core import sample_db_embedding_dim</code>, <code>from model_selector_core import sync_acquire_n_ctx_to_recipe</code>, <code>from model_selector_core import write_embedding_env</code>, <code>from widgets import _action_btn</code>, <code>from widgets import _panel_stylesheet</code>, <code>from spock_shell.open_url as _open_url</code>, <code>import urllib.request</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>EmbeddingProfilePanel(QWidget)</code></strong> — lines 40-510</li>
+<li><em>Tune ingest/RAG embeddings + llama-server -b/-ub; start external RAG API.</em></li>
+<li><code>refresh_from_acquire(self, adopt, fill)</code> <em>Show (and by default pre-fill) the embedding GGUF from step 3 Acquire.</em></li>
+<li><code>collect_rag_api(self)</code></li>
+<li><code>adopt_launched_embedding(self, model_path, model_id)</code> <em>Write the GGUF just launched on :8080 into Model path and Model id.</em></li>
+<li><code>set_rag_running(self, running, url)</code></li>
+<li><code>apply_theme(self)</code></li>
+</ul>
+<h3 id="model_selectorhardware_panelpy"><code>model_selector/hardware_panel.py</code><a class="headerlink" href="#model_selectorhardware_panelpy" title="Permanent link">&para;</a></h3>
+<p><em>Hardware scan panel (Spock-Scanner tabs).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from datetime import datetime</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import pyqtSignal</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QTabWidget</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from model_selector_core import format_hardware_report</code>, <code>from spock_scanner_core import ABOUT_TEXT</code>, <code>from spock_scanner_core import load_model_guide</code>, <code>from state import ModelSelectorState</code>, <code>from widgets import _action_btn</code>, <code>from widgets import _panel_stylesheet</code>, <code>from workers import HardwareScanWorker</code>, <code>from workers import LlamaConfigWorker</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>HardwareScanPanel(QWidget)</code></strong> — lines 29-220</li>
+<li><em>Spock-Scanner assessment UI in the middle pane.</em></li>
+<li><code>apply_theme(self)</code></li>
+</ul>
+<h3 id="model_selectorlaunch_panelpy"><code>model_selector/launch_panel.py</code><a class="headerlink" href="#model_selectorlaunch_panelpy" title="Permanent link">&para;</a></h3>
+<p><em>Local GGUF Launch panel.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtCore import pyqtSignal</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QCheckBox</code>, <code>from PyQt6.QtWidgets import QComboBox</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QHeaderView</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QLineEdit</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QSpinBox</code>, <code>from PyQt6.QtWidgets import QSplitter</code>, <code>from PyQt6.QtWidgets import QTableWidget</code>, <code>from PyQt6.QtWidgets import QTableWidgetItem</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from WarpCore.service_endpoints import DEFAULT_CTX</code>, <code>from llama_server_manager import LlamaServerManager</code>, <code>from model_selector_core import format_hardware_report</code>, <code>from model_selector_core import get_llamaccp_dir</code>, <code>from model_selector_core import get_model_directory_options</code>, <code>from model_selector_core import gpu_combo_labels</code>, <code>from model_selector_core import is_embedding_gguf_path</code>, <code>from model_selector_core import embedding_profile_identity</code>, <code>from model_selector_core import merge_embedding_profile</code>, <code>from model_selector_core import scan_gguf_models_from_directory</code>, <code>from spock_scanner_core import recommend_n_ctx</code>, <code>from state import ModelSelectorState</code>, <code>from widgets import _SortableTableItem</code>, <code>from widgets import _action_btn</code>, <code>from widgets import _panel_stylesheet</code>, <code>from workers import HardwareScanWorker</code>, <code>from spock_shell.llama_gui_command import assess_port</code>, <code>import re</code>, <code>from WarpCore.service_endpoints import DEFAULT_EMBED_PORT</code>, <code>from llmfit_session_criteria import clear_provider_filter</code>, <code>from llmfit_session_criteria import model_id_allowed</code>, <code>from llmfit_session_criteria import provider_filter_label</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore.host_recipe import effective_recipe</code>, <code>from WarpCore.host_recipe import get_current_recipe</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore.host_recipe import pinned_launch_settings</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore import settings_store</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore as hr</code>, <code>from spock_shell.paths import SHIP_COMPUTER_DB</code>, <code>from WarpCore.host_recipe import launch_plan_for_role</code>, <code>from WarpCore.host_recipe import roles_share_physical_gpu</code>, <code>from WarpCore.host_recipe import launch_overrides_for_role</code>, <code>from spock_shell.good_results_coach import tip_launch_fit</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>LaunchPanel(QWidget)</code></strong> — lines 47-1242</li>
+<li><code>use_as_embedding_server(self)</code></li>
+<li><code>clear_embedding_server_flag(self)</code> <em>Uncheck after Launch has applied Embedding Profile once.</em></li>
+<li><code>set_embedding_profile(self, profile)</code></li>
+<li><code>reload_host_recipe(self)</code> <em>Re-read the host recipe into the Launch controls (e.g. after Acquire).</em></li>
+<li><code>prepare_shutdown(self)</code> <em>Disconnect from manager signals so late log lines don't hit deleted widgets.</em></li>
+<li><code>apply_theme(self)</code></li>
+</ul>
+<h3 id="model_selectormodel_cardpy"><code>model_selector/model_card.py</code><a class="headerlink" href="#model_selectormodel_cardpy" title="Permanent link">&para;</a></h3>
+<p><em>Model card HTML helpers and ModelInfoPanel.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import re</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtCore import QUrl</code>, <code>from PyQt6.QtGui import QDesktopServices</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QStackedWidget</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from state import ModelSelectorState</code>, <code>from widgets import _action_btn</code>, <code>from widgets import _panel_stylesheet</code>, <code>from workers import ModelCardWorker</code>, <code>from PyQt6.QtWebEngineWidgets import QWebEngineView</code>, <code>import markdown as md</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>ModelInfoPanel(QWidget)</code></strong> — lines 183-284</li>
+<li><code>load_model(self, model_id)</code></li>
+<li><code>apply_theme(self)</code></li>
+</ul>
+<p><strong>Functions</strong></p>
+<ul>
+<li><strong><code>model_card_to_html(text, theme)</code></strong> — lines 105-177</li>
+<li><em>Wrap HF README (HTML fragments and/or markdown) for QWebEngineView.</em></li>
+</ul>
+<h3 id="model_selectormodels_panelpy"><code>model_selector/models_panel.py</code><a class="headerlink" href="#model_selectormodels_panelpy" title="Permanent link">&para;</a></h3>
+<p><em>HF Hub models panel (query / filter / download / Gemini).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtCore import QUrl</code>, <code>from PyQt6.QtCore import pyqtSignal</code>, <code>from PyQt6.QtGui import QDesktopServices</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWidgets import QCheckBox</code>, <code>from PyQt6.QtWidgets import QComboBox</code>, <code>from PyQt6.QtWidgets import QFileDialog</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QHeaderView</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QLineEdit</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QProgressBar</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QTabWidget</code>, <code>from PyQt6.QtWidgets import QTableWidget</code>, <code>from PyQt6.QtWidgets import QTableWidgetItem</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from gemini_openai_models import list_models_for_ui</code>, <code>from gemini_openai_models import probe_model_chat</code>, <code>from model_selector_core import PDF_AVAILABLE</code>, <code>from model_selector_core import _estimate_gguf_size_gb</code>, <code>from model_selector_core import export_report_pdf</code>, <code>from state import ModelSelectorState</code>, <code>from widgets import _SortableTableItem</code>, <code>from widgets import _action_btn</code>, <code>from widgets import _panel_stylesheet</code>, <code>from workers import DownloadWorker</code>, <code>from workers import HfQueryWorker</code>, <code>from workers import ModelCardWorker</code>, <code>from llmfit_session_criteria import clear_provider_filter</code>, <code>from llmfit_session_criteria import model_id_allowed</code>, <code>from llmfit_session_criteria import provider_filter_label</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>ModelsPanel(QWidget)</code></strong> — lines 41-791</li>
+<li><code>set_openai_compat(self, cfg)</code></li>
+<li><code>apply_theme(self)</code></li>
+</ul>
+<h3 id="model_selectorstatepy"><code>model_selector/state.py</code><a class="headerlink" href="#model_selectorstatepy" title="Permanent link">&para;</a></h3>
+<p><em>Shared ModelSelectorState for Navigation / Science stations.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from dataclasses import dataclass</code>, <code>from dataclasses import field</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>ModelSelectorState</code></strong> — lines 10-27</li>
+</ul>
+<h3 id="model_selectorstatus_windowpy"><code>model_selector/status_window.py</code><a class="headerlink" href="#model_selectorstatus_windowpy" title="Permanent link">&para;</a></h3>
+<p><em>LLM / Ship Status window (suite Tools → Ship Status).</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>import os</code>, <code>import subprocess</code>, <code>import sys</code>, <code>from typing import Any</code>, <code>from typing import Dict</code>, <code>from typing import List</code>, <code>from typing import Optional</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtCore import QTimer</code>, <code>from PyQt6.QtCore import QUrl</code>, <code>from PyQt6.QtGui import QDesktopServices</code>, <code>from PyQt6.QtGui import QFont</code>, <code>from PyQt6.QtWidgets import QApplication</code>, <code>from PyQt6.QtWidgets import QComboBox</code>, <code>from PyQt6.QtWidgets import QDialog</code>, <code>from PyQt6.QtWidgets import QFrame</code>, <code>from PyQt6.QtWidgets import QGridLayout</code>, <code>from PyQt6.QtWidgets import QGroupBox</code>, <code>from PyQt6.QtWidgets import QHBoxLayout</code>, <code>from PyQt6.QtWidgets import QHeaderView</code>, <code>from PyQt6.QtWidgets import QLabel</code>, <code>from PyQt6.QtWidgets import QListWidget</code>, <code>from PyQt6.QtWidgets import QListWidgetItem</code>, <code>from PyQt6.QtWidgets import QMessageBox</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QSpinBox</code>, <code>from PyQt6.QtWidgets import QSplitter</code>, <code>from PyQt6.QtWidgets import QTabWidget</code>, <code>from PyQt6.QtWidgets import QTableWidget</code>, <code>from PyQt6.QtWidgets import QTableWidgetItem</code>, <code>from PyQt6.QtWidgets import QTextEdit</code>, <code>from PyQt6.QtWidgets import QVBoxLayout</code>, <code>from PyQt6.QtWidgets import QWidget</code>, <code>from llama_server_manager import LlamaServerManager</code>, <code>from lm_studio_api import find_catalog_key_for_path</code>, <code>from lm_studio_api as lm_list_models</code>, <code>from lm_studio_api as lm_load_model</code>, <code>from lm_studio_api as lm_loaded_context_length</code>, <code>from lm_studio_api as lm_loaded_models</code>, <code>from lm_studio_api as lm_models_match</code>, <code>from lm_studio_api as lm_snapshot</code>, <code>from lm_studio_api as lm_unload_model</code>, <code>from model_selector_core import SCRIPT_DIR</code>, <code>from model_selector_core import get_llamaccp_dir</code>, <code>from model_selector_core import is_embedding_gguf_path</code>, <code>from spock_scanner_core import get_live_monitor_snapshot</code>, <code>from widgets import _action_btn</code>, <code>from widgets import _panel_stylesheet</code>, <code>from spock_health_report import discover_suite_service_rows</code>, <code>from spock_onboarding.llama_process import format_pid_gpu</code>, <code>from spock_onboarding.llama_process import gpu_label_for_pid</code>, <code>from spock_shell.open_url import open_url</code>, <code>from spock_shell.busy_ui import clear_override_cursors</code>, <code>from spock_health_report import format_spock_health_report</code>, <code>from spock_health_report import probe_spock_health</code>, <code>from spock_shell.busy_ui import clear_override_cursors</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>LlmStatusWindow(QWidget)</code></strong> — lines 53-1182</li>
+<li><em>Non-modal Status: Live Monitor / LM Studio tabs + llama-server instances.</em></li>
+<li><code>set_standby(self)</code></li>
+<li><code>refresh_from_manager(self)</code> <em>Populate instance table from manager + discovered processes.</em></li>
+<li><code>stop_monitor(self)</code></li>
+<li><code>apply_theme(self)</code></li>
+<li><code>closeEvent(self, event)</code></li>
+</ul>
+<h3 id="model_selectorwidgetspy"><code>model_selector/widgets.py</code><a class="headerlink" href="#model_selectorwidgetspy" title="Permanent link">&para;</a></h3>
+<p><em>Shared chrome helpers for model selector panels.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from PyQt6.QtCore import Qt</code>, <code>from PyQt6.QtWidgets import QPushButton</code>, <code>from PyQt6.QtWidgets import QTableWidgetItem</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>_SortableTableItem(QTableWidgetItem)</code></strong> — lines 36-49</li>
+<li><em>QTableWidgetItem that sorts by UserRole when set (numbers), else casefold text.</em></li>
+</ul>
+<p><strong>Functions</strong></p>
+<h3 id="model_selectorworkerspy"><code>model_selector/workers.py</code><a class="headerlink" href="#model_selectorworkerspy" title="Permanent link">&para;</a></h3>
+<p><em>Background QThreads for model selector panels.</em></p>
+<p><strong>Imports:</strong> <code>from __future__ import annotations</code>, <code>from typing import List</code>, <code>from PyQt6.QtCore import QThread</code>, <code>from PyQt6.QtCore import pyqtSignal</code>, <code>from model_selector_core import download_models</code>, <code>from model_selector_core import fetch_model_card</code>, <code>from model_selector_core import query_hf_embedding_models</code>, <code>from model_selector_core import query_hf_models</code>, <code>from spock_scanner_core import generate_llamaccp_config</code>, <code>from spock_scanner_core import run_full_hardware_assessment</code></p>
+<p><strong>Classes</strong></p>
+<ul>
+<li><strong><code>HardwareScanWorker(QThread)</code></strong> — lines 18-26</li>
+<li><code>run(self)</code></li>
+<li><strong><code>LlamaConfigWorker(QThread)</code></strong> — lines 29-37</li>
+<li><code>run(self)</code></li>
+<li><strong><code>HfQueryWorker(QThread)</code></strong> — lines 40-57</li>
+<li><code>run(self)</code></li>
+<li><strong><code>DownloadWorker(QThread)</code></strong> — lines 60-95</li>
+<li><code>run(self)</code></li>
+<li><strong><code>ModelCardWorker(QThread)</code></strong> — lines 98-106</li>
+<li><code>run(self)</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../js/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
