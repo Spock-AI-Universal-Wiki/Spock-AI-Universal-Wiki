@@ -867,8 +867,8 @@ class LaunchPanel(QWidget):
             "ngl": self.ngl_edit.text().strip(),
             "n_ctx": int(self.n_ctx_spin.value()),
             "gpu_name": self.gpu_combo.currentText(),
-            "llama_batch": int(profile.get("llama_batch", 512)),
-            "llama_ubatch": int(profile.get("llama_ubatch", 512)),
+            "llama_batch": int(profile.get("llama_batch", 2048)),
+            "llama_ubatch": int(profile.get("llama_ubatch", 2048)),
         }
         if not self.state.hardware_specs or not self.state.gpu_list:
             self.launch_status.setText("STATUS: Hardware scan required — scanning...")
@@ -960,8 +960,8 @@ class LaunchPanel(QWidget):
             ngl=ngl,
             gpu_list=self.state.gpu_list,
             gpu_name=args.get("gpu_name", ""),
-            llama_batch=int(args.get("llama_batch", 512)),
-            llama_ubatch=int(args.get("llama_ubatch", 512)),
+            llama_batch=int(args.get("llama_batch", 2048)),
+            llama_ubatch=int(args.get("llama_ubatch", 2048)),
             role=role,
             n_ctx=n_ctx,
             split_mode=str(overrides.get("split_mode") or ""),

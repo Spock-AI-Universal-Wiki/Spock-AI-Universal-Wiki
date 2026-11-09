@@ -104,6 +104,7 @@ def _embedding_env(config: Optional[Dict[str, Any]] = None) -> Dict[str, str]:
         env["SPOCK_EMBED_MODEL_PATH"] = str(profile.get("model_path") or "")
     if profile.get("model_id"):
         env["SPOCK_EMBED_MODEL_ID"] = str(profile.get("model_id") or "")
+    # Caller may already have set a filter preset; default remains scan_config "all".
     env.setdefault("WIKI_AGENT_EXTENSIONS", "all")
     env["PYTHONUNBUFFERED"] = "1"
     env["NO_COLOR"] = "1"
@@ -255,10 +256,10 @@ def build_wiki_agent_run_panel(
     lay.addWidget(continuous)
 
     tip = QLabel(
-        "Starts wiki_agent.py. Default is scan once (auto-exits when idle). "
-        "Check Continuous watch to keep indexing until Stop Scan. "
-        "Needs embeddings at the configured embed port. "
-        "Clear Embeddings (re-embed) before switching embedding GGUFs, then scan again."
+        "Run Wiki Scan opens a filter dialog (all / program / +md / +md+html) with live "
+        "progress. Default is scan once (auto-exits when idle); enable Continuous watch "
+        "in the dialog or here to keep indexing until Stop Scan. "
+        "Needs embeddings at the configured embed port."
     )
     tip.setWordWrap(True)
     lay.addWidget(tip)
@@ -288,6 +289,7 @@ def build_wiki_agent_run_panel(
         "once": True,
         "health_process": None,
         "health_reader": None,
+        "options_dialog": None,
     }
 
     def _append(line: str) -> None:
@@ -312,6 +314,7 @@ def build_wiki_agent_run_panel(
         continuous.setEnabled(True)
         state["process"] = None
         state["reader"] = None
+        _sync_options_running(False)
         hproc = state.get("health_process")
         if hproc is None or hproc.poll() is not None:
             set_busy(progress, False)
@@ -368,11 +371,57 @@ def build_wiki_agent_run_panel(
         continuous.setEnabled(True)
         status.setText("Stopped")
         set_busy(progress, False)
+        _sync_options_running(False)
         from spock_shell.busy_ui import clear_override_cursors
 
         clear_override_cursors()
 
+    def _sync_options_running(running: bool) -> None:
+        dlg = state.get("options_dialog")
+        if dlg is not None:
+            try:
+                dlg.set_running(running)
+            except RuntimeError:
+                state["options_dialog"] = None
+
+    def _open_options() -> None:
+        """Show non-modal filter + progress dialog (does not start the agent yet)."""
+        from spock_wiki_adapter.scan_options import WikiScanOptionsDialog
+
+        dlg = state.get("options_dialog")
+        if dlg is not None:
+            try:
+                dlg.continuous.setChecked(continuous.isChecked())
+                dlg.set_running(_scan_running())
+                dlg.show()
+                dlg.raise_()
+                dlg.activateWindow()
+                return
+            except RuntimeError:
+                state["options_dialog"] = None
+
+        dlg = WikiScanOptionsDialog(
+            wrap,
+            on_start=_start_scan,
+            on_stop=_stop,
+            continuous_default=continuous.isChecked(),
+        )
+        state["options_dialog"] = dlg
+        dlg.set_running(_scan_running())
+        dlg.show()
+        dlg.raise_()
+        dlg.activateWindow()
+
     def _run() -> None:
+        if state.get("process") is not None and state["process"].poll() is None:
+            QMessageBox.information(
+                wrap, "Wiki Scan", "Already running — use Stop Scan first."
+            )
+            _open_options()
+            return
+        _open_options()
+
+    def _start_scan(extensions_env: str, continuous_watch: bool) -> None:
         if state.get("process") is not None and state["process"].poll() is None:
             QMessageBox.information(
                 wrap, "Wiki Scan", "Already running — use Stop Scan first."
@@ -385,13 +434,16 @@ def build_wiki_agent_run_panel(
             QMessageBox.warning(wrap, "Wiki Scan", f"Missing {script}")
             return
 
+        continuous.setChecked(bool(continuous_watch))
         once = not continuous.isChecked()
         state["once"] = once
         mode_flag = "--once" if once else "--continuous"
+        ext_env = (extensions_env or "all").strip() or "all"
 
         run_btn.setEnabled(False)
         stop_btn.setEnabled(False)
         continuous.setEnabled(False)
+        _sync_options_running(True)
         status.setText("Starting wiki scan…")
         set_busy(progress, True)
         from spock_shell.busy_ui import clear_override_cursors
@@ -407,6 +459,7 @@ def build_wiki_agent_run_panel(
                 return
 
             env = _embedding_env(config)
+            env["WIKI_AGENT_EXTENSIONS"] = ext_env
             emb = env.get("EMBEDDINGS_URL", "")
             profile = merge_embedding_profile(config.get("embedding_profile"))
 
@@ -459,6 +512,7 @@ def build_wiki_agent_run_panel(
                     env["SPOCK_EMBED_MODEL_PATH"] = live_path
                 log.clear()
                 _append(f"$ {exe} -u {script} {mode_flag}")
+                _append(f"WIKI_AGENT_EXTENSIONS={ext_env}")
                 _append(f"EMBEDDINGS_URL={emb}")
                 _append(
                     f"Embedding GGUF: {(row or {}).get('model_name') or live_path or '—'}"
@@ -507,12 +561,14 @@ def build_wiki_agent_run_panel(
             status.setText(f"Running ({mode_lbl}, PID {proc.pid}) · {emb}")
             started = True
             stop_btn.setEnabled(True)
+            _sync_options_running(True)
         finally:
             clear_override_cursors()
             if not started:
                 run_btn.setEnabled(True)
                 stop_btn.setEnabled(False)
                 continuous.setEnabled(True)
+                _sync_options_running(False)
                 set_busy(progress, False)
                 if status.text().startswith("Starting"):
                     status.setText("Ready")
@@ -686,6 +742,8 @@ def build_wiki_agent_run_panel(
     list_roots_btn.clicked.connect(_list_roots)
 
     wrap._run = _run  # type: ignore[attr-defined]
+    wrap._start_scan = _start_scan  # type: ignore[attr-defined]
+    wrap._open_options = _open_options  # type: ignore[attr-defined]
     wrap._stop = _stop  # type: ignore[attr-defined]
     wrap._status = status  # type: ignore[attr-defined]
     wrap._log = log  # type: ignore[attr-defined]

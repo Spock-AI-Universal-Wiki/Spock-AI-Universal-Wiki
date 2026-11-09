@@ -167,6 +167,19 @@ def build_server_argv(
 ) -> List[str]:
     if role is None:
         role = "embedding" if is_embedding_gguf_path(model_path) else "chat"
+    # EmbeddingGemma ~560 tokens at truncate_chars=1500; -b 512 returns HTTP 500.
+    if role == "embedding":
+        try:
+            from WarpCore.config_defaults import DEFAULT_EMBEDDING_PROFILE
+
+            profile_b = int(DEFAULT_EMBEDDING_PROFILE.get("llama_batch") or 2048)
+            profile_ub = int(DEFAULT_EMBEDDING_PROFILE.get("llama_ubatch") or profile_b)
+        except Exception:
+            profile_b, profile_ub = 2048, 2048
+        if int(batch) <= 512:
+            batch = profile_b
+        if ubatch is None or int(ubatch) <= 512:
+            ubatch = profile_ub
     ub = int(ubatch if ubatch is not None else batch)
     cmd = [
         llama_server,
@@ -393,6 +406,19 @@ class LlamaProcessManager:
             raise FileNotFoundError(f"model not found: {model_path}")
         if role is None:
             role = "embedding" if is_embedding_gguf_path(model_path) else "chat"
+        # Resolve embedding -b/-ub before argv build (same rules as build_server_argv).
+        if role == "embedding":
+            try:
+                from WarpCore.config_defaults import DEFAULT_EMBEDDING_PROFILE
+
+                profile_b = int(DEFAULT_EMBEDDING_PROFILE.get("llama_batch") or 2048)
+                profile_ub = int(DEFAULT_EMBEDDING_PROFILE.get("llama_ubatch") or profile_b)
+            except Exception:
+                profile_b, profile_ub = 2048, 2048
+            if int(batch) <= 512:
+                batch = profile_b
+            if ubatch is None or int(ubatch) <= 512:
+                ubatch = profile_ub
         saved: Optional[List[str]] = None
         try:
             from spock_shell.llama_gui_command import saved_argv

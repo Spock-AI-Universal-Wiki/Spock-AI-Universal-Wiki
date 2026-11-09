@@ -492,7 +492,7 @@ class LlamaServerManager(QObject):
         gpu_name: str = "",
         llama_batch: int = 512,
         llama_ubatch: Optional[int] = None,
-        role: Optional[str] = None,
+        role: Optional[str] = None,  # embedding bumps -b/-ub via DEFAULT_EMBEDDING_PROFILE below
         n_ctx: Optional[int] = None,
         *,
         split_mode: str = "",
@@ -600,6 +600,19 @@ class LlamaServerManager(QObject):
 
         batch = max(1, int(llama_batch or 512))
         ubatch = max(1, int(llama_ubatch if llama_ubatch is not None else batch))
+        # EmbeddingGemma ~560 tokens at truncate_chars=1500; -b 512 → HTTP 500.
+        if (role or "").lower() in ("embedding", "embed"):
+            try:
+                from WarpCore.config_defaults import DEFAULT_EMBEDDING_PROFILE
+
+                profile_b = int(DEFAULT_EMBEDDING_PROFILE.get("llama_batch") or 2048)
+                profile_ub = int(DEFAULT_EMBEDDING_PROFILE.get("llama_ubatch") or profile_b)
+            except Exception:
+                profile_b, profile_ub = 2048, 2048
+            if batch <= 512:
+                batch = profile_b
+            if llama_ubatch is None or ubatch <= 512:
+                ubatch = profile_ub
 
         cmd = [
             self.llama_server_path,

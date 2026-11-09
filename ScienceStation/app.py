@@ -17,7 +17,7 @@ from model_selector_panels import (
 from model_selector_core import merge_embedding_profile
 from NavigationStation.steps.hardware import build_hardware_step
 from ScienceStation.ships_logs import build_ships_logs_panel
-from ScienceStation.wiki_run import build_wiki_agent_run_panel
+from spock_wiki_adapter.wiki_run import build_wiki_agent_run_panel
 from spock_shell.brave_search import build_brave_search_panel
 from spock_shell.bridge_host import make_llm_client
 from spock_shell.config import save_config

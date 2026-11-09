@@ -373,20 +373,33 @@ def cmd_up(
                 else (" (multi-GPU)" if ts and role == "chat" else "")
             )
         )
-        inst = mgr.launch(
-            model,
-            port,
-            ngl=ngl,
-            role=role,
-            n_ctx=n_ctx,
-            split_mode=sm,
-            tensor_split=ts,
-            n_parallel=plan_ov.get("n_parallel"),
-            pin_cuda=plan_ov.get("pin_cuda"),
-            cuda_device=str(plan_ov.get("cuda_device") or ""),
-            n_cpu_moe=int(plan_ov.get("n_cpu_moe") or 0),
-            reasoning=str(plan_ov.get("reasoning") or ""),
-        )
+        launch_kw: Dict[str, Any] = {
+            "ngl": ngl,
+            "role": role,
+            "n_ctx": n_ctx,
+            "split_mode": sm,
+            "tensor_split": ts,
+            "n_parallel": plan_ov.get("n_parallel"),
+            "pin_cuda": plan_ov.get("pin_cuda"),
+            "cuda_device": str(plan_ov.get("cuda_device") or ""),
+            "n_cpu_moe": int(plan_ov.get("n_cpu_moe") or 0),
+            "reasoning": str(plan_ov.get("reasoning") or ""),
+        }
+        if role == "embedding":
+            try:
+                from WarpCore.config_defaults import merge_embedding_profile
+
+                eprof = merge_embedding_profile()
+                launch_kw["batch"] = int(eprof.get("llama_batch") or 2048)
+                launch_kw["ubatch"] = int(eprof.get("llama_ubatch") or launch_kw["batch"])
+                _log(
+                    cb,
+                    f"Embedding -b {launch_kw['batch']} -ub {launch_kw['ubatch']} "
+                    f"(truncate_chars={eprof.get('truncate_chars', 1500)})",
+                )
+            except Exception as e:
+                _log(cb, f"Embedding profile batch unavailable ({e}); using llama defaults")
+        inst = mgr.launch(model, port, **launch_kw)
         probe = wait_until_healthy(
             probe_llama_server,
             "127.0.0.1",

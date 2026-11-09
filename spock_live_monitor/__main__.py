@@ -122,13 +122,21 @@ class LiveMonitorWindow(QMainWindow):
         self.table = QTableWidget(0, 4)
         self.table.setHorizontalHeaderLabels(["Role", "Model", "Port", "PID"])
         self.table.horizontalHeader().setStretchLastSection(True)
-        self.table.setMinimumHeight(140)
+        self.table.setMinimumHeight(120)
         layout.addWidget(self.table)
+
+        from spock_wiki_adapter.scan_progress import WikiScanProgressWidget
+
+        self.scan_progress = WikiScanProgressWidget(
+            self, interval_ms=1000, auto_start=True
+        )
+        self.scan_progress.setMinimumHeight(160)
+        layout.addWidget(self.scan_progress, 1)
 
         layout.addWidget(QLabel("Live output:"))
         self.log = QTextEdit()
         self.log.setReadOnly(True)
-        self.log.setMinimumHeight(160)
+        self.log.setMinimumHeight(120)
         layout.addWidget(self.log, 1)
 
         self.setStyleSheet(
@@ -148,6 +156,8 @@ class LiveMonitorWindow(QMainWindow):
     def _toggle_monitor(self) -> None:
         if self._timer.isActive():
             self._timer.stop()
+            if hasattr(self, "scan_progress"):
+                self.scan_progress.stop()
             self.monitor_btn.setText("Start Monitor")
             self.monitor_btn.setStyleSheet(
                 "QPushButton { background:#5C6BC0; color:#fff; padding:8px 12px; "
@@ -155,6 +165,9 @@ class LiveMonitorWindow(QMainWindow):
             )
         else:
             self._timer.start(self.monitor_interval.value())
+            if hasattr(self, "scan_progress"):
+                self.scan_progress.set_interval_ms(self.monitor_interval.value())
+                self.scan_progress.start()
             self.monitor_btn.setText("Stop Monitor")
             self.monitor_btn.setStyleSheet(
                 "QPushButton { background:#6D9E5A; color:#fff; padding:8px 12px; "
@@ -204,6 +217,9 @@ class LiveMonitorWindow(QMainWindow):
             wanted = self.monitor_interval.value()
             if self._timer.interval() != wanted:
                 self._timer.setInterval(wanted)
+            # Keep Wiki Scan progress cadence in sync with the monitor interval.
+            if hasattr(self, "scan_progress"):
+                self.scan_progress.set_interval_ms(wanted)
         self._refresh_instances(True)
 
     def _refresh_instances(self, quiet: bool = False) -> None:

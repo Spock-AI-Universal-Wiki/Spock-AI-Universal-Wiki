@@ -40,12 +40,7 @@ def deserialize_embedding(blob):
     n = len(blob) // 4
     return list(struct.unpack(f"{n}f", blob))
 
-def get_query_embedding(text):
-    import urllib.request
-    payload = json.dumps({"input": text}).encode()
-    req = urllib.request.Request(EMBED_URL, data=payload, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.loads(resp.read())
+def _parse_embedding_response(data):
     # llama.cpp returns: [{"index":0,"embedding":[[...]]}]
     # embedding may be [[token_vec]] (nested) or [vec] (flat)
     raw = None
@@ -67,6 +62,54 @@ def get_query_embedding(text):
     from spock_rag_adapter.embedding_utils import flatten_embedding
 
     return flatten_embedding(raw)
+
+
+def get_query_embedding(text):
+    """POST one string to :8080. On HTTP 500 (llama -b too small), retry shorter text."""
+    import urllib.error
+    import urllib.request
+
+    candidates = [text]
+    # EmbeddingGemma ~0.4 tok/char: 1500 chars can exceed llama -b 512.
+    for limit in (1200, 900, 700):
+        if len(text) > limit:
+            candidates.append(text[:limit])
+
+    last_err = None
+    for attempt in candidates:
+        payload = json.dumps({"input": attempt}).encode()
+        req = urllib.request.Request(
+            EMBED_URL, data=payload, headers={"Content-Type": "application/json"}
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read())
+            vec = _parse_embedding_response(data)
+            if vec is not None:
+                if attempt is not text:
+                    print(
+                        f"  note: re-embed used {len(attempt)} chars "
+                        f"(full {len(text)} exceeded llama -b)"
+                    )
+                return vec
+        except urllib.error.HTTPError as e:
+            last_err = e
+            body = ""
+            try:
+                body = e.read().decode("utf-8", errors="replace")[:300]
+            except Exception:
+                pass
+            too_big = e.code == 500 and (
+                "physical batch size" in body.lower()
+                or "too large" in body.lower()
+                or not body
+            )
+            if too_big and attempt is not candidates[-1]:
+                continue
+            raise
+    if last_err:
+        raise last_err
+    return None
 
 # ── Connect ──────────────────────────────────────────────
 section("DATABASE CONNECTION")
@@ -335,7 +378,11 @@ if embedded_docs:
     if doc_text:
         truncated = doc_text[:1500]
         print(f"  Re-embedding doc {pick[0]} '{pick[1]}' ({len(truncated)} chars)...")
-        fresh_vec = get_query_embedding(truncated)
+        try:
+            fresh_vec = get_query_embedding(truncated)
+        except Exception as e:
+            fail("Re-embed request", str(e)[:200])
+            fresh_vec = None
         stored_vec = deserialize_embedding(pick[2])
         if fresh_vec and stored_vec and len(fresh_vec) == len(stored_vec):
             sim = cosine_sim(fresh_vec, stored_vec)
@@ -346,7 +393,7 @@ if embedded_docs:
                 ok("Batch consistency", f"near-identical (sim={sim:.6f}) — truncation or batching diff")
             else:
                 fail("Batch consistency", f"sim={sim:.6f} — model may have changed")
-        else:
+        elif fresh_vec is not None and stored_vec is not None:
             fail("Dimension mismatch", f"fresh={len(fresh_vec)} stored={len(stored_vec)}")
 
 # ── Summary ───────────────────────────────────────────────

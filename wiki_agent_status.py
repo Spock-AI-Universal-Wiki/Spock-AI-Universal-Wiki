@@ -189,6 +189,245 @@ def agent_alive(session: dict | None) -> bool:
     return False
 
 
+def collect_status_snapshot() -> dict:
+    """Structured progress for live UI (Wiki Scan dialog / Live Monitor).
+
+    Same accounting as the CLI report: session scope, onboarding file units,
+    and mid-batch ``wiki_ingest_progress.json`` credit.
+    """
+    empty = {
+        "ok": False,
+        "error": "",
+        "alive": False,
+        "pct": 0,
+        "done": 0,
+        "total": 0,
+        "pending": 0,
+        "running": 0,
+        "failed": 0,
+        "unit_label": "files",
+        "rate_str": "N/A",
+        "eta_str": "N/A",
+        "elapsed_str": "N/A",
+        "progress_note": "",
+        "filter": "",
+        "agent_line": "not running",
+        "docs": 0,
+        "embedded": 0,
+        "missing_emb": 0,
+        "last_path": "",
+        "summary": "No database yet.",
+    }
+    if not DB.exists():
+        empty["error"] = f"Database not found: {DB}"
+        empty["summary"] = empty["error"]
+        return empty
+
+    now = int(time.time())
+    session = load_session()
+    alive = agent_alive(session)
+    conn = _connect()
+    try:
+        jobs_pending = conn.execute(
+            "SELECT count(*) FROM agent_queue WHERE status='pending'"
+        ).fetchone()[0]
+        jobs_running = conn.execute(
+            "SELECT count(*) FROM agent_queue WHERE status='running'"
+        ).fetchone()[0]
+        jobs_active = jobs_pending + jobs_running
+
+        if session and session.get("started_at"):
+            run_start = int(session["started_at"])
+            scope = "agent session"
+        else:
+            row = conn.execute(
+                "SELECT MIN(created_at) FROM agent_queue "
+                "WHERE status IN ('pending','running')"
+            ).fetchone()
+            if row and row[0]:
+                run_start = int(row[0])
+                scope = "active queue"
+            else:
+                run_start = now - 86400
+                scope = "last 24h (idle)"
+
+        scope_rows = conn.execute(
+            """
+            SELECT skill_name, status, payload_json, started_at, finished_at,
+                   created_at, error_msg
+            FROM agent_queue
+            WHERE status IN ('pending','running')
+               OR (status IN ('done','failed') AND finished_at >= ?)
+            """,
+            (run_start,),
+        ).fetchall()
+
+        files_pending = files_running = files_done = files_failed = 0
+        jobs_done = jobs_failed = 0
+        onboard_job_secs: list[float] = []
+        for r in scope_rows:
+            skill = str(r["skill_name"] or "")
+            status = str(r["status"] or "")
+            units = work_units(skill, r["payload_json"])
+            cancelled = status == "failed" and is_user_cancelled(r["error_msg"])
+            if skill == "onboarding" and not cancelled:
+                if status == "pending":
+                    files_pending += units
+                elif status == "running":
+                    files_running += units
+                elif status == "done":
+                    files_done += units
+                elif status == "failed":
+                    files_failed += units
+            if status == "done":
+                jobs_done += 1
+            elif status == "failed" and not cancelled:
+                jobs_failed += 1
+            if (
+                skill == "onboarding"
+                and status in ("done", "failed")
+                and not cancelled
+                and r["started_at"]
+                and r["finished_at"]
+                and int(r["finished_at"]) > int(r["started_at"])
+            ):
+                onboard_job_secs.append(
+                    float(int(r["finished_at"]) - int(r["started_at"]))
+                )
+
+        progress = load_ingest_progress(now, agent_alive=alive)
+        progress_note = ""
+        if progress and files_running > 0:
+            mid_total = int(progress.get("total") or 0)
+            mid_done = int(progress.get("processed") or 0)
+            if mid_total > 0 and abs(mid_total - files_running) <= max(
+                8, files_running // 50
+            ):
+                credited = max(0, min(mid_done, mid_total))
+                files_done += credited
+                files_running = max(0, mid_total - credited)
+                phase = str(progress.get("phase") or "")
+                progress_note = (
+                    f"Live flush: {credited}/{mid_total} "
+                    f"(ready {progress.get('ready', 0)}, "
+                    f"skipped {progress.get('skipped', 0)}, "
+                    f"failed {progress.get('failed', 0)}"
+                    + (f", phase {phase}" if phase else "")
+                    + ")"
+                )
+
+        ingest_active = files_pending + files_running
+        ingest_total = ingest_active + files_done + files_failed
+        jobs_total = jobs_pending + jobs_running + jobs_done + jobs_failed
+        if ingest_total:
+            done, total = files_done, ingest_total
+            pending, running, failed = files_pending, files_running, files_failed
+            unit_label = "files"
+        else:
+            done, total = jobs_done, jobs_total
+            pending, running, failed = jobs_pending, jobs_running, jobs_failed
+            unit_label = "jobs"
+
+        pct = (done * 100 // total) if total else 0
+        bar_len = 30
+        filled = int(bar_len * done / total) if total else 0
+        bar = "█" * filled + "░" * (bar_len - filled)
+
+        docs = conn.execute("SELECT count(*) FROM documents").fetchone()[0]
+        embedded = conn.execute(
+            "SELECT count(*) FROM documents WHERE embedding IS NOT NULL"
+        ).fetchone()[0]
+        missing_emb = docs - embedded
+        last_path_row = conn.execute(
+            "SELECT path FROM documents ORDER BY updated_at DESC LIMIT 1"
+        ).fetchone()
+        last_path = str(last_path_row[0]) if last_path_row else ""
+    finally:
+        conn.close()
+
+    session_elapsed = None
+    if session and session.get("started_at"):
+        session_elapsed = max(0, now - int(session["started_at"]))
+
+    rate_str = "N/A"
+    eta_str = "N/A"
+    work_elapsed = None
+    if ingest_total:
+        busy = sum(onboard_job_secs)
+        # running onboarding age is already reflected via mid-batch credit;
+        # approximate work window from finished job secs + session when busy.
+        if session_elapsed and (ingest_active or done):
+            work_elapsed = max(1, int(busy or session_elapsed))
+        elif busy:
+            work_elapsed = max(1, int(busy))
+    if work_elapsed and done > 0:
+        rate = done / work_elapsed
+        if unit_label == "files":
+            rate_str = f"{rate:.2f} files/s ({rate * 60:.0f}/min)"
+        else:
+            rate_str = f"{rate:.2f}/s ({rate * 60:.0f}/min)"
+        remaining = pending + running
+        if rate > 0 and remaining > 0:
+            eta_str = fmt_dur(remaining / rate)
+        elif remaining == 0:
+            eta_str = "done"
+
+    filt = ""
+    if session:
+        filt = str(session.get("filter") or "all")
+        exts = session.get("extensions") or []
+        if isinstance(exts, list) and exts and filt not in ("all", "*", "default"):
+            filt = f"{filt} ({len(exts)} ext)"
+
+    agent_line = "RUNNING" if alive else "not running"
+    if session and session.get("pid"):
+        agent_line += f" (PID {session['pid']})"
+
+    verb = "ingested" if unit_label == "files" else "processed"
+    lines = [
+        f"Agent: {agent_line}",
+        f"Scope: {scope}",
+        f"[{bar}] {pct}%",
+        f"{done}/{total} {unit_label} {verb} | {pending} queued | "
+        f"{running} active | {failed} failed",
+    ]
+    if progress_note:
+        lines.append(progress_note)
+    if filt:
+        lines.append(f"Filter: {filt}")
+    lines.append(f"Elapsed: {fmt_dur(session_elapsed)}  ·  Rate: {rate_str}  ·  ETA: {eta_str}")
+    lines.append(f"Documents: {docs} ({embedded} embedded, {missing_emb} missing)")
+    if last_path:
+        lines.append(f"Last doc: {last_path}")
+    if progress and progress.get("last_path"):
+        lines.append(f"Last ingest: {progress.get('last_path')}")
+
+    return {
+        "ok": True,
+        "error": "",
+        "alive": alive,
+        "pct": int(pct),
+        "done": int(done),
+        "total": int(total),
+        "pending": int(pending),
+        "running": int(running),
+        "failed": int(failed),
+        "unit_label": unit_label,
+        "rate_str": rate_str,
+        "eta_str": eta_str,
+        "elapsed_str": fmt_dur(session_elapsed),
+        "progress_note": progress_note,
+        "filter": filt,
+        "agent_line": agent_line,
+        "docs": int(docs),
+        "embedded": int(embedded),
+        "missing_emb": int(missing_emb),
+        "last_path": last_path,
+        "summary": "\n".join(lines),
+        "jobs_active": int(jobs_active),
+    }
+
+
 def main() -> int:
     if not DB.exists():
         print(f"Database not found: {DB}")
