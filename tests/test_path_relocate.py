@@ -25,11 +25,11 @@ def test_relocate_posix_to_windows_style(tmp_path: Path, monkeypatch):
     # Only stub host_os_name — do not patch os.name (breaks pathlib on Linux).
     monkeypatch.setattr(pr, "host_os_name", lambda: "nt")
 
-    foreign = "/home/kimml/src/Spock-AI-Universal-Wiki/models/embeddinggemma-2-GGUF/embeddinggemma-2-Q8_0.gguf"
+    foreign = "/home/user/src/Spock-AI-Universal-Wiki/models/embeddinggemma-2-GGUF/embeddinggemma-2-Q8_0.gguf"
     out = pr.relocate_path(
         foreign,
         new_root=root,
-        old_root="/home/kimml/src/Spock-AI-Universal-Wiki",
+        old_root="/home/user/src/Spock-AI-Universal-Wiki",
     )
     assert out is not None
     assert Path(out) == gguf.resolve()

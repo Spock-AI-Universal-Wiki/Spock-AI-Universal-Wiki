@@ -40,9 +40,9 @@ $WINGET_PY_ID    = "Python.Python.3.15"
 $PY_INSTALLER_URL = "https://www.python.org/ftp/python/$PY_FULL/python-$PY_FULL-amd64.exe"
 $PY_INSTALLER    = "python-$PY_FULL-amd64.exe"
 
-$GITHUB_OWNER    = "kimmlombard"
-$GITHUB_REPO     = "Spock-Universal-AI-Wiki"
-$GITHUB_BRANCH   = "cursor/nav-station-suite-ux"
+$GITHUB_OWNER    = "Spock-AI-Universal-Wiki"
+$GITHUB_REPO     = "Spock-AI-Universal-Wiki"
+$GITHUB_BRANCH   = "main"
 $REPO_ZIP_URL    = "https://github.com/$GITHUB_OWNER/$GITHUB_REPO/archive/refs/heads/$GITHUB_BRANCH.zip"
 $REPO_EXTRACT    = "$GITHUB_REPO-$($GITHUB_BRANCH.Replace('/','-'))"
 

@@ -55,7 +55,7 @@ powershell
 ### GitHub
 
 The code is available at:  
-**https://github.com/kimmlombard/Spock-UIE-Wiki-KB**
+**https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki**
 
 * * *
 

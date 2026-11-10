@@ -32,7 +32,12 @@ Set-Location -LiteralPath $PSScriptRoot
 $LogsDir = Join-Path $PSScriptRoot "logs"
 $null = New-Item -ItemType Directory -Force -Path $LogsDir
 
-$ModelGguf = "C:\Users\kimml\.lmstudio\models\JackAgentLead\Jack-3.8-27B-Coder-16GB-VRAM\Jack-3.8-27B-Coder-16GB-VRAM.gguf"
+# Prefer SPOCK_MODEL_GGUF; otherwise a repo-relative placeholder under .\models.
+$ModelGguf = if ($env:SPOCK_MODEL_GGUF) {
+    $env:SPOCK_MODEL_GGUF
+} else {
+    Join-Path $PSScriptRoot "models\chat-model.gguf"
+}
 
 $LocalLlama = Join-Path $PSScriptRoot "tools\llama-server\llama-server.exe"
 $SysMkdocs = Join-Path $PSScriptRoot ".venv\Scripts\mkdocs.exe"
