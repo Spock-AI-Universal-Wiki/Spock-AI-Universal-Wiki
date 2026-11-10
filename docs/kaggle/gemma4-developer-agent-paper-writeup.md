@@ -1,206 +1,166 @@
 # Spock: A Local-First Agentic Software Engineering Workstation for Gemma and Gemini on Consumer Hardware
 
+**Subtitle:** Best New Resource — an open workstation that makes Gemma, EmbeddingGemma, and Gemini usable for grounded GitHub and wiki comprehension on everyday hardware  
 **Track:** Google Gemma 4 Developer Agent — Paper Track  
-**Prize framing:** Best New Resource  
-**Artifact:** [github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki](https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki) · [Docs](https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/) · [Screenshot gallery](https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/)
+**Artifacts:** 
+· [github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki](https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki) 
+· [Docs](https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/) 
+· [Screenshot gallery](https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/)
 
 ---
 
-## 1. Overview / Abstract
+## Abstract
 
-Cloud coding agents are powerful, but many software teams still need **capable agents that run offline or on everyday GPUs**—with grounded answers over *their* repositories, not only generic web knowledge. The Gemma 4 Developer Agent Paper Track asks for resources that make local and hybrid agentic software engineering practical. **Spock** is such a resource: an open, Windows-first (with WSL/Linux console peers) workstation suite that turns a greenfield machine into a bring-up, retrieval, and tool-using agent host.
+Cloud coding agents are powerful, but many developers still need agents that run **offline or on consumer GPUs**, with answers grounded in *their* repositories rather than generic web knowledge. This Paper Track submission presents **Spock** as a **Best New Resource**: an open, multi-platform agentic software-engineering workstation—not a new Gemma 4 post-training recipe.
 
-Spock does not claim a new Gemma 4 post-training recipe. Instead it ships the **ops and retrieval substrate** that agentic SE needs: hardware-aware model acquisition (llmfit + Hub shortlists), dual llama-server roles (embedding + chat), hybrid SQLite FTS5 + vector RAG (`ship_computer.db`), an MCP HTTP adapter for IDE clients such as Cursor, and **first-class Google / Gemma / Gemini paths**—local GGUF catalogs, EmbeddingGemma profiles, OpenAI-compatible and Vertex/Gemini connectors, plus an in-app Google Search / Gemini panel. A Maintenance **Provider** allow-list can restrict Acquire / Hugging Face / Launch lists to `google` (or any orgs); an empty list means all providers.
+Spock productizes the missing ops and retrieval substrate: hardware-aware model acquisition (llmfit + Hub shortlists), dual llama-server roles (embedding + chat), hybrid SQLite FTS5 + vector RAG (`ship_computer.db`), GitHub/wiki ingestion, Ask AI / Deep Dive over scoped corpora, an MCP HTTP adapter for IDE clients, and first-class **Google / Gemma / Gemini** paths (GGUF catalogs, EmbeddingGemma profiles, OpenAI-compatible and Vertex/Gemini connectors). A dedicated **Spock AI Helper** answers installation and usage questions about Spock itself from curated `AIHelperDocuments/`, so bring-up is assisted rather than tribal knowledge. Spock runs on **Windows, WSL, Linux Ubuntu, and Apple Silicon (macOS)**.
 
-This paper points judges to a **reproducible public artifact**: source, MkDocs documentation, and a captioned screenshot gallery generated from ShareX captures via LM Studio vision. Reproduce by cloning the repo, running Phase A/B bootstrap, acquiring a Gemma GGUF (or pointing at Gemini), scanning a wiki/repo into the ship computer, and asking grounded questions—without Competition Data.
-
----
-
-## 2. Novelty
-
-Most open “local LLM” projects stop at a chat UI or a single server binary. Agentic software engineering fails for a different reason: **the model is not the bottleneck—the workstation is**. Novelty in Spock is the integrated insight that offline/consumer-hardware agents need a **composable substrate**:
-
-1. **Hardware recipes before download** — fit selection merges llmfit signals, Hub rows, and catalog policy so Acquire proposes models that fit VRAM, not a random Hub search.
-2. **Dual-model co-hosting** — embedding and chat roles are first-class, with ports, profiles, and status probes so RAG and dialogue do not fight over one overloaded process.
-3. **Hybrid RAG as the memory contract** — documents become chunks + FTS5 + embeddings; Ask AI / Deep Dive cite the ship computer rather than inventing paths.
-4. **MCP as the agent I/O bus** — the same workstation exposes tools to external agents, so Cursor (or peers) can drive Spock without reinventing ingestion.
-5. **Provider-shaped evidence for Google models** — Gemma on Hub, EmbeddingGemma in profiles, Gemini/Vertex connectors, and UI filters that can lock the shortlist to Google while remaining provider-agnostic when the allow-list is empty.
-
-That combination is the resource: not a fine-tune checkpoint, but a **shippable SE workstation** that makes Gemma/Gemini usable for agentic workflows on consumer hardware.
-
-### Why “substrate” rather than “another chat app”
-
-A chat wrapper around llama.cpp is useful, but agentic SE repeatedly needs the same missing pieces: (a) choosing a model that fits the machine before wasting bandwidth, (b) keeping an embedding service alive beside chat, (c) ingesting a moving codebase without a cloud index, (d) exposing tools to the IDE agent that is already writing the code. Spock treats those as **product surfaces** (Acquire dialog, Ship Status, Wiki Scan, MCP panel, Provider tab) instead of undocumented scripts. The novelty is therefore **productization of the local agent stack** with Google-model evidence baked into the default path—not a claim that Gemma weights themselves are new.
-
-### Separation from PEFT / RL papers
-
-Judges should score this submission on **resource criteria** (novelty of the tool, generality, relevance, verifiability, clarity). Spock explicitly avoids competing as a training paper: there is no custom Gemma 4 reward model, no private preference dataset, and no leaderboard CSV. Where Gemma 4 appears in catalogs or ID tests, Spock documents **support and operability**. Where this host runs Gemma 2/3 GGUFs for demos, the writeup says so. Honesty is part of verifiability.
+The public artifact is Apache-2.0 source, MkDocs documentation, and a captioned screenshot gallery. Judges can reproduce without Competition Data: clone, bootstrap, acquire a Gemma-family GGUF (or point at Gemini - OpenAI,or Vertex), ingest ANY github repo, ask grounded questions, and optionally connect MCP.
 
 ---
 
-## 3. Quality / Generality
+## Introduction
 
-Spock is intentionally **not** a single-leaderboard harness:
+Today’s strongest coding agents assume internet-connected frontier models and cloud sandboxes. The Gemma 4 Developer Agent program asks a complementary question: how do we make **agentic software engineering** practical on everyday hardware? The main track ranks agents by bugs fixed. This Paper Track asks for research and resources that advance the field. Spock answers as **software**—a shippable workstation—aligned with the official Best New Resource example of tools that help explore GitHub repositories and related code structure.
 
-- **Any corpus** — wiki scan and UIEG capture ingest local trees and crawled pages into SQLite; the same Ask/Deep Dive path works for arbitrary repos once indexed.
-- **OpenAI-compatible clients** — chat and embeddings speak familiar HTTP APIs; LM Studio, Ollama, llama.cpp, and cloud OpenAI-compatible endpoints plug into Configure AI.
-- **MCP for third-party agents** — tools are documented in-app (MCP reference tab) with a typical localhost port layout.
-- **Provider-agnostic core, Google-proven paths** — the allow-list can be empty (all orgs) or set to `google` for competition-aligned demos; HF chat filter screenshots show Google-provided Gemma-family rows; gallery captions document Search/Gemini tooling beside Navigation and Engineering stations.
+Most open “local LLM” projects stop at a chat UI or a single server binary. Agentic SE fails for a different reason: **the model is often not the bottleneck—the workstation is**. Engineers need (a) models that fit detected VRAM before download, (b) an embedding service co-hosted with chat so RAG does not starve generation, (c) ingestion of moving codebases without a cloud index, (d) tools the IDE agent can call, and (e) human-scale help when installation stalls. Spock treats those as product surfaces—Acquire, Ship Status, Wiki Scan / GitHub fetch, Ask AI / Deep Dive, MCP, Provider allow-list, and **AI Helper**—instead of undocumented scripts.
 
-Quality shows up as **operability**: Ship Status / live monitor, embedding health probes, config profiles, and Maintenance (scan roots, DB, timing, recipes) keep the substrate inspectable rather than opaque.
+Spock does not claim a custom Gemma 4 reward model, PEFT leaderboard CSV, or private Competition Data. Where Gemma 4 appears in catalogs or ID tests, we document **support and operability**. Demo hosts may run Gemma 2/3 GGUFs; the writeup says so. Honesty is part of verifiability. The claim is narrower and stronger for a resource prize: others can clone Spock and stand up a Google-forward, grounded coding assistant stack on consumer hardware across four OS families.
 
-### Station layout as a quality signal
+Spock grew out of my own questions about other people’s GitHub repositories. My first AI project was a YouTube Channel Curator: a local chat assistant that answered questions about YouTube content and helped build playlists and favorite-channel lists. I quickly saw the same need for source code—asking grounded questions about another author’s repository to supplement their documentation.
+Spock is a local-hosted answer to that problem. It can ingest a GitHub repo such as llmfit or llama.cpp, support multi-turn Deep Dive over the supplied source, and compare that corpus with a target project to inform planning, design, and implementation. Google tools and resources (including Gemma, EmbeddingGemma, and Gemini connectors) were used to complete this Best New Resource submission for the Gemma 4 Developer Agent Paper Track.
 
-Rather than one mega-window, Spock separates concerns into stations that map to SE phases: Navigation (hardware → models → launch → configure), Engineering (Ask/Deep Dive, maintenance, DB health), Science / Long Range Sensors, and UIEG knowledge capture (GitHub fetch, crawl, DB status). Each station reuses shared Tools (AI Helper, Ship Status, Google Search / Gemini, themes). That reuse reduces “works only if you memorize flags” failure modes and makes screenshots auditable: judges can see the same Search and Suite controls across workflows.
+## Methods and experiments
 
-### Failure visibility
+### Architecture
 
-Bring-up progress panels, embedding health suites (pass/fail counts), and status consoles that print llama-server endpoints and MCP listen addresses are deliberate. A resource that hides failures cannot be verified. Spock prefers noisy truth—probe output, PID tables, recipe profiles—over a green checkbox with no evidence.
-
----
-
-## 4. Relevance
-
-The Paper Track thesis emphasizes **local/offline agents on consumer hardware**, code comprehension, and Gemma-related resources. Spock maps onto that thesis end-to-end:
-
-| Track need | Spock answer |
-|------------|--------------|
-| Everyday GPUs | Hardware scan + VRAM-aware acquire; dual Quadro-class hosts already documented in gallery |
-| Code / wiki comprehension | Hybrid RAG over onboarded files; Deep Dive over selected roots |
-| Gemma / Gemini | Hub Google chat lists, Gemma GGUF quant pages, EmbeddingGemma, Gemini chat/Search UI |
-| Agent tools | MCP adapter + status health |
-
-Impact on SE workflow is a linear story judges can replay: **bring-up → acquire Gemma → start servers → ingest → Ask/Deep Dive → MCP from the IDE**. That is the relevance claim—operationalizing competition themes as a reusable open tool, not a one-off notebook.
-
-### Consumer hardware, not datacenter theater
-
-Gallery captures on this development host show dual NVIDIA Quadro-class GPUs, VRAM-aware Primary AI GPU selection, and GGUF tables sized in gigabytes—not abstract “cloud GPU” claims. Spock’s relevance is that a working engineer can clone, bootstrap, and get a Gemma chat + embedding pair running without an ML platform team. When cloud Gemini is desirable for harder questions, Configure AI and the Gemini panel provide the hybrid path without abandoning the local ship computer.
-
-### Google-forward without vendor lock-in
-
-Relevance to a Google-sponsored track does not require locking users into one API. Spock’s Provider allow-list and OpenAI-compatible connectors mean a team can demo Google models for the competition narrative and still point Acquire at other orgs tomorrow by clearing the filter. That design matches how real SE shops evaluate models: **prove the substrate with the sponsor’s family, keep the exit door**.
-
----
-
-## 5. Verifiability
-
-### Public artifacts
-
-- Source: https://github.com/Spock-AI-Universal-Wiki/Spock-AI-Universal-Wiki  
-- Docs: https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/  
-- Gallery: https://spock-ai-universal-wiki.github.io/Spock-AI-Universal-Wiki/gallery/  
-- License: Apache-2.0  
-
-### Reproduce (smoke path)
-
-1. Clone the repository on Windows 10/11 (or follow `spock_menu.sh` on WSL).
-2. Run `Setup-Spock.bat` / Phase A–B bootstrap into `.venv` (PyQt pins documented for WebEngine).
-3. In Maintenance → **Provider**, add `google` (or leave empty for all providers).
-4. Navigation / Bring-up: Acquire a **Gemma** GGUF that fits host VRAM; configure EmbeddingGemma (or current embedding profile).
-5. Optionally configure Gemini / OpenAI-compatible / Vertex via Configure AI (keep keys in local `app_config.json` / `.env` — never commit).
-6. Run wiki scan / ingest; confirm embedding health.
-7. Ask AI or Deep Dive a repo question; confirm citations/context from the ship computer.
-8. Start MCP adapter; connect a client; list tools from the MCP reference panel.
-
-### Gallery figures (Google / Gemma / Gemini citation pack)
-
-| Figure (gallery slug) | What it verifies |
-|--------------------|------------------|
-| `spock-hf-chat-models-list` | HF Filter Chat listing Google-provided chat models |
-| `spock-navigation-station-gemma-quantizations` | Gemma GGUF imatrix quant download table |
-| `spock-model-selection-panel` | Local GGUF selection including embeddinggemma files |
-| `spock-configure-ai-*` / provider tabs | LM Studio, Ollama, OpenAI-compatible, llama.cpp connectors |
-| `spock-google-search-view` / `spock-navigation-station-google-search` | In-app Google Search |
-| `spock-navigation-station-ai-chat` | Gemini response pane in-station |
-| `spock-mcp-adapter-settings-panel` / `spock-mcp-reference-panel` | MCP listen + tool reference |
-| `spock-ask-ai-*` | Grounded Ask / Deep Dive UX |
-| `spock-embedding-profile-rag-api-panel` | Embedding / RAG API controls |
-
-### Data note
-
-Verifiability uses **local** `ship_computer.db` schema (documents, chunks, FTS5, embeddings)—no private Competition Data. Secrets (Vertex project URLs, tokens) are gitignored.
-
-### What CI and Pages prove
-
-The GitHub Actions workflow builds main MkDocs and the gallery MkDocs into one Pages artifact (`/` and `/gallery/`). A green Actions run plus resolving doc links is independent evidence that the documentation corpus and screenshot JPEGs are in the tree. Raw ShareX PNGs under `assets/` are intentionally not the published source of truth; LM Studio vision captions land in `gallery/docs/` so judges read human-scale JPEG pages, not multi‑megabyte desktop dumps.
-
-### Negative evidence (what is absent on purpose)
-
-The public tree must **not** contain `.env`, `app_config.json`, `*.db`, GGUF weights, or HF tokens. Absence of those files is itself a verifiability check: if a clone still boots to bootstrap and docs, the resource is not secretly depending on leaked credentials. Absolute Windows paths may appear in local logs and screenshots; treat them as host-specific, not as portable secrets in source.
-
----
-
-## 6. Clarity
-
-### Architecture (stations / RAG / MCP / providers)
+Spock separates reusable packages (`spock_bringup`, `spock_rag_adapter`, `spock_mcp_adapter`, …) from mission-control stations (Navigation, Engineering Deck, Science Station, Long Range Sensors / UIEG - Universal Ingestion Engine Google) over a shared kernel (**WarpCore**) and a local SQLite system of record (`ship_computer.db`).
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│ Spock stations: Navigation · Engineering · Science · UIEG   │
-│ Tools: AI Helper · Ship Status · Google Search / Gemini     │
-└───────────────┬─────────────────────────────┬───────────────┘
-                │                             │
-     ┌──────────▼──────────┐       ┌──────────▼──────────┐
-     │ llama-server roles  │       │ MCP HTTP adapter    │
-     │ embed :8080 chat:…  │       │ IDE / Cursor tools  │
-     └──────────┬──────────┘       └─────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│ Stations: Navigation · Engineering · Science · UIEG          │
+│ Tools: AI Helper · Ship Status · Google Search / Gemini      │
+└───────────────┬──────────────────────────────┬───────────────┘
+                │                              │
+     ┌──────────▼──────────┐        ┌──────────▼──────────┐
+     │ llama-server roles  │        │ MCP HTTP adapter    │
+     │ embed + chat ports  │        │ IDE / Cursor tools  │
+     └──────────┬──────────┘        └─────────────────────┘
                 │
      ┌──────────▼──────────┐
-     │ ship_computer.db    │  FTS5 + embeddings + chat logs
+     │ ship_computer.db    │  documents · chunks · FTS5 · embeddings · logs
+     │ uieg_capture.db     │  ingest (wiki scan / GitHub fetch / crawl)
      └──────────▲──────────┘
-                │ ingest (wiki scan / UIEG)
+                │ 
      ┌──────────┴──────────┐
-     │ Providers           │  google/… Gemma GGUF · Gemini/Vertex
-     │ allow-list or ALL   │  LM Studio · Ollama · OpenAI-compat
+     │ Providers           │  google/… Gemma GGUF · EmbeddingGemma · Gemini
+     │ allow-list or ALL   │  LM Studio · Ollama · OpenAI-compatible
      └─────────────────────┘
 ```
 
-### Glossary
+**Platforms.** The same resource targets:
 
-- **Acquire** — hardware-aware model shortlist + download into local models tree.  
-- **Provider allow-list** — HF org prefixes (`google`, …); zero rows = all providers.  
-- **Ship computer** — SQLite knowledge backbone for RAG.  
-- **MCP** — Model Context Protocol tool surface for external agents.
-- **Deep Dive** — Ask AI mode scoped to selected roots with stronger retrieval budget.
-- **UIEG** — capture/import path for GitHub repos and website crawls into a side DB, then promote into the ship computer.
-- **llmfit** — external fit tool consulted when building Acquire shortlists alongside Hub/catalog rows.
+| Platform            | Entry path                                                |
+| ------------------- | --------------------------------------------------------- |
+| Windows 10/11       | `Setup-Spock.bat` / `Spock-Menu.bat`, Phase A/B bootstrap |
+| WSL                 | `spock_menu.sh` / `bootstrap.sh`                          |
+| Linux Ubuntu        | `Linux-Ubuntu-Setup-README.md` (CUDA peer)                |
+| Apple Silicon macOS | `Apple-Silicon-Setup-README.md` (Metal llama-server)      |
 
-### Numbered “first hour” path (clarity for non-authors)
+**Provider allow-list.** Maintenance can restrict Acquire / Hub / Launch lists to `google` (or any orgs). Zero rows means all providers—Google-forward demos without vendor lock-in.
 
-1. Install / bootstrap (Phase A tools, Phase B Python deps).  
-2. Pick Primary AI GPU if multi-GPU.  
-3. Set Provider allow-list to `google` for a Gemma-focused demo (optional).  
-4. Acquire embedding + chat GGUFs; start servers; confirm Ship Status.  
-5. Run wiki scan on this repo (or a sample tree); wait for embeddings.  
-6. Ask a grounded question (“How does Spock pick embedding vs chat models?”).  
-7. Open Google Search / Gemini from Tools for web context; keep secrets local.  
-8. Start MCP; connect Cursor; call a Spock tool.  
+### Spock AI Helper (installation and usage aid)
 
-If any step fails, the status/probe panels are the debugging surface—clarity includes knowing **where** to look.
+A Best New Resource fails if only the author can operate it. **Spock AI Helper** is a first-class tool for answering questions **about Spock itself**—bring-up, stations, ports, models, and workflows—rather than about an arbitrary user codebase (that is Ask AI / Deep Dive’s job).
+
+**Why it exists.** Local agent stacks fail in the first hour: which server must be up, which GGUF role is embedding vs chat, how Provider filters work, where scan roots live. Static docs help, but operators ask follow-ups. AI Helper turns the curated how-to corpus into an interactive assistant.
+
+**How it works.**
+
+1. **Launch.** `Spock-AI-Helper.bat` (or `helper_main.py`) starts a lightweight PyQt6 chat UI and, when configured, a local docs server for the pre-built MkDocs `site/` (typically port **8000**).
+2. **Prerequisites.** A chat LLM must be reachable—commonly local `llama-server` on **:8081** (`/health`, `/v1/chat/completions`) after Navigation Launch writes readiness (`spock_ready_last.json`). AI Helper unlocks once chat is healthy; it is also available from station **Tools** panes after bring-up step 4.
+3. **Corpus.** Answers are grounded in curated Markdown under `AIHelperDocuments/` (Bringup Menu, Navigation Launch, Bootstrap Wizard, UIEG, system specs, and Ask-AI transcripts that capture operational Q&A). Ranking boosts helper-named docs; top snippets are assembled into a system prompt that instructs the model to use **only** that context and admit gaps.
+4. **Generation.** A background worker posts an OpenAI-compatible chat completion to the local chat endpoint so the GUI stays responsive. Optionally, suite integrations can also consult hybrid search / embeddings against `ship_computer.db` when the helper is wired through the fuller onboarding path.
+5. **Scope.** Designed questions include: how first launch / Phase A–B works; how Acquire picks fit models; what ports mean; how to open Ask AI vs Deep Dive; how MCP is started; how Provider=`google` changes Hub lists. It is **not** the cross-repo engineering analyst—that remains Engineering Deck Ask AI / Deep Dive over ingested trees.
+
+**Experiment (resource usability).** After bootstrap and Launch, open AI Helper and ask: “How does Spock AI Helper work?” and “When is AI Helper unlocked?” Expect answers citing helper docs and launch prerequisites—evidence that the resource documents itself for new operators. Gallery slug `spock-chat-ai-helper-panel` shows the chat UI in Ready state.
+
+### Bring-up and hardware-aware Acquire
+
+**Bootstrap.** Phase A creates `.venv` and UI deps; Phase B installs fuller requirements and writes `bootstrap_full_deps.ok`. Bring-up CLI/GUI initializes `ship_computer.db` with operator profiles and uieg_capture.db (universal ingest engine google) that can ingest / wiki scan / GitHub fetch / web crawl.
+
+**Acquire.** Hardware profiling (CPU, RAM, GPU VRAM / Metal unified memory) feeds a shortlist that merges llmfit signals, Hub rows, and catalog policy. Embedding models stay light and resident; chat GGUFs scale with VRAM. Runtime writes `-ngl` / context / thread hints into local config. With Provider=`google`, shortlists emphasize Google-provided Gemma-family chat rows and EmbeddingGemma profiles.
+
+### Code comprehension experiments (GitHub → RAG → Ask / Deep Dive)
+
+These are **operability experiments** for a resource paper—not competition private-leaderboard scores.
+
+1. **Ingest.** UIEG / GitHub Fetch captures a repository (or local clone -language agnostic); filters drop `node_modules`/binaries; preview before index. 
+2. **Index.** Chunks land in `ship_computer.db` with FTS5 + embeddings (EmbeddingGemma or configured profile), including Matryoshka-style dimension options where supported.
+3. **Ask AI.** Path-scoped questions (“Explain WarpCore DB init”) return grounded answers with document hits.
+4. **Deep Dive.** Broader investigations compare multiple roots (e.g., Spock vs an llmfit tree): retrieve labeled snippets per repo, synthesize differences, persist evidence trails in the ship computer for audit/resume.
+5. **Hybrid cloud (optional).** Configure OpenAI-compatible Gemini/Vertex for chat while keeping embeddings and the corpus local—large-context synthesis without abandoning the ship computer.
+
+### MCP as the agent I/O bus
+
+The MCP adapter exposes Spock tools over HTTP so IDE agents (e.g., Cursor) can drive ingestion/status without reimplementing the workstation. MCP reference panel documents listen ports and tool lists; Ship Status / probes make failures visible (PIDs, endpoints, pass/fail counts) IDE agents can use eight different commands to query Spock.
+
+### Reproduce smoke path (verifiability)
+
+Public artifacts: GitHub source, Docs, Gallery, Apache-2.0. No Competition Data; secrets stay gitignored (`.env`, `app_config.json`, `*.db`, GGUF weights).
+
+1. Clone on Windows, WSL, Ubuntu, or Apple Silicon; follow the matching setup README.  
+2. Phase A–B bootstrap.  
+3. Optional: Provider allow-list `google`.  
+4. Acquire embedding + Gemma-family chat GGUFs (or configure Gemini); start servers; confirm Ship Status.  
+5. Open **AI Helper**; ask an install/usage question about Spock.  
+6. Ingest this repo or a sample tree; confirm embedding health.  
+7. Ask AI / Deep Dive a grounded code question.  
+8. Start MCP; list tools from a client.
+
+### Gallery evidence (Google / Gemma / Gemini)
+
+| Gallery slug                                   | Verifies                                           |
+| ---------------------------------------------- | -------------------------------------------------- |
+| `spock-hf-chat-models-list`                    | Google-provided HF chat models                     |
+| `spock-navigation-station-gemma-quantizations` | Gemma GGUF quant table                             |
+| `spock-model-selection-panel`                  | Local GGUFs including EmbeddingGemma               |
+| `spock-configure-ai-*`                         | LM Studio / Ollama / OpenAI-compatible / llama.cpp |
+| `spock-google-search-view`                     | In-app Google Search                               |
+| `spock-navigation-station-ai-chat`             | Gemini pane                                        |
+| `spock-mcp-*-panel`                            | MCP listen + tool reference                        |
+| `spock-ask-ai-*`                               | Ask / Deep Dive UX                                 |
+| `spock-chat-ai-helper-panel`                   | AI Helper install/usage chat                       |
+| `spock-embedding-profile-rag-api-panel`        | Embedding / RAG controls                           |
+
+GitHub Actions builds MkDocs + gallery to Pages. Absence of committed secrets is intentional negative evidence.
 
 ---
 
-## 7. Conclusion — Best New Resource checklist
+## Related work and citations
 
-Spock is submitted as a **Best New Resource**: a software suite plus documentation plus a screenshot corpus that lets others stand up Gemma/Gemini-capable agentic SE on consumer hardware.
+**Local llama.cpp / Ollama UIs** expose chat and sometimes model download, but rarely unify VRAM-aware acquire, dual embed/chat roles, SQLite hybrid RAG, GitHub ingest, MCP, and self-help for the suite itself.
 
-- [x] Open source (Apache-2.0) with public GitHub URL  
-- [x] Live docs + screenshot gallery  
-- [x] Hardware-aware local bring-up and dual-model hosting  
-- [x] Hybrid RAG + Ask/Deep Dive over local corpora  
-- [x] MCP adapter for IDE agents  
-- [x] Google/Gemma/Gemini connectors and UI evidence (no fabricated Gemma 4 RL claims)  
-- [x] Reproduce steps without Competition Data  
+**IDE coding assistants** (Continue-style RAG, cloud agents) excel inside the editor yet often assume SaaS indexes or API models. Spock keeps the ship computer local and optional Gemini as a connector, and exposes tools via MCP so the IDE agent can call the workstation.
 
-**What we do not claim:** new Gemma 4 post-training, PEFT leaderboard scores, or access to private Vertex projects in the public tree. **What we do claim:** a verifiable, Google-forward workstation resource that operationalizes local agentic software engineering.
+**SWE-bench / contest agents** optimize patch success under harness constraints. Spock does not replace that leaderboard; it supplies the **developer-side resource** those agents (and humans) need to bring up Gemma-class stacks and comprehend repos on consumer hardware—the Paper Track’s Best New Resource niche ([Markowitz et al., 2026](https://www.kaggle.com/competitions/gemma-4-developer-agent-paper)).
+
+**RAG systems** commonly separate vector DBs from apps. Spock’s contribution is productization: stations, probes, Provider policy, AI Helper over `AIHelperDocuments/`, and cross-platform bootstrap (Windows / WSL / Ubuntu / Apple Silicon Metal) as one Apache-2.0 artifact.
 
 ---
 
-## Appendix — Kaggle submit checklist
+## Conclusion
 
-1. Confirm repo is **public** and Pages URLs resolve.  
-2. Paste this writeup into Kaggle **New Writeup** (trim if needed to ≤3000 words).  
-3. Project Links: GitHub + Docs + Gallery.  
-4. Optional: short public notebook that clones and prints `spock_status` / docs links.  
-5. Word-count gate (~2800 draft target).  
-6. Submit before **2026-11-12 23:59 UTC**; keep ≤2 final selections if required.
+Spock is submitted as a **Best New Resource**: open software, documentation, and screenshot evidence for local agentic software engineering with Google / Gemma / Gemini paths.
+
+- Apache-2.0 public GitHub + live docs + gallery  
+- Multi-platform: Windows, WSL, Linux Ubuntu, Apple Silicon  
+- Hardware-aware Acquire and dual-model hosting  
+- Hybrid RAG + Ask / Deep Dive over GitHub/wiki corpora  
+- **AI Helper** for Spock installation and usage Q&A  
+- MCP adapter for IDE agents  
+- Reproduce path without Competition Data; no fabricated Gemma 4 RL claims  
+
+**Not claimed:** new Gemma 4 post-training, private Vertex credentials in-tree, or main-track private-leaderboard scores. **Claimed:** a verifiable workstation resource that operationalizes grounded, Google-forward agentic SE on consumer hardware.
+
+
