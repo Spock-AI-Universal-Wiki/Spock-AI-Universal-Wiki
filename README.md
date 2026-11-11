@@ -1,4 +1,4 @@
-﻿# Spock-AI-Universal-Wiki
+# Spock-AI-Universal-Wiki
 
 **Spock** is a local-first agentic software-engineering workstation: hardware-aware bring-up, hybrid RAG over your codebase/wiki, MCP tools for IDE agents, and first-class connectors for **Google / Gemma / Gemini** (local GGUF + cloud) on consumer GPUs.
 
@@ -24,53 +24,52 @@
 * **Wiki Agent**
   
   * **Description:** Crawls, indexes, and queries local or remote wiki content OR github repository. It extracts text, stores structured results in SQLite, and supports application queries such as Ask AI and Deep Dive workflows.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\features\wiki-agent.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\features\wiki-agent.md`
 * **Engineering Deck**
   
   * **Description:** A specialized suite of tools providing maintenance capabilities, health checks, and ship-computer diagnostics to monitor, diagnose, and repair critical systems.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\features\engineering-deck.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\features\engineering-deck.md`
 * **Science Station (Hybrid AI Architecture)**
   
   * **Description:** Employs a dedicated embedding model, a local vector database (optimized for approximate nearest neighbor search), and a generative LLM to separate semantic retrieval from content generation.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\features\science-station.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\features\science-station.md`
 * **RAG API Server**
   
   * **Description:** Integrates with the `ship_computer.db` SQLite database to ensure user questions are answered using relevant context from the knowledge base, while maintaining a queryable record of requests and system actions.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\features\rag-api-server.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\features\rag-api-server.md`
 * **Chat AI Helper (`chat_ai_helper.py`)**
   
   * **Description:** A helper script that provides suite how-to Q&A from `AIHelperDocuments` using a chat LLM.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\structure\root-scripts.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\structure\root-scripts.md`
 * **SQLite Grid Browser (`db_browser.py`)**
   
   * **Description:** A utility that provides SQLite grid browsing for `ship_computer.db` along with a file preview dialog.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\structure\root-scripts.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\structure\root-scripts.md`
 * **Database Maintenance Utility (`db_maintenance.py`)**
   
   * **Description:** A dedicated database maintenance utility containing 34 functions to manage and maintain the `ship_computer.db` database.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\structure\root-scripts.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\structure\root-scripts.md`
 * **`spock_bringup` CLI**
   
   * **Description:** A command-line interface supporting environment bring-up tasks via `acquire`, `up`, `status`, and `down` commands.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\reference\plan-summary.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\reference\plan-summary.md`
 * **`spock_probe` Health Verification**
   
   * **Description:** A tool that performs health verification and writes a readiness contract (`spock_ready_last.json`).
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\reference\plan-summary.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\reference\plan-summary.md`
 * **`spock_shell` PyQt6 GUI**
   
   * **Description:** A PyQt6 graphical user interface skeleton designed for managing and interacting with the application's workstations.
-  * **Source Path:** `d:\spock-ai-universal-wiki\docs\reference\plan-summary.md`
+  * **Source Path:** `\spock-ai-universal-wiki\docs\reference\plan-summary.md`
 
 ## Quick start (Windows)
 
-    Setup-Spock.bat
-    Spock.bat
+    Spock-Menu.bat
 
 Or console menu:
 
-    Spock-Menu.bat
-
+    Spock-Menu-Console
+    
 Linux / WSL peer:
 
     chmod +x spock_menu.sh bootstrap.sh
