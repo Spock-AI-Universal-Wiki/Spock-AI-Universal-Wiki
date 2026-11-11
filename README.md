@@ -19,7 +19,7 @@
 * **MCP surface** — Cursor and other clients get Spock tools over HTTP.
 * **Google-forward** — Gemma GGUF catalogs, EmbeddingGemma profiles, Gemini / Vertex connectors, in-app Google Search + Gemini panel.
 
-## **Spock-AI-Universal-Wiki Feature Summary**
+## **Spock-AI-Universal-Wiki Feature Summary**
 
 * **Wiki Agent**
   
@@ -61,24 +61,41 @@
   
   * **Description:** A PyQt6 graphical user interface skeleton designed for managing and interacting with the application's workstations.
   * **Source Path:** `\spock-ai-universal-wiki\docs\reference\plan-summary.md`
+  
+  > **Spock-to-bridge**: The bridge console for a personal Starfleet knowledge base.Scan hardware, find and launch GGUF models, watch the ship’s computer ingest files,and ask the AI against `ship_computer.db` embeddings.
+  
+  ## What Is This?
+  
+  **Spock is a PyQt6 desktop application that ties together:
+  
+  1. **Hardware assessment** (ported from Spock-Scanner) — can this machine run local LLMs?
+  2. **Model selection** (ported from Spock-Model-Selector) — find GGUF models on Hugging Face, download them, read model cards, launch `llama-server`
+  3. **Ship’s computer / RAG** — SQLite knowledge base with hybrid search (vector + FTS5) and an AI chat panel
+  4. **Wiki Agent** — background ingestion that watches folders, extracts text, and writes embeddings
+  5. **MCP adapter** — stdio FastMCP tools for Cursor / OpenCode (`scripts/mcp_spock_server.py`)
+  
+  The UI uses a left navigation rail, a swappable middle pane, and a right “AI Settings” dock. The window title is **Spock Navigation Station**, with a Vulcan-salute application icon.
+  
+  ### The Bridge Crew (ingestion agent)
+  
+  | Officer | Role | Responsibilities |
+  | --- | --- | --- |
+  | **Computer** | Agent loop | Boot, queue management, file watching, status reporting |
+  | **Scotty** | Chief Engineer | File extraction (PDF, DOCX, HTML, TXT), embeddings |
+  | **Bones** | Security | Secret scanning, quarantine, forbidden pattern detection |
+  | **Kirk** | Commanding Officer | Index generation, backups, cron scheduling |
+  | **Spock** | Science Officer | Maintenance, orphan detection, lint reports |
+  
 
 ## Quick start (Windows)
 
     Spock-Menu.bat
 
-Or console menu:
+Or console menu: Spock-Menu-Console
 
-    Spock-Menu-Console
-    
-Linux / WSL peer:
+Linux / WSL peer: chmod +x spock_menu.sh bootstrap.sh ./spock_menu.sh
 
-    chmod +x spock_menu.sh bootstrap.sh
-    ./spock_menu.sh
-
-Apple Silicon (macOS) peer — see [`Apple-Silicon-Setup-README.md`](Apple-Silicon-Setup-README.md):
-
-    chmod +x spock_menu.sh bootstrap.sh Spock-Menu.sh
-    ./bootstrap.sh --phase-a && ./Spock-Menu.sh
+Apple Silicon (macOS) peer — see [`Apple-Silicon-Setup-README.md`](Apple-Silicon-Setup-README.md): chmod +x spock_menu.sh bootstrap.sh Spock-Menu.sh ./bootstrap.sh --phase-a && ./Spock-Menu.sh
 
 ## Local docs / gallery preview
 
@@ -90,9 +107,7 @@ Apple Silicon (macOS) peer — see [`Apple-Silicon-Setup-README.md`](Apple-Silic
     cd gallery
     python -m mkdocs serve -a 127.0.0.1:8001
 
-Pre-scan ShareX PNGs from `assets/` (not committed; regenerated into `gallery/docs/images/`):
-
-    powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\prescan-screenshots.ps1
+Pre-scan ShareX PNGs from `assets/` (not committed; regenerated into `gallery/docs/images/`): powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\prescan-screenshots.ps1
 
 ## Google / Gemma / Gemini support
 
@@ -109,4 +124,4 @@ Pre-scan ShareX PNGs from `assets/` (not committed; regenerated into `gallery/do
 
 ## License
 
-Apache License 2.0 — see [LICENSE](LICENSE).
+Apache License 2.0 — see [LICENSE](LICENSE)
