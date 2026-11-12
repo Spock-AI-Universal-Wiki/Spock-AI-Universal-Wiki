@@ -36,6 +36,7 @@ Dependencies are split into tiers so bootstrap Phase A only installs what the Py
 | reportlab | PDF export from the model selector |
 | google-auth | Application Default Credentials for Gemini |
 | nvidia-ml-py | NVML GPU telemetry (`pynvml`) |
+| llmfit | Hardware fit CLI for Acquire / Launch (also via `winget install --exact --id AlexsJones.llmfit`) |
 | fastmcp, authlib, starlette | MCP server (`scripts/mcp_spock_server.py`) |
 
 GPU detection uses `nvidia-smi` and NVML; `torch` and `GPUtil` were removed.

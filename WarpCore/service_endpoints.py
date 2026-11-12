@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import os
 import shutil
+import sys
 from pathlib import Path
 from typing import Any, Dict, Mapping, Optional, Tuple
 from urllib.parse import urlparse
@@ -176,6 +177,16 @@ def llmfit_binary_candidates(root: Optional[Path] = None) -> list[Path]:
         out.append(install / name)
         out.append(install / "target" / "release" / name)
         out.append(install / "bin" / name)
+    # pip install llmfit (requirements-full Phase B) lands next to the venv
+    # interpreter; launching via .venv/.../python does not put Scripts on PATH.
+    try:
+        scripts = Path(sys.executable).resolve().parent
+        for name in names:
+            if os.name != "nt" and name.endswith(".exe"):
+                continue
+            out.append(scripts / name)
+    except (OSError, RuntimeError):
+        pass
     # Optional user-local install (Windows LOCALAPPDATA only — not WSL AppData)
     if os.name == "nt":
         local = os.environ.get("LOCALAPPDATA") or str(Path.home() / "AppData" / "Local")

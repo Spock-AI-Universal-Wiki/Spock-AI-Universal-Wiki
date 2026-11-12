@@ -23,6 +23,11 @@ reportlab
 google-auth
 nvidia-ml-py
 
+# Hardware fit CLI (Acquire / Launch shortlists + -ngl). Pip puts the console
+# script in .venv; Spock also accepts a native install (preferred on Windows):
+#   winget install --exact --id AlexsJones.llmfit
+llmfit
+
 # Vector search (sqlite-vec extension for fast ANN over document embeddings;
 # WarpCore/search.py falls back to a full scan if this is not installed)
 sqlite-vec>=0.1.6
