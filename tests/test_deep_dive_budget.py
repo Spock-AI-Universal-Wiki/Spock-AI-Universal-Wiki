@@ -166,3 +166,17 @@ def test_propose_recipe_raises_chat_context_with_vram():
     assert big["chat_n_ctx"] == 32768
     assert mid["chat_n_ctx"] == 16384
     assert small["chat_n_ctx"] == 4096
+
+
+def test_propose_recipe_tiny_gpu_is_cpu_lookaround():
+    tiny = propose_recipe(
+        {
+            "host_ram_gb": 32,
+            "gpus": [{"index": 0, "vram_gb": 2.0, "name": "Quadro K620"}],
+        }
+    )
+    assert tiny["ngl_default"] == "0"
+    assert tiny["chat_n_ctx"] == 4096
+    assert tiny["embed_n_ctx"] == 2048
+    assert tiny["embed_size_class"] == "small"
+    assert any("CPU look-around" in n for n in tiny["notes"])

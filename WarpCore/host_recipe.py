@@ -40,6 +40,10 @@ GPU_POLICY_PIN = "pin_per_role"
 GPU_POLICY_SPLIT = "tensor_split_chat"
 GPU_POLICY_SINGLE = "single_gpu"
 
+# Keep in sync with model_pick_policy.MIN_USEFUL_VRAM_GB — below this, recipes
+# default to CPU look-around (-ngl 0) so embed+chat can still start on RAM.
+MIN_USEFUL_VRAM_GB = 4.0
+
 
 def _now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -138,7 +142,28 @@ def propose_recipe(hardware: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
                 + ", ".join(str(g.get("name") or "GPU") for g in compute)
                 + "."
             )
-    if gpu_count >= 2 and all_small and ram <= 40.0:
+    ngl_default = "-1"
+    if max_vram < MIN_USEFUL_VRAM_GB:
+        # Display / ancient cards (e.g. Quadro 2GB): run both roles on CPU/RAM
+        # so a newbie can still Acquire + look around the suite.
+        policy = GPU_POLICY_SINGLE
+        embed_gpu = chat_gpu = _gpu_index(gpus[0], 0) if gpus else 0
+        chat_n_ctx = 4096
+        embed_n_ctx = 2048
+        tensor_split = ""
+        split_mode = "layer"
+        embed_class = "small"
+        ngl_default = "0"
+        label = (
+            f"{max_vram:.0f}GB GPU"
+            if max_vram > 0
+            else "no usable GPU"
+        )
+        notes.append(
+            f"{label} (<{MIN_USEFUL_VRAM_GB:.0f}GB useful VRAM): CPU look-around "
+            f"profile — -ngl 0, models sized against ~{ram:.0f}GB host RAM."
+        )
+    elif gpu_count >= 2 and all_small and ram <= 40.0:
         policy = GPU_POLICY_SPLIT
         chat_n_ctx = 16384
         embed_n_ctx = 4096
@@ -205,7 +230,7 @@ def propose_recipe(hardware: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         "chat_n_ctx": int(chat_n_ctx),
         "embed_np": 1,
         "n_cpu_moe": int(n_cpu_moe),
-        "ngl_default": "-1",
+        "ngl_default": ngl_default,
         "embed_size_class": embed_class,
         "host_ram_gb": float(hw.get("host_ram_gb") or 0.0),
         "gpu_summary": str(hw.get("gpu_summary") or ""),
@@ -802,8 +827,13 @@ def launch_plan_for_role(
         out["ngl"] = ngl
         out["ngl_source"] = "pinned in app.launch.ngl"
     else:
-        out.setdefault("ngl", "-1")
-        out["ngl_source"] = ""
+        # Recipe ngl_default is "0" on CPU look-around hosts (<4GB useful VRAM).
+        out.setdefault("ngl", str((recipe or {}).get("ngl_default") or "-1"))
+        out["ngl_source"] = (
+            "host recipe ngl_default"
+            if str(out.get("ngl") or "-1") == "0"
+            else ""
+        )
     if (role or "").lower() in ("embedding", "embed"):
         out["n_parallel"] = int(pinned.get("embed_np") or 1)
         out["n_cpu_moe"] = 0

@@ -72,6 +72,22 @@ def test_no_gpu_falls_back_to_a_slice_of_host_ram():
     )
     assert budget["pool_gb"] == 0.0
     assert budget["budget_gb"] > 1.0
+    assert budget["cpu_lookaround"] is True
+    assert budget["pool_source"] == "host_ram"
+
+
+def test_tiny_gpu_lookaround_uses_host_ram_so_chat_still_fits():
+    """2GB Quadro-class cards cannot co-host embed+chat; Acquire must not empty out."""
+    recipe = {**SINGLE_GPU, "host_ram_gb": 32.0, "embed_size_class": "small", "chat_n_ctx": 4096}
+    hardware = {"gpus": [{"index": 0, "vram_gb": 2.0, "name": "Quadro K620"}], "host_ram_gb": 32.0}
+    chat = recipe_role_budget(recipe, hardware, role="chat")
+    embed = recipe_role_budget(recipe, hardware, role="embed")
+    assert chat["cpu_lookaround"] is True and embed["cpu_lookaround"] is True
+    assert chat["budget_gb"] >= 8.0  # ~35% of 32GB RAM
+    assert chat["reserve_gb"] == 0.0
+    picks = top_role_fits(catalog_rows("chat"), kind="chat", budget=chat, limit=3)
+    assert picks, "CPU look-around must still offer at least one catalog chat model"
+    assert picks[0]["fit_level"] != "impossible"
 
 
 def test_fit_levels_follow_headroom():

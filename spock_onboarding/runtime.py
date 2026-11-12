@@ -247,7 +247,34 @@ def _match_cudart(assets: list, bin_asset: dict) -> Optional[dict]:
     return None
 
 
-def _pick_windows_assets(assets: list) -> Tuple[Optional[dict], Optional[dict]]:
+def _host_max_vram_gb() -> float:
+    """Live max GPU VRAM, or a high default when the probe is unavailable."""
+    try:
+        from WarpCore.host_recipe import probe_hardware_cached
+
+        hw = probe_hardware_cached()
+        vrams = [
+            float(g.get("vram_gb") or 0.0)
+            for g in (hw.get("gpus") or [])
+            if isinstance(g, dict)
+        ]
+        return max(vrams) if vrams else 0.0
+    except Exception:
+        return 8.0
+
+
+def _prefer_cpu_llama_binary() -> bool:
+    """Tiny / ancient cards: prefer Vulkan/CPU over CUDA release zips."""
+    try:
+        from model_pick_policy import MIN_USEFUL_VRAM_GB
+    except Exception:
+        MIN_USEFUL_VRAM_GB = 4.0
+    return _host_max_vram_gb() < float(MIN_USEFUL_VRAM_GB)
+
+
+def _pick_windows_assets(
+    assets: list, *, prefer_cpu: Optional[bool] = None
+) -> Tuple[Optional[dict], Optional[dict]]:
     zips = [
         a
         for a in assets
@@ -265,18 +292,30 @@ def _pick_windows_assets(assets: list) -> Tuple[Optional[dict], Optional[dict]]:
                 return a
         return None
 
-    bin_asset = (
-        find_llama("bin-win-cuda-12.4", "x64")
-        or find_llama("bin-win-cuda-12", "x64")
-        or find_llama("bin-win-cuda-13", "x64")
-        or find_llama("bin-win-vulkan", "x64")
-        or find_llama("bin-win-cpu", "x64")
-    )
+    use_cpu = _prefer_cpu_llama_binary() if prefer_cpu is None else prefer_cpu
+    if use_cpu:
+        bin_asset = (
+            find_llama("bin-win-vulkan", "x64")
+            or find_llama("bin-win-cpu", "x64")
+            or find_llama("bin-win-cuda-12.4", "x64")
+            or find_llama("bin-win-cuda-12", "x64")
+            or find_llama("bin-win-cuda-13", "x64")
+        )
+    else:
+        bin_asset = (
+            find_llama("bin-win-cuda-12.4", "x64")
+            or find_llama("bin-win-cuda-12", "x64")
+            or find_llama("bin-win-cuda-13", "x64")
+            or find_llama("bin-win-vulkan", "x64")
+            or find_llama("bin-win-cpu", "x64")
+        )
     cudart = _match_cudart(zips, bin_asset) if bin_asset else None
     return bin_asset, cudart
 
 
-def _pick_linux_assets(assets: list) -> Tuple[Optional[dict], Optional[dict]]:
+def _pick_linux_assets(
+    assets: list, *, prefer_cpu: Optional[bool] = None
+) -> Tuple[Optional[dict], Optional[dict]]:
     tars = [
         a
         for a in assets
@@ -298,16 +337,29 @@ def _pick_linux_assets(assets: list) -> Tuple[Optional[dict], Optional[dict]]:
                 return a
         return None
 
-    bin_asset = (
-        find_llama("bin-ubuntu-cuda-12.8", "x64")
-        or find_llama("bin-ubuntu-cuda-12.4", "x64")
-        or find_llama("bin-ubuntu-cuda-12", "x64")
-        or find_llama("bin-ubuntu-cuda-13", "x64")
-        or find_llama("bin-ubuntu-vulkan", "x64")
-        or find_llama("bin-ubuntu-cpu", "x64")
-        or find_llama("bin-linux-cuda-12", "x64")
-        or find_llama("bin-linux-cpu", "x64")
-    )
+    use_cpu = _prefer_cpu_llama_binary() if prefer_cpu is None else prefer_cpu
+    if use_cpu:
+        bin_asset = (
+            find_llama("bin-ubuntu-vulkan", "x64")
+            or find_llama("bin-ubuntu-cpu", "x64")
+            or find_llama("bin-linux-cpu", "x64")
+            or find_llama("bin-ubuntu-cuda-12.8", "x64")
+            or find_llama("bin-ubuntu-cuda-12.4", "x64")
+            or find_llama("bin-ubuntu-cuda-12", "x64")
+            or find_llama("bin-ubuntu-cuda-13", "x64")
+            or find_llama("bin-linux-cuda-12", "x64")
+        )
+    else:
+        bin_asset = (
+            find_llama("bin-ubuntu-cuda-12.8", "x64")
+            or find_llama("bin-ubuntu-cuda-12.4", "x64")
+            or find_llama("bin-ubuntu-cuda-12", "x64")
+            or find_llama("bin-ubuntu-cuda-13", "x64")
+            or find_llama("bin-ubuntu-vulkan", "x64")
+            or find_llama("bin-ubuntu-cpu", "x64")
+            or find_llama("bin-linux-cuda-12", "x64")
+            or find_llama("bin-linux-cpu", "x64")
+        )
     cudart = _match_cudart(tars, bin_asset) if bin_asset else None
     return bin_asset, cudart
 
@@ -459,7 +511,13 @@ def download_llama_server_windows(
     data = _latest_release_with_assets()
     tag = data.get("tag_name", "?")
     assets = data.get("assets") or []
-    bin_asset, cudart = _pick_windows_assets(assets)
+    prefer_cpu = _prefer_cpu_llama_binary()
+    if prefer_cpu:
+        _say(
+            cb,
+            "Low / no useful GPU VRAM — preferring Vulkan/CPU llama-server build…",
+        )
+    bin_asset, cudart = _pick_windows_assets(assets, prefer_cpu=prefer_cpu)
     if not bin_asset:
         raise RuntimeError(f"No Windows llama-*.zip found in release {tag}.")
     _say(cb, f"Release {tag}: binary={bin_asset.get('name')}")
@@ -504,7 +562,13 @@ def download_llama_server_linux(
     data = _latest_release_with_assets()
     tag = data.get("tag_name", "?")
     assets = data.get("assets") or []
-    bin_asset, cudart = _pick_linux_assets(assets)
+    prefer_cpu = _prefer_cpu_llama_binary()
+    if prefer_cpu:
+        _say(
+            cb,
+            "Low / no useful GPU VRAM — preferring Vulkan/CPU llama-server build…",
+        )
+    bin_asset, cudart = _pick_linux_assets(assets, prefer_cpu=prefer_cpu)
     if not bin_asset:
         raise RuntimeError(
             f"No Linux/Ubuntu llama-*.tar.gz found in release {tag}. "

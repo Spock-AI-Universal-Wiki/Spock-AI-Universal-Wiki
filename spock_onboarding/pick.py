@@ -52,13 +52,13 @@ _CATALOG: List[Tuple[float, ModelPick]] = [
     (
         0.0,
         ModelPick(
-            "ggml-org/embeddinggemma-2-GGUF",
-            "bartowski/gemma-2-9b-it-GGUF",
+            "ggml-org/embeddinggemma-300M-GGUF",
+            "Qwen/Qwen3-1.7B-GGUF",
             "Q8_0",
             "Q4_K_M",
             2048,
-            8192,
-            "Low VRAM / CPU-friendly: EmbeddingGemma 2 + Gemma 2 9B",
+            4096,
+            "CPU look-around: EmbeddingGemma 300M + Qwen3 1.7B (fits host RAM)",
         ),
     ),
 ]

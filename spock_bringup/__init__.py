@@ -349,7 +349,33 @@ def cmd_up(
                 ngl = str(plan_ov["ngl"])
                 ngl_why = str(plan_ov.get("ngl_source") or "host recipe")
             else:
-                ngl, ngl_why = llmfit_bridge.resolve_ngl(model, n_ctx=n_ctx)
+                # Stale recipes on tiny GPUs still say -ngl -1; forcing GPU layers
+                # OOMs when embed + chat share a 2GB card. Prefer CPU look-around.
+                forced_cpu = False
+                try:
+                    from WarpCore.host_recipe import (
+                        MIN_USEFUL_VRAM_GB,
+                        probe_hardware_cached,
+                    )
+
+                    hw = probe_hardware_cached()
+                    vrams = [
+                        float(g.get("vram_gb") or 0.0)
+                        for g in (hw.get("gpus") or [])
+                        if isinstance(g, dict)
+                    ]
+                    max_vram = max(vrams) if vrams else 0.0
+                    if max_vram < MIN_USEFUL_VRAM_GB:
+                        ngl = "0"
+                        ngl_why = (
+                            f"CPU look-around (live GPU {max_vram:.0f}GB "
+                            f"< {MIN_USEFUL_VRAM_GB:.0f}GB useful VRAM)"
+                        )
+                        forced_cpu = True
+                except Exception:
+                    forced_cpu = False
+                if not forced_cpu:
+                    ngl, ngl_why = llmfit_bridge.resolve_ngl(model, n_ctx=n_ctx)
 
         ts = str(plan_ov.get("tensor_split") or "")
         sm = str(plan_ov.get("split_mode") or "")

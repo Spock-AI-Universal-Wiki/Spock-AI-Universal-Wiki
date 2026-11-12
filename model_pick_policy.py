@@ -24,6 +24,10 @@ _KV_GB_PER_PARAM_B_PER_TOKEN = 1.75e-5
 # Leave headroom for CUDA context, two llama-server processes, OS compositor.
 _VRAM_USABLE_FRAC = 0.82
 
+# Below this, a card cannot host embed+chat together. Size models against host
+# RAM instead so Acquire still offers a CPU look-around pair (e.g. Quadro 2GB).
+MIN_USEFUL_VRAM_GB = 4.0
+
 # Chat synthesis quality plateaus for wiki RAG around 8B instruct.
 
 CTX_LADDER: Tuple[int, ...] = (131072, 65536, 32768, 16384, 8192, 4096, 2048)
@@ -1137,14 +1141,25 @@ def recipe_role_budget(
         pool = vram_by_idx.get(own_idx) or (max(vrams) if vrams else 0.0)
         shared = True
 
-    if pool > 0:
-        budget = usable_vram_gb(pool)
+    cpu_lookaround = pool < MIN_USEFUL_VRAM_GB
+    if cpu_lookaround:
+        # Tiny / missing GPU: spend a slice of host RAM (CPU llama-server).
+        pool = 0.0
+        shared = False
+        budget = max(
+            2.0,
+            float(
+                (hardware or {}).get("host_ram_gb")
+                or rec.get("host_ram_gb")
+                or 8.0
+            )
+            * 0.35,
+        )
     else:
-        # CPU / unknown GPU: spend a slice of host RAM instead.
-        budget = max(2.0, float(rec.get("host_ram_gb") or 8.0) * 0.35)
+        budget = usable_vram_gb(pool)
 
     reserve = 0.0
-    if role == "chat" and shared:
+    if role == "chat" and shared and not cpu_lookaround:
         embed_b = _EMBED_CLASS_PARAMS_B.get(
             str(rec.get("embed_size_class") or "medium"), 4.0
         )
@@ -1161,6 +1176,8 @@ def recipe_role_budget(
         "shared": shared,
         "gpu_policy": policy,
         "gpu_index": own_idx,
+        "cpu_lookaround": cpu_lookaround,
+        "pool_source": "host_ram" if cpu_lookaround else "vram",
     }
 
 

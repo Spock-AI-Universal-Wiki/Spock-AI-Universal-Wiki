@@ -157,6 +157,17 @@ class AcquireSelectDialog(QDialog):
             head.append("Drift: " + "; ".join(payload.get("drift") or []))
         else:
             head.append(f"Host recipe: {recipe.get('gpu_policy')}.")
+        # Tiny GPU: shortlists are sized against host RAM so Download stays usable.
+        lookaround = any(
+            (lists.get(role) or {}).get("budget", {}).get("cpu_lookaround")
+            for role in ("embed", "chat")
+        )
+        if lookaround:
+            head.append(
+                "GPU VRAM is too small to run embed + chat together, so these "
+                "picks are sized for host RAM / CPU (-ngl 0) — enough to look "
+                "around; a stronger GPU makes Ask AI / wiki scan much faster."
+            )
         self._status.setText("\n".join(head))
 
         if source == "live-proposal":
